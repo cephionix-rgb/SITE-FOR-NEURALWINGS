@@ -13,6 +13,7 @@ const securityHeaders = {
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/',
   server: {
     headers: securityHeaders,
   },
