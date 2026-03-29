@@ -94,17 +94,18 @@ export function IntroSequence({ onComplete }: IntroSequenceProps) {
         </div>
       </div>
 
-      {/* White washout overlay & Logo */}
-      <div ref={whiteOverlayRef} className="absolute inset-0 bg-[#04011A] opacity-0 z-20 flex items-center justify-center pointer-events-none">
-        <div 
+      {/* Sky gradient overlay & Logo */}
+      <div ref={whiteOverlayRef} className="absolute inset-0 opacity-0 z-20 flex items-center justify-center pointer-events-none" style={{ background: 'linear-gradient(to bottom, #0EA5E9 0%, #38BDF8 25%, #7DD3FC 55%, #E0F2FE 80%, #ffffff 100%)' }}>
+        <div
           ref={burstRef}
-          className="absolute w-[300px] h-[300px] rounded-full bg-[radial-gradient(circle,cyan,blue)] blur-[40px] opacity-0 scale-50"
+          className="absolute w-[500px] h-[500px] rounded-full blur-[80px] opacity-0 scale-50"
+          style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.9), rgba(186,230,253,0.4))' }}
         />
-        <img 
+        <img
           ref={logoRef}
-          src={logoUrl} 
+          src={logoUrl}
           alt="Neural Wings"
-          className="relative w-[200px] h-auto object-contain scale-0 opacity-0 drop-shadow-2xl z-30"
+          className="relative w-[320px] md:w-[420px] h-auto object-contain scale-0 opacity-0 drop-shadow-2xl z-30"
         />
       </div>
     </div>
