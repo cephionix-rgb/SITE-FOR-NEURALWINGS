@@ -92,7 +92,7 @@ function FloatingAbstractions() {
 
 export function Hero() {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-28 pb-20 overflow-hidden bg-transparent">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-24 pb-16 md:pt-28 md:pb-20 overflow-hidden bg-transparent">
       {/* Background Effects */}
       <ParticleField />
       <div className="absolute inset-0 hud-grid-light z-0 opacity-[0.5]" />
@@ -127,7 +127,7 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-          className="font-heading font-extrabold text-[52px] md:text-[80px] lg:text-[96px] leading-[1.05] tracking-tight text-zinc-900 mb-6"
+          className="font-heading font-extrabold text-[36px] sm:text-[52px] md:text-[80px] lg:text-[96px] leading-[1.05] tracking-tight text-zinc-900 mb-6"
         >
           <span className="block drop-shadow-sm">The Future of</span>
           <span className="block text-gradient bg-[length:200%_auto] animate-[gradient_4s_ease-in-out_infinite] py-2">Indian Aviation</span>
@@ -139,7 +139,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="font-sans font-normal text-[18px] md:text-[22px] text-zinc-700 font-medium max-w-2xl mx-auto leading-relaxed mb-12 drop-shadow-sm"
+          className="font-sans font-normal text-[15px] md:text-[18px] lg:text-[22px] text-zinc-700 font-medium max-w-2xl mx-auto leading-relaxed mb-10 md:mb-12 drop-shadow-sm px-2 md:px-0"
         >
           Neural Wings is the first complete AI-powered Aviation Management System built for DGCA-approved FTOs. 19 integrated modules. One platform. Zero paper.
         </motion.p>
@@ -149,15 +149,15 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row items-center gap-4 mb-20 relative pointer-events-auto z-50"
+          className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-16 md:mb-20 relative pointer-events-auto z-50 w-full sm:w-auto px-4 sm:px-0"
         >
           <Link to="/book-demo" className="relative group cursor-pointer inline-block">
             <div className="absolute -inset-1 bg-gradient-to-r from-[#3B82F6] to-[#38BDF8] rounded-xl blur opacity-30 group-hover:opacity-60 transition duration-1000 group-hover:duration-200"></div>
-            <button className="relative h-14 px-10 rounded-xl bg-gradient-to-r from-[#3B82F6] to-[#38BDF8] text-white font-sans font-semibold text-[16px] shadow-lg transition-transform hover:scale-105 active:scale-95 flex items-center gap-2">
+            <button className="relative h-14 px-8 md:px-10 rounded-xl bg-gradient-to-r from-[#3B82F6] to-[#38BDF8] text-white font-sans font-semibold text-[15px] md:text-[16px] shadow-lg transition-transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 w-full sm:w-auto">
               Book a Live Demo
             </button>
           </Link>
-          <a href="#demo" className="h-14 px-10 rounded-xl bg-white border border-zinc-200 text-zinc-700 font-sans font-semibold text-[16px] shadow-sm hover:border-sky-300 hover:text-sky-600 hover:bg-sky-50 transition-all flex items-center gap-2">
+          <a href="#demo" className="h-14 px-8 md:px-10 rounded-xl bg-white border border-zinc-200 text-zinc-700 font-sans font-semibold text-[15px] md:text-[16px] shadow-sm hover:border-sky-300 hover:text-sky-600 hover:bg-sky-50 transition-all flex items-center justify-center gap-2 w-full sm:w-auto">
             Explore the System <span className="text-xl leading-none">→</span>
           </a>
         </motion.div>

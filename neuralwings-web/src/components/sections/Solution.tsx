@@ -42,7 +42,7 @@ const solutions = [
 
 export function Solution() {
   return (
-    <section id="features" className="relative py-[120px] overflow-hidden bg-[#F8FBFF]">
+    <section id="features" className="relative py-16 md:py-[120px] overflow-hidden bg-[#F8FBFF]">
       {/* Decorative orbs */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[140px] translate-x-1/4 -translate-y-1/4 pointer-events-none z-0" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-sky-100/30 rounded-full blur-[120px] -translate-x-1/4 translate-y-1/4 pointer-events-none z-0" />
@@ -64,7 +64,7 @@ export function Solution() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-heading font-bold text-[36px] md:text-[56px] text-zinc-900 leading-tight"
+            className="font-heading font-bold text-[28px] md:text-[56px] text-zinc-900 leading-tight"
           >
             19 Modules.{' '}
             <span className="text-gradient">One Platform.</span>{' '}

@@ -34,7 +34,7 @@ function Counter({ from, to, duration = 2 }: { from: number, to: number, duratio
 
 export function RevenueSection() {
   return (
-    <section className="relative py-[120px] bg-white overflow-hidden">
+    <section className="relative py-16 md:py-[120px] bg-white overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-blue-50/80 rounded-full blur-[140px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
       <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-blue-200/60 to-transparent" />
@@ -55,7 +55,7 @@ export function RevenueSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-heading font-extrabold text-[36px] md:text-[52px] text-zinc-900 leading-tight max-w-4xl"
+            className="font-heading font-extrabold text-[28px] md:text-[52px] text-zinc-900 leading-tight max-w-4xl"
           >
             Unlock the True Value of Your Fleet.
           </motion.h2>

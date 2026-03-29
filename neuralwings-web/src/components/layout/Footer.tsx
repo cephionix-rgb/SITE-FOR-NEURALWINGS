@@ -17,7 +17,7 @@ export function Footer() {
   const navigate = useNavigate();
 
   return (
-    <footer className="relative bg-[#050810] overflow-hidden">
+    <footer className="relative bg-[#050810] overflow-hidden" id="contact">
 
       {/* Subtle grid */}
       <div
@@ -38,8 +38,8 @@ export function Footer() {
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
 
       {/* ── Main grid ── */}
-      <div className="relative z-10 max-w-[1280px] mx-auto px-6 pt-20 pb-0">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12">
+      <div className="relative z-10 max-w-[1280px] mx-auto px-4 md:px-6 pt-14 md:pt-20 pb-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 md:gap-12">
 
           {/* ── Brand col ── */}
           <div className="lg:col-span-4 flex flex-col gap-6">
@@ -187,18 +187,18 @@ export function Footer() {
       </div>
 
       {/* ── Bottom bar ── */}
-      <div className="relative z-10 max-w-[1280px] mx-auto px-6 mt-16 pt-6 pb-10">
+      <div className="relative z-10 max-w-[1280px] mx-auto px-4 md:px-6 mt-12 md:mt-16 pt-6 pb-10">
         <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent mb-6" />
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <span className="text-zinc-500 text-sm font-medium">© 2026 Cephionix. All rights reserved.</span>
           <span className="text-zinc-400 text-sm font-semibold italic">"Built by Pilots. Built for Pilots."</span>
-          <div className="flex items-center gap-2.5">
+          <div className="flex flex-wrap items-center justify-center md:justify-end gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
-            <span className="text-zinc-400 text-sm font-medium">Built in India</span>
+            <span className="text-zinc-400 text-xs md:text-sm font-medium">Built in India</span>
             <span className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
-            <span className="text-zinc-400 text-sm font-medium">DGCA Compliant</span>
+            <span className="text-zinc-400 text-xs md:text-sm font-medium">DGCA Compliant</span>
             <span className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
-            <span className="text-zinc-400 text-sm font-medium">AI-Powered</span>
+            <span className="text-zinc-400 text-xs md:text-sm font-medium">AI-Powered</span>
           </div>
         </div>
       </div>

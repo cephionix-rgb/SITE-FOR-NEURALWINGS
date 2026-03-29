@@ -12,7 +12,7 @@ export function CTA() {
   const navigate = useNavigate();
 
   return (
-    <section className="relative py-[140px] overflow-hidden bg-[#050810]">
+    <section className="relative py-20 md:py-[140px] overflow-hidden bg-[#050810]">
 
       {/* Grid overlay */}
       <div
@@ -55,7 +55,7 @@ export function CTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.08 }}
-          className="font-heading font-extrabold text-[52px] md:text-[72px] leading-[1.05] text-white mb-6"
+          className="font-heading font-extrabold text-[36px] md:text-[72px] leading-[1.05] text-white mb-6"
         >
           Ready to Upgrade{' '}
           <span className="relative">

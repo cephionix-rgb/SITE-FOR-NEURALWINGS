@@ -38,7 +38,7 @@ const problems = [
 
 export function Problem() {
   return (
-    <section className="relative py-[120px] overflow-hidden bg-gradient-to-b from-[#F0F7FF] to-white">
+    <section className="relative py-16 md:py-[120px] overflow-hidden bg-gradient-to-b from-[#F0F7FF] to-white">
       {/* Soft blue aurora blobs */}
       <div className="absolute top-0 left-1/4 w-[700px] h-[400px] bg-blue-200/25 rounded-full blur-[100px] pointer-events-none z-0" />
       <div className="absolute bottom-0 right-0 w-[500px] h-[400px] bg-sky-200/20 rounded-full blur-[100px] pointer-events-none z-0" />
@@ -60,7 +60,7 @@ export function Problem() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-heading font-bold text-[36px] md:text-[48px] text-zinc-900 leading-tight mb-6"
+            className="font-heading font-bold text-[28px] md:text-[48px] text-zinc-900 leading-tight mb-6"
           >
             Indian FTOs Are Still Flying on{' '}
             <span className="text-gradient">Paperwork</span>

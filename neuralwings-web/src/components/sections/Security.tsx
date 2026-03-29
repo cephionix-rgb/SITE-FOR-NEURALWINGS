@@ -3,7 +3,7 @@ import { Lock, Server, FileCheck2 } from 'lucide-react';
 
 export function Security() {
   return (
-    <section className="relative py-[140px] overflow-hidden bg-gradient-to-b from-white to-[#F0F7FF]">
+    <section className="relative py-16 md:py-[140px] overflow-hidden bg-gradient-to-b from-white to-[#F0F7FF]">
       {/* Soft blue aurora */}
       <div className="absolute top-0 left-1/2 w-[900px] h-[400px] bg-blue-100/50 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/4 pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[300px] bg-sky-100/40 rounded-full blur-[100px] pointer-events-none" />
@@ -25,7 +25,7 @@ export function Security() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-heading font-extrabold text-[36px] md:text-[52px] text-zinc-900 leading-tight max-w-3xl mb-6"
+            className="font-heading font-extrabold text-[28px] md:text-[52px] text-zinc-900 leading-tight max-w-3xl mb-6"
           >
             Bank-grade Security.{' '}
             <br className="hidden md:block" />

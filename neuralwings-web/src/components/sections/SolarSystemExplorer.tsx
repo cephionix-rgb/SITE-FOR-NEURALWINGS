@@ -118,15 +118,24 @@ const rings = [
   }
 ];
 
+// Flat list of all modules for the mobile grid
+const allModules = rings.flatMap(r => r.items);
+
+const allModules = rings.flatMap(r => r.items);
+
 export function SolarSystemExplorer() {
   const [hoveredModule, setHoveredModule] = useState<string | null>(null);
+  const [selectedModule, setSelectedModule] = useState<string | null>(null);
+  const [selectedModule, setSelectedModule] = useState<string | null>(null);
+
+  const activeModule = hoveredModule ?? selectedModule;
 
   return (
-    <section id="modules" className="relative py-[80px] md:py-[120px] bg-gradient-to-br from-[#fcf8e3] via-[#f0f5ff] to-[#EBF4FF] overflow-hidden border-y border-blue-200/60">
-      {/* Immersive Depth Orbs */}
-      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(202,138,4,0.05)_0%,rgba(59,130,246,0.05)_60%,transparent_100%)] pointer-events-none z-0" />
-      <div className="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-yellow-200/40 rounded-full blur-[140px] pointer-events-none z-0" />
-      <div className="absolute bottom-1/4 -right-20 w-[800px] h-[800px] bg-blue-200/30 rounded-full blur-[160px] pointer-events-none z-0" />
+    <section id="modules" className="relative py-[80px] md:py-[120px] bg-gradient-to-b from-[#F0F7FF] to-white overflow-hidden border-y border-blue-100">
+      {/* Depth Orbs */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.04)_0%,transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[140px] pointer-events-none z-0" />
+      <div className="absolute bottom-1/4 -right-20 w-[800px] h-[800px] bg-sky-100/30 rounded-full blur-[160px] pointer-events-none z-0" />
 
       <div className="relative z-10 max-w-[1280px] mx-auto px-6 mb-16">
         <div className="text-center">
@@ -147,13 +156,63 @@ export function SolarSystemExplorer() {
           >
             19 Modules. One Core.
           </motion.h2>
-          <p className="font-sans text-[16px] text-zinc-600 max-w-2xl mx-auto font-medium">
-            Everything your FTO needs, operating in perfect synchrony directly connected by the central autonomous intelligence engine. Hover over any module to explore its capabilities.
+          <p className="font-sans text-[15px] md:text-[16px] text-zinc-600 max-w-2xl mx-auto font-medium px-4 md:px-0">
+            Everything your FTO needs, operating in perfect synchrony connected by the central autonomous intelligence engine.{' '}
+            <span className="hidden md:inline">Hover over any module to explore its capabilities.</span>
+            <span className="md:hidden">Tap any module to explore its capabilities.</span>
           </p>
         </div>
       </div>
 
-      <div className="relative max-w-[1280px] mx-auto w-full h-[760px] flex items-center justify-between">
+      {/* ── Mobile grid (visible below md) ── */}
+      <div className="md:hidden relative z-10 max-w-[1280px] mx-auto px-4 pb-4">
+        <div className="flex justify-center mb-6">
+          <div className="flex items-center gap-3 px-5 py-3 rounded-2xl border-2 border-blue-300 bg-white shadow-[0_0_30px_rgba(59,130,246,0.15)]">
+            <Brain className="w-6 h-6 text-blue-500" />
+            <div>
+              <p className="font-heading font-extrabold text-sm text-zinc-900 tracking-widest">AIRE</p>
+              <p className="text-[10px] text-zinc-500 font-medium">Central AI Engine</p>
+            </div>
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-2 mb-6">
+          {allModules.map((mod) => {
+            const isActive = selectedModule === mod.name;
+            return (
+              <button
+                key={mod.name}
+                onClick={() => setSelectedModule(prev => prev === mod.name ? null : mod.name)}
+                className={`flex flex-col items-center gap-1.5 p-3 rounded-xl border text-center transition-all duration-200 ${isActive ? 'border-blue-400 bg-blue-50 shadow-sm' : 'border-zinc-200 bg-white'}`}
+              >
+                <div className={`w-9 h-9 rounded-full flex items-center justify-center border ${isActive ? 'border-blue-300 bg-blue-100' : 'border-zinc-200 bg-zinc-50'}`}>
+                  <mod.icon className={`w-4 h-4 ${mod.color}`} />
+                </div>
+                <span className={`text-[10px] font-semibold leading-tight ${isActive ? 'text-blue-700' : 'text-zinc-600'}`}>{mod.name}</span>
+              </button>
+            );
+          })}
+        </div>
+        <AnimatePresence mode="wait">
+          {selectedModule && MODULE_INFO[selectedModule] && (
+            <motion.div
+              key={selectedModule}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 8 }}
+              transition={{ duration: 0.2 }}
+              className="bg-white border border-blue-200 rounded-2xl p-5 shadow-md"
+            >
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent-gold mb-1">{MODULE_INFO[selectedModule].subtitle}</p>
+              <h3 className="font-heading font-bold text-lg text-zinc-900 mb-3">{selectedModule}</h3>
+              <div className="h-px w-full bg-gradient-to-r from-blue-300 to-transparent mb-3" />
+              <p className="text-zinc-600 text-sm leading-relaxed font-medium">{MODULE_INFO[selectedModule].description}</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* ── Desktop solar system (hidden below md) ── */}
+      <div className="hidden md:flex relative max-w-[1280px] mx-auto w-full h-[760px] items-center justify-between">
         <div className="relative flex-1 h-full flex items-center justify-center">
           {/* Background glow */}
           <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-yellow-300/25 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
@@ -225,6 +284,7 @@ export function SolarSystemExplorer() {
             {hoveredModule ? (
               <motion.div
                 key={hoveredModule}
+
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 10 }}
@@ -262,7 +322,7 @@ export function SolarSystemExplorer() {
             )}
           </AnimatePresence>
         </div>
-      </div>
+      </div>{/* end desktop solar system */}
 
       <style>{`
         @keyframes spin {
