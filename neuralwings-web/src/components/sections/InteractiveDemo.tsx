@@ -120,7 +120,7 @@ export function InteractiveDemo() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="w-full bg-white/80 backdrop-blur-3xl border-[3px] border-zinc-200 shadow-sm rounded-2xl overflow-hidden min-h-[800px] flex flex-col relative z-20"
+          className="w-full bg-white/80 backdrop-blur-3xl border-[3px] border-zinc-200 shadow-sm rounded-2xl overflow-hidden min-h-[600px] md:min-h-[800px] flex flex-col relative z-20"
         >
           {/* Mac-like Window Header */}
           <div className="h-12 bg-white/50 border-b border-zinc-100 flex items-center px-4 gap-2 shrink-0">
@@ -136,11 +136,12 @@ export function InteractiveDemo() {
           </div>
 
           {/* ── Mobile tab bar (visible below lg) ── */}
-          <div className="lg:hidden flex overflow-x-auto hide-scrollbar border-b border-zinc-100 bg-white/60 gap-1 p-2 shrink-0">
+          <div className="lg:hidden flex overflow-x-auto hide-scrollbar border-b border-zinc-100 bg-white/60 gap-1 p-2 shrink-0" style={{ scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch' }}>
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
+                style={{ scrollSnapAlign: 'start' }}
                 className={cn(
                   'flex items-center gap-1.5 px-3 py-2 rounded-lg font-sans text-xs font-medium whitespace-nowrap transition-all duration-200 shrink-0',
                   activeTab === tab.id

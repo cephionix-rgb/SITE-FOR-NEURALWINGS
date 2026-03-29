@@ -159,9 +159,10 @@ export function SolarSystemExplorer() {
         </div>
       </div>
 
-      {/* ── Mobile grid (visible below md) ── */}
-      <div className="md:hidden relative z-10 max-w-[1280px] mx-auto px-4 pb-4">
-        <div className="flex justify-center mb-6">
+      {/* ── Mobile: horizontal slider (visible below md) ── */}
+      <div className="md:hidden relative z-10 max-w-[1280px] mx-auto pb-6">
+        {/* AIRE core chip */}
+        <div className="flex justify-center mb-5 px-4">
           <div className="flex items-center gap-3 px-5 py-3 rounded-2xl border-2 border-blue-300 bg-white shadow-[0_0_30px_rgba(59,130,246,0.15)]">
             <Brain className="w-6 h-6 text-blue-500" />
             <div>
@@ -170,40 +171,70 @@ export function SolarSystemExplorer() {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-2 mb-6">
+
+        {/* Horizontal module slider */}
+        <div
+          className="flex gap-3 overflow-x-auto hide-scrollbar pb-3 pl-4 pr-8"
+          style={{ scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch' }}
+        >
           {allModules.map((mod) => {
             const isActive = selectedModule === mod.name;
             return (
               <button
                 key={mod.name}
                 onClick={() => setSelectedModule(prev => prev === mod.name ? null : mod.name)}
-                className={`flex flex-col items-center gap-1.5 p-3 rounded-xl border text-center transition-all duration-200 ${isActive ? 'border-blue-400 bg-blue-50 shadow-sm' : 'border-zinc-200 bg-white'}`}
+                className={`flex-shrink-0 flex flex-col items-center gap-2 p-4 rounded-2xl border text-center transition-all duration-200 w-[88px] ${
+                  isActive ? 'border-blue-400 bg-blue-50 shadow-md scale-[1.04]' : 'border-zinc-200 bg-white'
+                }`}
+                style={{ scrollSnapAlign: 'start' }}
               >
-                <div className={`w-9 h-9 rounded-full flex items-center justify-center border ${isActive ? 'border-blue-300 bg-blue-100' : 'border-zinc-200 bg-zinc-50'}`}>
-                  <mod.icon className={`w-4 h-4 ${mod.color}`} />
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center border ${
+                  isActive ? 'border-blue-300 bg-blue-100' : 'border-zinc-200 bg-zinc-50'
+                }`}>
+                  <mod.icon className={`w-5 h-5 ${mod.color}`} />
                 </div>
-                <span className={`text-[10px] font-semibold leading-tight ${isActive ? 'text-blue-700' : 'text-zinc-600'}`}>{mod.name}</span>
+                <span className={`text-[10px] font-semibold leading-tight ${isActive ? 'text-blue-700' : 'text-zinc-600'}`}>
+                  {mod.name}
+                </span>
               </button>
             );
           })}
         </div>
-        <AnimatePresence mode="wait">
-          {selectedModule && MODULE_INFO[selectedModule] && (
-            <motion.div
-              key={selectedModule}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 8 }}
-              transition={{ duration: 0.2 }}
-              className="bg-white border border-blue-200 rounded-2xl p-5 shadow-md"
-            >
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent-gold mb-1">{MODULE_INFO[selectedModule].subtitle}</p>
-              <h3 className="font-heading font-bold text-lg text-zinc-900 mb-3">{selectedModule}</h3>
-              <div className="h-px w-full bg-gradient-to-r from-blue-300 to-transparent mb-3" />
-              <p className="text-zinc-600 text-sm leading-relaxed font-medium">{MODULE_INFO[selectedModule].description}</p>
-            </motion.div>
-          )}
-        </AnimatePresence>
+
+        {/* Description box */}
+        <div className="px-4 mt-4">
+          <AnimatePresence mode="wait">
+            {selectedModule && MODULE_INFO[selectedModule] ? (
+              <motion.div
+                key={selectedModule}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 8 }}
+                transition={{ duration: 0.2 }}
+                className="bg-white border border-blue-200 rounded-2xl p-5 shadow-md"
+              >
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent-gold mb-1">
+                  {MODULE_INFO[selectedModule].subtitle}
+                </p>
+                <h3 className="font-heading font-bold text-lg text-zinc-900 mb-3">{selectedModule}</h3>
+                <div className="h-px w-full bg-gradient-to-r from-blue-300 to-transparent mb-3" />
+                <p className="text-zinc-600 text-sm leading-relaxed font-medium">
+                  {MODULE_INFO[selectedModule].description}
+                </p>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="empty-hint"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="bg-blue-50/50 border border-blue-100 border-dashed rounded-2xl p-5 text-center"
+              >
+                <p className="text-zinc-500 text-sm font-medium">← Slide and tap any module to explore its capabilities.</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
 
       {/* ── Desktop solar system (hidden below md) ── */}

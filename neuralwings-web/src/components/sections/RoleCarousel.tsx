@@ -136,8 +136,11 @@ export function RoleCarousel() {
       </div>
 
       {/* Carousel Container */}
-      <div className="relative z-10 w-full overflow-x-auto hide-scrollbar pb-12 cursor-grab active:cursor-grabbing px-6 md:px-12">
-        <div className="flex gap-6 w-max mx-auto md:mx-0 min-w-full">
+      <div
+        className="relative z-10 w-full overflow-x-auto hide-scrollbar pb-12 cursor-grab active:cursor-grabbing px-4 md:px-12"
+        style={{ scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch' }}
+      >
+        <div className="flex gap-4 md:gap-6 w-max mx-auto md:mx-0 min-w-full">
           {roles.map((role, i) => (
             <motion.div
               key={role.title}
@@ -145,25 +148,26 @@ export function RoleCarousel() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: i * 0.05, duration: 0.4 }}
-              className="w-[260px] glass-card-light bg-white/80 backdrop-blur-md border border-white/50 shadow-sm flex-shrink-0 relative overflow-hidden group hover:-translate-y-2 transition-all duration-300 border-t-0 hover:shadow-[0_0_40px_rgba(14,165,233,0.2)]"
+              className="w-[78vw] max-w-[260px] md:w-[260px] glass-card-light bg-white/80 backdrop-blur-md border border-white/50 shadow-sm flex-shrink-0 relative overflow-hidden group hover:-translate-y-2 transition-all duration-300 border-t-0 hover:shadow-[0_0_40px_rgba(14,165,233,0.2)]"
+              style={{ scrollSnapAlign: 'start' }}
             >
               {/* Top Gradient Border */}
               <div className={`absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r ${role.border} opacity-80`} />
-              
-              <div className="p-6 flex flex-col h-full">
-                <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-5 ${role.glow} border border-white/50 shadow-inner`}>
-                  <role.icon className="w-6 h-6 z-10" />
+
+              <div className="p-5 md:p-6 flex flex-col h-full">
+                <div className={`w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center mb-4 md:mb-5 ${role.glow} border border-white/50 shadow-inner`}>
+                  <role.icon className="w-5 h-5 md:w-6 md:h-6 z-10" />
                 </div>
-                
-                <h3 className="font-heading font-bold text-[18px] text-zinc-900 mb-2 leading-tight">
+
+                <h3 className="font-heading font-bold text-[16px] md:text-[18px] text-zinc-900 mb-2 leading-tight">
                   {role.title}
                 </h3>
-                
-                <p className="font-sans font-normal text-[14px] text-font-secondary leading-relaxed mb-6 flex-1">
+
+                <p className="font-sans font-normal text-[13px] md:text-[14px] text-font-secondary leading-relaxed mb-5 flex-1">
                   {role.desc}
                 </p>
-                
-                <a 
+
+                <a
                   href="#demo"
                   className="flex items-center gap-2 mt-auto text-[13px] font-sans font-medium text-sky-500 hover:text-sky-400 transition-colors group/link w-max"
                   onClick={() => {
@@ -178,6 +182,11 @@ export function RoleCarousel() {
             </motion.div>
           ))}
         </div>
+      </div>
+
+      {/* Mobile swipe hint */}
+      <div className="md:hidden relative z-10 text-center mt-2 pb-2">
+        <p className="text-zinc-400 text-[11px] font-medium tracking-wide">← Swipe to explore all roles →</p>
       </div>
     </section>
   );

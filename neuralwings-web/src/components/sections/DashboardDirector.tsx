@@ -88,6 +88,7 @@ export function DashboardDirector() {
              </span>
           </div>
 
+          <div className="overflow-x-auto">
           <table className="w-full text-xs text-left text-zinc-600">
              <thead>
                 <tr className="border-b border-zinc-100 bg-zinc-50 uppercase tracking-wider text-[10px] font-bold text-zinc-500">
@@ -119,6 +120,7 @@ export function DashboardDirector() {
                 ))}
              </tbody>
           </table>
+          </div>
         </div>
 
         {/* Live Alerts Panel */}

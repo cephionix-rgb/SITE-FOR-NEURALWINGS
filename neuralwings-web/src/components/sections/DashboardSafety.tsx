@@ -72,6 +72,7 @@ export function DashboardSafety() {
                </button>
             </div>
             
+            <div className="overflow-x-auto">
             <table className="w-full text-xs text-left text-zinc-600">
                <thead>
                   <tr className="bg-zinc-50 border-b border-zinc-100 uppercase tracking-wider text-[10px] font-bold text-zinc-400">
@@ -100,6 +101,7 @@ export function DashboardSafety() {
                   ))}
                </tbody>
             </table>
+            </div>
          </div>
 
          {/* Risk Matrix Visualization */}

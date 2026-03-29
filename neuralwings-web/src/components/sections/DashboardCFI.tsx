@@ -61,6 +61,7 @@ export function DashboardCFI() {
                </div>
             </div>
 
+            <div className="overflow-x-auto">
             <table className="w-full text-xs text-left text-zinc-600">
                <thead>
                   <tr className="bg-zinc-50 border-b border-zinc-100 uppercase tracking-wider text-[10px] font-bold text-zinc-400">
@@ -95,6 +96,7 @@ export function DashboardCFI() {
                   ))}
                </tbody>
             </table>
+            </div>
          </div>
 
          {/* Go/No-Go Status Panel */}

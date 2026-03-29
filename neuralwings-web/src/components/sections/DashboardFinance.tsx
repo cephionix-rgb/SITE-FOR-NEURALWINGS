@@ -90,7 +90,8 @@ export function DashboardFinance() {
                </button>
             </div>
             
-            <table className="w-full text-xs text-left text-zinc-600 flex-1">
+            <div className="overflow-x-auto flex-1">
+            <table className="w-full text-xs text-left text-zinc-600">
                <thead>
                   <tr className="bg-zinc-50 border-b border-zinc-100 uppercase tracking-wider text-[10px] font-bold text-zinc-400">
                      <th className="py-3 px-4">Student</th>
@@ -120,6 +121,7 @@ export function DashboardFinance() {
                   ))}
                </tbody>
             </table>
+            </div>
          </div>
 
       </div>
