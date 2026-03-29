@@ -28,10 +28,11 @@ export function IntroSequence({ onComplete }: IntroSequenceProps) {
 
     const video = videoRef.current;
 
-    // Text animations — run during the video
+    // Text animations — appear early, gone before logo emerges from clouds (~5s)
     const textTl = gsap.timeline();
-    textTl.to(text1Ref.current, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 1.5);
-    textTl.to(text2Ref.current, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 2.8);
+    textTl.to(text1Ref.current, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 0.4);
+    textTl.to(text2Ref.current, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 1.2);
+    textTl.to([text1Ref.current, text2Ref.current], { opacity: 0, y: -20, duration: 0.5, ease: 'power2.in' }, 3.2);
 
     // Logo reveal — triggered only when video actually ends
     const showLogo = () => {
