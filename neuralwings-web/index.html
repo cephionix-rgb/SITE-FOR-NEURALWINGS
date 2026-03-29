@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neural Wings | Aviation Management Platform by Cephionix</title>
+    <meta name="description" content="Neural Wings is an AI-powered aviation management platform built for flight academies — streamlining operations, training, and safety." />
+
+    <!-- Security Meta Tags -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()" />
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' https://www.googletagmanager.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data: blob: https://www.google-analytics.com https://*.tile.openstreetmap.org;
+      media-src 'self' blob:;
+      connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://region1.analytics.google.com https://api.open-meteo.com;
+      frame-src https://www.openstreetmap.org;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+    " />
+
+    <!-- Google Analytics 4 -->
+    <!-- IMPORTANT: Replace G-KQYZYE96XT with your actual GA4 Measurement ID -->
+    <!-- Get it at: https://analytics.google.com → Admin → Data Streams → your stream -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KQYZYE96XT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KQYZYE96XT', {
+        anonymize_ip: true,
+        cookie_flags: 'SameSite=Strict;Secure'
+      });
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
