@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { CloudLightning, Wind, MapPin, Thermometer, CloudRain, Sun, Zap, Cloud, RefreshCw } from 'lucide-react';
+import { CloudLightning, Wind, MapPin, CloudRain, Sun, Zap, Cloud, RefreshCw } from 'lucide-react';
 
 const STATION_DEFS = [
   { id: 'VIDP', name: 'Delhi',          lat: 28.6562, lon: 77.1000 },
@@ -48,7 +48,7 @@ function conditionIcon(c: string) {
   return <Cloud className="w-5 h-5 text-yellow-500" />;
 }
 
-function CityWeatherMap({ stations, fetching }: { stations: LiveStation[]; fetching: boolean }) {
+function CityWeatherMap({ stations }: { stations: LiveStation[]; fetching: boolean }) {
   const [selectedId, setSelectedId] = useState('VIDP');
   const station = stations.find(s => s.id === selectedId) ?? stations[0];
   const c = conditionColors(station.condition);

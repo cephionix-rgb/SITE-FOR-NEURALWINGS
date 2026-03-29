@@ -121,14 +121,9 @@ const rings = [
 // Flat list of all modules for the mobile grid
 const allModules = rings.flatMap(r => r.items);
 
-const allModules = rings.flatMap(r => r.items);
-
 export function SolarSystemExplorer() {
   const [hoveredModule, setHoveredModule] = useState<string | null>(null);
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
-  const [selectedModule, setSelectedModule] = useState<string | null>(null);
-
-  const activeModule = hoveredModule ?? selectedModule;
 
   return (
     <section id="modules" className="relative py-[80px] md:py-[120px] bg-gradient-to-b from-[#F0F7FF] to-white overflow-hidden border-y border-blue-100">
