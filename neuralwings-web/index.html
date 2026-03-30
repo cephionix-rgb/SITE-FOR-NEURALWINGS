@@ -21,10 +21,10 @@
       img-src 'self' data: blob: https://www.google-analytics.com https://*.tile.openstreetmap.org;
       media-src 'self' blob:;
       connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://region1.analytics.google.com https://api.open-meteo.com;
-      frame-src https://www.openstreetmap.org;
+      frame-src https://www.openstreetmap.org https://script.google.com;
       object-src 'none';
       base-uri 'self';
-      form-action 'self';
+      form-action 'self' https://script.google.com;
     " />
 
     <!-- Google Analytics 4 -->
