@@ -1,5 +1,11 @@
-import { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
 import { Layout } from './components/layout/Layout';
 import { IntroSequence } from './components/sections/IntroSequence';
 import { Hero } from './components/sections/Hero';
@@ -50,6 +56,7 @@ function LandingPage() {
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/book-demo" element={<BookDemo />} />

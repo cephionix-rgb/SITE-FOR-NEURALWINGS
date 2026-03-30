@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, CalendarCheck } from 'lucide-react';
 import { cn } from '../../lib/utils';
@@ -17,6 +17,7 @@ const navLinks = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
@@ -51,7 +52,7 @@ export function Navbar() {
 
           {/* Logo */}
           <button
-            onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setMenuOpen(false); }}
+            onClick={() => { navigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); setMenuOpen(false); }}
             className="flex items-center gap-3 cursor-pointer shrink-0"
           >
             <img src={logoUrl} alt="Neural Wings" className="h-[36px] md:h-[40px] w-auto" />
