@@ -19,15 +19,11 @@ export function BookDemo() {
       branches: (form.elements.namedItem('branches') as HTMLSelectElement).value,
     };
 
-    try {
-      const url = new URL(APPS_SCRIPT_URL);
-      Object.entries(payload).forEach(([k, v]) => url.searchParams.append(k, String(v)));
-      await fetch(url.toString(), { method: "GET", mode: "no-cors" });
-      setSubmitted(true);
-    } catch (error) {
-      console.error(error);
-      alert("Submission failed. Please email us directly at cephionix@gmail.com");
-    }
+    const url = new URL(APPS_SCRIPT_URL);
+    Object.entries(payload).forEach(([k, v]) => url.searchParams.append(k, String(v)));
+    const img = new Image();
+    img.src = url.toString();
+    setSubmitted(true);
   };
 
   return (
