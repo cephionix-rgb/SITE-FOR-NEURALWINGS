@@ -20,16 +20,12 @@ export function BookDemo() {
     };
 
     try {
-      const res = await fetch(APPS_SCRIPT_URL, {
+      await fetch(APPS_SCRIPT_URL, {
         method: "POST",
+        mode: "no-cors",
         body: JSON.stringify(payload),
       });
-      const data = await res.json();
-      if (data.success) {
-        setSubmitted(true);
-      } else {
-        alert("Submission failed. Please email us directly at cephionix@gmail.com");
-      }
+      setSubmitted(true);
     } catch (error) {
       console.error(error);
       alert("Submission failed. Please email us directly at cephionix@gmail.com");
