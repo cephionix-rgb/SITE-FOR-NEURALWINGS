@@ -209,10 +209,10 @@ export function DashboardMet() {
   const viklWindNum = vikl?.wind !== '--' && vikl?.wind !== 'N/A' ? vikl?.wind : '10KT';
 
   return (
-    <div className="w-full h-full text-zinc-900 p-6 overflow-y-auto hide-scrollbar flex flex-col gap-6 bg-white border-2 border-zinc-200 shadow-md rounded-2xl">
-      <div className="flex items-center justify-between">
+    <div className="w-full h-full text-zinc-900 p-3 sm:p-6 overflow-y-auto hide-scrollbar flex flex-col gap-4 sm:gap-6 bg-white border-2 border-zinc-200 shadow-md rounded-2xl">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h3 className="font-heading font-bold text-2xl flex items-center gap-2">
+          <h3 className="font-heading font-bold text-xl sm:text-2xl flex items-center gap-2">
             <CloudLightning className="w-6 h-6 text-indigo-500" />
             Aviation Meteorology
           </h3>

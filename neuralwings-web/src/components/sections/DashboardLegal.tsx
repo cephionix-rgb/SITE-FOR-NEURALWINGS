@@ -3,10 +3,10 @@ import { FileSignature, ShieldAlert, CheckCircle } from 'lucide-react';
 
 export function DashboardLegal() {
   return (
-    <div className="w-full h-full text-zinc-900 p-6 overflow-y-auto hide-scrollbar flex flex-col gap-6 bg-white border-2 border-zinc-200 shadow-sm rounded-2xl">
+    <div className="w-full h-full text-zinc-900 p-3 sm:p-6 overflow-y-auto hide-scrollbar flex flex-col gap-4 sm:gap-6 bg-white border-2 border-zinc-200 shadow-sm rounded-2xl">
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="font-heading font-bold text-2xl flex items-center gap-2">
+          <h3 className="font-heading font-bold text-xl sm:text-2xl flex items-center gap-2">
             <FileSignature className="w-6 h-6 text-stone-600" />
             Legal & Compliance
           </h3>

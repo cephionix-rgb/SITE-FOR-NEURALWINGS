@@ -2,7 +2,7 @@ import { Users, UserCheck, Clock, UserPlus, Search } from "lucide-react"
 
 export function DashboardHR() {
   return (
-    <div className="w-full h-full p-6 overflow-y-auto hide-scrollbar flex flex-col gap-6 bg-white border-2 border-zinc-200 shadow-sm rounded-2xl">
+    <div className="w-full h-full p-3 sm:p-6 overflow-y-auto hide-scrollbar flex flex-col gap-4 sm:gap-6 bg-white border-2 border-zinc-200 shadow-sm rounded-2xl">
       
       <div className="flex items-center justify-between">
          <div>
@@ -39,10 +39,10 @@ export function DashboardHR() {
                <Users className="w-5 h-5 text-blue-500" />
                <h3 className="font-semibold text-zinc-900">Employee Register</h3>
             </div>
-            <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row gap-2">
                <div className="relative">
                   <Search className="w-4 h-4 text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2" />
-                  <input type="text" placeholder="Search employees..." className="pl-9 pr-4 py-1.5 text-sm border border-zinc-200 rounded-lg bg-white/50 text-zinc-900 focus:outline-none" />
+                  <input type="text" placeholder="Search employees..." className="pl-9 pr-4 py-1.5 text-sm border border-zinc-200 rounded-lg bg-white/50 text-zinc-900 focus:outline-none w-full sm:w-auto" />
                </div>
                <select className="px-3 py-1.5 text-sm border border-zinc-200 rounded-lg bg-white/50 text-zinc-600 outline-none">
                   <option>All Departments</option>

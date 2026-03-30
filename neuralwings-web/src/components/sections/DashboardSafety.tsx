@@ -2,10 +2,10 @@ import { ShieldAlert, AlertTriangle, CheckCircle, Clock } from "lucide-react"
 
 export function DashboardSafety() {
   return (
-    <div className="w-full h-full text-zinc-900 p-6 overflow-y-auto hide-scrollbar flex flex-col gap-6 bg-slate-50/50">
+    <div className="w-full h-full text-zinc-900 p-3 sm:p-6 overflow-y-auto hide-scrollbar flex flex-col gap-4 sm:gap-6 bg-slate-50/50">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
          <div>
-            <h2 className="text-2xl font-extrabold font-heading text-zinc-900 tracking-tight">Safety Officer (SMS)</h2>
+            <h2 className="text-xl sm:text-2xl font-extrabold font-heading text-zinc-900 tracking-tight">Safety Officer (SMS)</h2>
             <p className="text-sm text-zinc-500 font-medium">Safety Management Systems & Audits</p>
          </div>
       </div>

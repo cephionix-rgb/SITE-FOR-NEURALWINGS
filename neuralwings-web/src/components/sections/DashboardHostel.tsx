@@ -8,7 +8,7 @@ export function DashboardHostel() {
   }));
 
   return (
-    <div className="w-full h-full p-6 overflow-y-auto hide-scrollbar flex flex-col gap-6 bg-white border-2 border-zinc-200 shadow-sm rounded-2xl">
+    <div className="w-full h-full p-3 sm:p-6 overflow-y-auto hide-scrollbar flex flex-col gap-4 sm:gap-6 bg-white border-2 border-zinc-200 shadow-sm rounded-2xl">
       
       <div className="flex items-center justify-between">
          <div>
@@ -39,7 +39,7 @@ export function DashboardHostel() {
         ))}
       </div>
 
-      <div className="flex-1 bg-transparent border border-zinc-200 rounded-xl shadow-sm p-6 flex flex-col">
+      <div className="flex-1 bg-transparent border border-zinc-200 rounded-xl shadow-sm p-3 sm:p-6 flex flex-col">
          <div className="flex items-center gap-2 mb-6">
             <Building2 className="w-5 h-5 text-blue-500" />
             <h3 className="font-semibold text-zinc-900">Room Occupancy Grid</h3>

@@ -29,14 +29,14 @@ export function DashboardOps() {
   };
 
   return (
-    <div className="w-full h-full text-zinc-900 p-6 overflow-y-auto hide-scrollbar flex flex-col gap-6 bg-white border-2 border-zinc-200 shadow-md rounded-2xl">
-      
-      <div className="flex items-center justify-between">
+    <div className="w-full h-full text-zinc-900 p-3 sm:p-6 overflow-y-auto hide-scrollbar flex flex-col gap-4 sm:gap-6 bg-white border-2 border-zinc-200 shadow-md rounded-2xl">
+
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
          <div>
-            <h2 className="text-xl font-bold font-heading">Flight Operations Control</h2>
+            <h2 className="text-lg sm:text-xl font-bold font-heading">Flight Operations Control</h2>
             <p className="text-xs text-font-muted">VIKR Base — {formatShortDate(now)}</p>
          </div>
-         <div className="flex gap-2 items-center">
+         <div className="flex flex-wrap gap-2 items-center">
             <button
               onClick={handleGenerateRoster}
               disabled={rosterState !== 'idle'}

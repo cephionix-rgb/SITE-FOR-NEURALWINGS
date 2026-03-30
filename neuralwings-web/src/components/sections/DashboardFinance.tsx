@@ -2,10 +2,10 @@ import { IndianRupee, TrendingUp, Download, AlertCircle, Sparkles } from "lucide
 
 export function DashboardFinance() {
   return (
-    <div className="w-full h-full text-zinc-900 p-6 overflow-y-auto hide-scrollbar flex flex-col gap-6 bg-white border-2 border-zinc-200 shadow-md rounded-2xl">
+    <div className="w-full h-full text-zinc-900 p-3 sm:p-6 overflow-y-auto hide-scrollbar flex flex-col gap-4 sm:gap-6 bg-white border-2 border-zinc-200 shadow-md rounded-2xl">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
          <div>
-            <h2 className="text-2xl font-extrabold font-heading text-zinc-900 tracking-tight">Finance Officer</h2>
+            <h2 className="text-xl sm:text-2xl font-extrabold font-heading text-zinc-900 tracking-tight">Finance Officer</h2>
             <p className="text-sm text-zinc-500 font-medium">Revenue, Fee Collection & DGCA Compliance</p>
          </div>
       </div>

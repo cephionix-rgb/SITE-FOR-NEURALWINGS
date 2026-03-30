@@ -2,7 +2,7 @@ import { CloudSun, Users, Plane, ShieldAlert, BarChart3, ChevronRight, AlertTria
 
 export function DashboardDirector() {
   return (
-    <div className="w-full h-full text-zinc-900 p-6 overflow-y-auto hide-scrollbar flex flex-col gap-6">
+    <div className="w-full h-full text-zinc-900 p-3 sm:p-6 overflow-y-auto hide-scrollbar flex flex-col gap-4 sm:gap-6">
       
       {/* ── SECTION 1: Weather & Branch AIRE Bar ── */}
       <div className="rounded-xl p-4 bg-white/90 border border-zinc-200 shadow-sm border-l-4 border-l-green-500">
@@ -22,7 +22,7 @@ export function DashboardDirector() {
               </div>
             </div>
             <div className="flex flex-col gap-1">
-              <div className="flex items-center gap-4 text-sm">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
                 <span className="flex items-center gap-1 font-bold text-green-600 bg-green-50 px-2 rounded-md">
                   <CloudSun className="w-4 h-4" /> VFR GO
                 </span>

@@ -30,10 +30,10 @@ export function DashboardCFI() {
   const now = useLiveDate();
   const weekDays = getWeekDays(now);
   return (
-    <div className="w-full h-full text-zinc-900 p-6 overflow-y-auto hide-scrollbar flex flex-col gap-6 bg-white border-2 border-zinc-200 shadow-sm rounded-2xl">
+    <div className="w-full h-full text-zinc-900 p-3 sm:p-6 overflow-y-auto hide-scrollbar flex flex-col gap-4 sm:gap-6 bg-white border-2 border-zinc-200 shadow-sm rounded-2xl">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
          <div>
-            <h2 className="text-2xl font-extrabold font-heading text-zinc-900 tracking-tight">Chief Flight Instructor (CFI) Auth</h2>
+            <h2 className="text-xl sm:text-2xl font-extrabold font-heading text-zinc-900 tracking-tight">Chief Flight Instructor (CFI) Auth</h2>
             <p className="text-sm text-zinc-500 font-medium">Flight Authorization & Scheduling Oversight</p>
          </div>
          <div className="flex gap-2">

@@ -2,7 +2,7 @@ import { Plane, Wrench, AlertOctagon, CheckCircle2, Search } from "lucide-react"
 
 export function DashboardFleet() {
   return (
-    <div className="w-full h-full p-6 overflow-y-auto hide-scrollbar flex flex-col gap-6 bg-white border-2 border-zinc-200 shadow-sm rounded-2xl">
+    <div className="w-full h-full p-3 sm:p-6 overflow-y-auto hide-scrollbar flex flex-col gap-4 sm:gap-6 bg-white border-2 border-zinc-200 shadow-sm rounded-2xl">
       <div className="flex items-center justify-between">
          <div>
             <h2 className="text-xl font-bold font-heading text-zinc-900">Fleet Management</h2>

@@ -3,10 +3,10 @@ import { Target, Search, FileSymlink, BadgeCheck, ShieldAlert } from 'lucide-rea
 
 export function DashboardQuality() {
   return (
-    <div className="w-full h-full text-zinc-900 p-6 overflow-y-auto hide-scrollbar flex flex-col gap-6 bg-white border-2 border-zinc-200 shadow-sm rounded-2xl">
+    <div className="w-full h-full text-zinc-900 p-3 sm:p-6 overflow-y-auto hide-scrollbar flex flex-col gap-4 sm:gap-6 bg-white border-2 border-zinc-200 shadow-sm rounded-2xl">
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="font-heading font-bold text-2xl flex items-center gap-2">
+          <h3 className="font-heading font-bold text-xl sm:text-2xl flex items-center gap-2">
             <Target className="w-6 h-6 text-teal-500" />
             Quality Assurance Manager
           </h3>

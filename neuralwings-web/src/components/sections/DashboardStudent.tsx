@@ -2,7 +2,7 @@ import { GraduationCap, BookOpen, Clock, Activity, CheckCircle, BrainCircuit, Pl
 
 export function DashboardStudent() {
   return (
-    <div className="w-full h-full text-zinc-900 p-6 overflow-y-auto hide-scrollbar flex flex-col gap-6 bg-slate-50/50">
+    <div className="w-full h-full text-zinc-900 p-3 sm:p-6 overflow-y-auto hide-scrollbar flex flex-col gap-4 sm:gap-6 bg-slate-50/50">
       
       {/* ── SECTION 1: My Progress Card ── */}
       <div className="rounded-xl p-5 bg-white border border-zinc-200 shadow-sm">
