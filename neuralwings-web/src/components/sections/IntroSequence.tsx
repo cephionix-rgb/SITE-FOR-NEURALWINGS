@@ -79,13 +79,37 @@ export function IntroSequence({ onComplete }: IntroSequenceProps) {
         <source src={videoUrl} type="video/mp4" />
       </video>
 
-      {/* VEO Watermark Blur & Logo Replacement */}
-      <div className="absolute bottom-[20px] right-[20px] z-[60] w-[140px] h-[45px] backdrop-blur-3xl bg-transparent/95 rounded-md flex items-center justify-center p-1.5 shadow-[0_0_20px_rgba(0,0,0,0.8)] border border-white/5">
-        <img src={logoUrl} alt="Neural Wings" className="max-w-full max-h-full object-contain" />
-      </div>
+      {/* Watermark cover — blur only, no logo */}
+      <div className="absolute bottom-[14px] right-[14px] z-[60] w-[160px] h-[55px] backdrop-blur-3xl rounded-lg" />
 
-      {/* Vignette */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_50%,rgba(0,0,0,0.4)_100%)] pointer-events-none" />
+      {/* Immersive edge blur — top */}
+      <div className="absolute top-0 left-0 w-full h-[180px] pointer-events-none z-10" style={{
+        backdropFilter: 'blur(18px)',
+        WebkitBackdropFilter: 'blur(18px)',
+        maskImage: 'linear-gradient(to bottom, black 0%, transparent 100%)',
+        WebkitMaskImage: 'linear-gradient(to bottom, black 0%, transparent 100%)'
+      }} />
+      {/* Immersive edge blur — bottom */}
+      <div className="absolute bottom-0 left-0 w-full h-[180px] pointer-events-none z-10" style={{
+        backdropFilter: 'blur(18px)',
+        WebkitBackdropFilter: 'blur(18px)',
+        maskImage: 'linear-gradient(to top, black 0%, transparent 100%)',
+        WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 100%)'
+      }} />
+      {/* Immersive edge blur — left */}
+      <div className="absolute top-0 left-0 h-full w-[180px] pointer-events-none z-10" style={{
+        backdropFilter: 'blur(18px)',
+        WebkitBackdropFilter: 'blur(18px)',
+        maskImage: 'linear-gradient(to right, black 0%, transparent 100%)',
+        WebkitMaskImage: 'linear-gradient(to right, black 0%, transparent 100%)'
+      }} />
+      {/* Immersive edge blur — right */}
+      <div className="absolute top-0 right-0 h-full w-[180px] pointer-events-none z-10" style={{
+        backdropFilter: 'blur(18px)',
+        WebkitBackdropFilter: 'blur(18px)',
+        maskImage: 'linear-gradient(to left, black 0%, transparent 100%)',
+        WebkitMaskImage: 'linear-gradient(to left, black 0%, transparent 100%)'
+      }} />
 
       {/* Text overlays */}
       <div className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none">
