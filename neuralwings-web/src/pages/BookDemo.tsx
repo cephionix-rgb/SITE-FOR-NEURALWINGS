@@ -19,12 +19,33 @@ export function BookDemo() {
       branches: (form.elements.namedItem('branches') as HTMLSelectElement).value,
     });
 
-    // Hidden iframe bypasses CORS and follows Google's redirects natively
+    // Hidden iframe + form — params survive Google's redirect chain
     const iframe = document.createElement('iframe');
+    iframe.name = 'hidden_iframe';
     iframe.style.display = 'none';
-    iframe.src = `${APPS_SCRIPT_URL}?${params.toString()}`;
     document.body.appendChild(iframe);
-    setTimeout(() => document.body.removeChild(iframe), 5000);
+
+    const hiddenForm = document.createElement('form');
+    hiddenForm.method = 'GET';
+    hiddenForm.action = APPS_SCRIPT_URL;
+    hiddenForm.target = 'hidden_iframe';
+    hiddenForm.style.display = 'none';
+
+    params.forEach((value, key) => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = value;
+      hiddenForm.appendChild(input);
+    });
+
+    document.body.appendChild(hiddenForm);
+    hiddenForm.submit();
+
+    setTimeout(() => {
+      document.body.removeChild(hiddenForm);
+      document.body.removeChild(iframe);
+    }, 5000);
 
     setSubmitted(true);
   };
