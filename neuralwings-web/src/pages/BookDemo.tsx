@@ -1,28 +1,31 @@
 import { useState } from 'react';
 import { Layout } from '../components/layout/Layout';
 
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby3cWlW8uq1RpkEPCrT8jwky4CE18Y1TIu6WWCQG35__WxxPPvnAfFpqarDDifRVEHKtQ/exec";
+
 export function BookDemo() {
   const [submitted, setSubmitted] = useState(false);
 
-  // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL BELOW
-  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby3cWlW8uq1RpkEPCrT8jwky4CE18Y1TIu6WWCQG35__WxxPPvnAfFpqarDDifRVEHKtQ/exec";
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
-    const payload = {
+
+    const params = new URLSearchParams({
       name:     (form.elements.namedItem('name')     as HTMLInputElement).value,
       phone:    (form.elements.namedItem('phone')    as HTMLInputElement).value,
       email:    (form.elements.namedItem('email')    as HTMLInputElement).value,
       fto:      (form.elements.namedItem('fto')      as HTMLInputElement).value,
       location: (form.elements.namedItem('location') as HTMLInputElement).value,
       branches: (form.elements.namedItem('branches') as HTMLSelectElement).value,
-    };
+    });
 
-    const url = new URL(APPS_SCRIPT_URL);
-    Object.entries(payload).forEach(([k, v]) => url.searchParams.append(k, String(v)));
-    const img = new Image();
-    img.src = url.toString();
+    // Hidden iframe bypasses CORS and follows Google's redirects natively
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = `${APPS_SCRIPT_URL}?${params.toString()}`;
+    document.body.appendChild(iframe);
+    setTimeout(() => document.body.removeChild(iframe), 5000);
+
     setSubmitted(true);
   };
 
