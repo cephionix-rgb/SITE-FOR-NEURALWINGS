@@ -4,26 +4,35 @@ import { Layout } from '../components/layout/Layout';
 export function BookDemo() {
   const [submitted, setSubmitted] = useState(false);
 
+  // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL BELOW
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzftNNa8ebv3PGAXz_BBpOFndQVQMiri9gccyb3UCcOsJy46Hn6cQG777F_x_5ECIMCvA/exec";
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    
-    // Custom FormSubmit subject and config
-    formData.append("_subject", "New Neural Wings Demo Request!");
-    formData.append("_template", "table");
-    
+    const form = e.currentTarget;
+    const payload = {
+      name:     (form.elements.namedItem('name')     as HTMLInputElement).value,
+      phone:    (form.elements.namedItem('phone')    as HTMLInputElement).value,
+      email:    (form.elements.namedItem('email')    as HTMLInputElement).value,
+      fto:      (form.elements.namedItem('fto')      as HTMLInputElement).value,
+      location: (form.elements.namedItem('location') as HTMLInputElement).value,
+      branches: (form.elements.namedItem('branches') as HTMLSelectElement).value,
+    };
+
     try {
-      await fetch("https://formsubmit.co/ajax/cephionix@gmail.com", {
+      const res = await fetch(APPS_SCRIPT_URL, {
         method: "POST",
-        body: formData,
-        headers: {
-            'Accept': 'application/json'
-        }
+        body: JSON.stringify(payload),
       });
-      setSubmitted(true);
+      const data = await res.json();
+      if (data.success) {
+        setSubmitted(true);
+      } else {
+        alert("Submission failed. Please email us directly at cephionix@gmail.com");
+      }
     } catch (error) {
       console.error(error);
-      alert("Submission failed. Please try again or email us directly at cephionix@gmail.com.");
+      alert("Submission failed. Please email us directly at cephionix@gmail.com");
     }
   };
 
