@@ -30,6 +30,16 @@
     <!-- Google Analytics 4 -->
     <!-- IMPORTANT: Replace G-KQYZYE96XT with your actual GA4 Measurement ID -->
     <!-- Get it at: https://analytics.google.com → Admin → Data Streams → your stream -->
+    <!-- GitHub Pages SPA redirect handler -->
+    <script>
+      (function() {
+        var p = window.location.search && decodeURIComponent(window.location.search.slice(3));
+        if (p && p.startsWith('/')) {
+          window.history.replaceState(null, null, p + window.location.hash);
+        }
+      })();
+    </script>
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KQYZYE96XT"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
