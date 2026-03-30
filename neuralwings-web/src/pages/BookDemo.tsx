@@ -5,7 +5,7 @@ export function BookDemo() {
   const [submitted, setSubmitted] = useState(false);
 
   // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL BELOW
-  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzftNNa8ebv3PGAXz_BBpOFndQVQMiri9gccyb3UCcOsJy46Hn6cQG777F_x_5ECIMCvA/exec";
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby3cWlW8uq1RpkEPCrT8jwky4CE18Y1TIu6WWCQG35__WxxPPvnAfFpqarDDifRVEHKtQ/exec";
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,11 +20,9 @@ export function BookDemo() {
     };
 
     try {
-      await fetch(APPS_SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        body: JSON.stringify(payload),
-      });
+      const url = new URL(APPS_SCRIPT_URL);
+      Object.entries(payload).forEach(([k, v]) => url.searchParams.append(k, String(v)));
+      await fetch(url.toString(), { method: "GET", mode: "no-cors" });
       setSubmitted(true);
     } catch (error) {
       console.error(error);
