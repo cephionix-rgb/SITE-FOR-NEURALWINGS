@@ -28,6 +28,12 @@ export function IntroSequence({ onComplete }: IntroSequenceProps) {
 
     const video = videoRef.current;
 
+    // Only assign src when the intro will actually play — prevents mobile from
+    // downloading the video on repeat visits even if the element is in the DOM.
+    if (video && !sessionStorage.getItem('introPlayed')) {
+      video.src = videoUrl;
+    }
+
     // Text animations — appear early, gone before logo emerges from clouds (~5s)
     const textTl = gsap.timeline();
     textTl.to(text1Ref.current, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 0.4);
@@ -74,10 +80,9 @@ export function IntroSequence({ onComplete }: IntroSequenceProps) {
         autoPlay
         muted
         playsInline
+        preload="none"
         className="w-full h-full object-cover"
-      >
-        <source src={videoUrl} type="video/mp4" />
-      </video>
+      />
 
       {/* Watermark cover — blur only, no logo */}
       <div className="absolute bottom-[14px] right-[14px] z-[60] w-[160px] h-[55px] backdrop-blur-3xl rounded-lg" />
