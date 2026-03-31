@@ -166,7 +166,7 @@ export function Hero() {
             rel="noopener noreferrer"
             className="h-14 px-8 md:px-10 rounded-xl bg-white border-2 border-sky-400 text-sky-600 font-sans font-semibold text-[15px] md:text-[16px] shadow-sm hover:border-sky-500 hover:text-sky-700 hover:bg-sky-50 transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
           >
-            Book a Demo <span className="text-xl leading-none">→</span>
+            Contact Sales <span className="text-xl leading-none">→</span>
           </a>
           <a href="#demo" className="h-14 px-8 md:px-10 rounded-xl bg-white border border-zinc-200 text-zinc-700 font-sans font-semibold text-[15px] md:text-[16px] shadow-sm hover:border-sky-300 hover:text-sky-600 hover:bg-sky-50 transition-all flex items-center justify-center gap-2 w-full sm:w-auto">
             Explore the System <span className="text-xl leading-none">→</span>

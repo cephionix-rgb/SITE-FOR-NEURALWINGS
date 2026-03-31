@@ -114,7 +114,7 @@ export function Navbar() {
               rel="noopener noreferrer"
               className="px-6 py-2.5 rounded-full bg-sky-500 text-white font-sans text-sm font-bold transition-all duration-300 hover:bg-sky-600 shadow-sm"
             >
-              Book a Demo
+              Contact Sales
             </a>
           </div>
 
@@ -128,7 +128,7 @@ export function Navbar() {
               className="flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-bold bg-sky-500 text-white shadow-sm hover:bg-sky-600 transition-colors"
             >
               <WhatsAppIcon size={14} color="white" />
-              <span className="hidden xs:inline">Book Demo</span>
+              <span className="hidden xs:inline">Contact Sales</span>
             </a>
             <button
               onClick={() => setMenuOpen(prev => !prev)}
@@ -195,7 +195,7 @@ export function Navbar() {
                     className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-[15px] font-bold text-white shadow-md bg-sky-500 hover:bg-sky-600 transition-colors"
                   >
                     <WhatsAppIcon size={16} color="white" />
-                    Book a Live Demonstration
+                    Contact Sales
                   </a>
                 </div>
               </div>
@@ -218,7 +218,7 @@ export function Navbar() {
             className="fixed bottom-6 right-6 z-[999] flex items-center gap-2.5 px-4 py-3 bg-white border border-[#e2e8f0] rounded-full shadow-lg text-sm font-bold text-zinc-800 hover:shadow-xl hover:border-green-200 transition-shadow"
           >
             <WhatsAppIcon size={20} color="#25D366" />
-            Book a Demo
+            Contact Sales
           </motion.a>
         )}
       </AnimatePresence>
