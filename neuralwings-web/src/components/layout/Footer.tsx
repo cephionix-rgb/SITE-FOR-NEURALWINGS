@@ -142,7 +142,7 @@ export function Footer() {
             </a>
 
             <a
-              href="tel:+919646341001"
+              href="tel:+919914801833"
               className="flex items-center gap-3 p-3.5 rounded-xl border border-white/[0.07] bg-white/[0.03] hover:border-violet-500/35 hover:bg-white/[0.07] transition-all duration-200 group"
             >
               <div className="w-9 h-9 rounded-xl bg-violet-500/15 flex items-center justify-center shrink-0">
@@ -151,7 +151,7 @@ export function Footer() {
               <div className="flex flex-col">
                 <span className="text-zinc-500 text-[11px] font-bold uppercase tracking-widest mb-0.5">Phone</span>
                 <span className="text-zinc-300 group-hover:text-white text-sm font-medium transition-colors">
-                  +91 9646341001
+                  +91 9914801833
                 </span>
               </div>
             </a>

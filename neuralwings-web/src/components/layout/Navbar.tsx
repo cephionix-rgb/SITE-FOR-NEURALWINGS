@@ -6,7 +6,7 @@ import { cn } from '../../lib/utils';
 import logoUrl from '../../assets/logo.png';
 
 const WA_LINK =
-  'https://wa.me/919646341001?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Neural%20Wings%20demo';
+  'https://wa.me/919914801833?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Neural%20Wings%20demo';
 
 const navLinks = [
   { label: 'Features',   href: '#features' },

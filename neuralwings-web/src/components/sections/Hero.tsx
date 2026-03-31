@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const WA_LINK =
-  'https://wa.me/919646341001?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Neural%20Wings%20demo';
+  'https://wa.me/919914801833?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Neural%20Wings%20demo';
 
 function ParticleField() {
   const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; speed: number; size: number }>>([]);
