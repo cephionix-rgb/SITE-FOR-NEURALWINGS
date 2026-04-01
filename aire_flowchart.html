@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AIRE — AI Roster Engine | Neural Wings</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#050A1A;
+  --card:rgba(10,22,40,0.85);
+  --bdr:rgba(30,64,175,0.28);
+  --grad:linear-gradient(135deg,#1E40AF,#2563EB,#0EA5E9,#06B6D4);
+  --cyan:#06B6D4;
+  --gold:#C9A84C;
+  --text:#F0F6FF;
+  --muted:#94A3B8;
+  --r:16px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  line-height:1.5;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── keyframes ── */
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 20px rgba(6,182,212,.2),0 0 40px rgba(6,182,212,.08)}
+  50%    {box-shadow:0 0 48px rgba(6,182,212,.5),0 0 88px rgba(6,182,212,.22)}
+}
+@keyframes spin{
+  0%  {background-position:0% 50%}
+  50% {background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes sweep{0%{transform:translateX(-110%)}100%{transform:translateX(110%)}}
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes dash{to{stroke-dashoffset:-13}}
+
+/* ── layout ── */
+.page{max-width:1060px;margin:0 auto;padding:60px 32px 80px}
+@media(min-width:900px){.page{padding-right:108px}}
+
+/* ── header ── */
+.hdr{text-align:center;margin-bottom:64px}
+.eyebrow{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:11px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:14px
+}
+.title{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:34px;font-weight:700;
+  background:var(--grad);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent
+}
+
+/* ── phase animation ── */
+.ph{opacity:0;transform:translateY(22px)}
+.ph.in{animation:up .6s ease forwards}
+
+/* ── section label ── */
+.lbl{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.lbl-n{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:26px;height:26px;border-radius:50%;flex-shrink:0;
+  background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.35);
+  font-family:'Space Grotesk',sans-serif;
+  font-size:10px;font-weight:700;color:var(--gold)
+}
+.lbl-t{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:10.5px;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--gold)
+}
+.lbl-r{flex:1;height:1px;background:linear-gradient(to right,rgba(201,168,76,.3),transparent)}
+
+/* ── glass card base ── */
+.g{
+  background:var(--card);
+  border:1px solid var(--bdr);
+  border-radius:var(--r);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px)
+}
+
+/* ── PHASE 1 grid ── */
+.p1-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.icard{padding:22px 18px;transition:border-color .25s,box-shadow .25s}
+.icard:hover{border-color:rgba(6,182,212,.5);box-shadow:0 0 22px rgba(6,182,212,.22)}
+.ib{                        /* icon box */
+  width:44px;height:44px;border-radius:10px;
+  background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.18);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:14px
+}
+.ib svg{
+  width:22px;height:22px;stroke:var(--cyan);fill:none;
+  stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round
+}
+.ic-t{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;margin-bottom:5px}
+.ic-d{font-size:11.5px;color:var(--muted);line-height:1.55}
+
+/* ── converging arrows ── */
+.conv-svg{display:block;width:100%;height:80px;overflow:visible}
+
+/* ── PHASE 2 constraint panel ── */
+.p2-wrap{position:relative;overflow:hidden;border-color:rgba(6,182,212,.38)!important;padding:28px 32px;animation:pulse 3s ease-in-out infinite}
+.p2-sweep{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(6,182,212,.06) 40%,rgba(37,99,235,.06) 60%,transparent);
+  animation:sweep 3.5s linear infinite}
+.p2-head{
+  font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;
+  color:var(--cyan);text-align:center;margin-bottom:22px;
+  position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:8px
+}
+.p2-head svg{width:18px;height:18px;stroke:var(--cyan);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.p2-checks{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;position:relative;z-index:1}
+.chk{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:500}
+.chk-ico{
+  width:20px;height:20px;border-radius:50%;flex-shrink:0;
+  background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.38);
+  display:flex;align-items:center;justify-content:center
+}
+.chk-ico svg{width:11px;height:11px;stroke:#22C55E;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── vertical arrow ── */
+.va{display:flex;justify-content:center;height:62px;align-items:center}
+.va svg{overflow:visible}
+
+/* ── PHASE 3 AIRE engine ── */
+.p3{display:flex;justify-content:center}
+.aire{
+  max-width:560px;width:100%;
+  border:2px solid var(--cyan);border-radius:24px;
+  padding:48px 52px 42px;text-align:center;
+  position:relative;overflow:hidden;
+  background:rgba(6,12,28,.94);
+  animation:pulse 2s ease-in-out infinite
+}
+/* dot-grid texture */
+.aire{
+  background-image:radial-gradient(rgba(6,182,212,.12) 1px,transparent 1px);
+  background-size:22px 22px;
+  background-color:rgba(6,12,28,.94)
+}
+.aire-bg{
+  position:absolute;inset:0;border-radius:22px;
+  background:linear-gradient(135deg,#1E40AF,#2563EB,#0EA5E9,#06B6D4,#1E40AF,#2563EB);
+  background-size:400% 400%;
+  animation:spin 8s linear infinite;
+  opacity:.13;pointer-events:none
+}
+/* corner brackets */
+.aire::before,.aire::after{content:'';position:absolute;width:18px;height:18px;border-color:var(--cyan);border-style:solid}
+.aire::before{top:14px;left:14px;border-width:2px 0 0 2px;border-radius:3px 0 0 0}
+.aire::after {top:14px;right:14px;border-width:2px 2px 0 0;border-radius:0 3px 0 0}
+.brk-br,.brk-bl{position:absolute;width:18px;height:18px;border-color:var(--cyan);border-style:solid}
+.brk-br{bottom:14px;right:14px;border-width:0 2px 2px 0;border-radius:0 0 3px 0}
+.brk-bl{bottom:14px;left:14px;border-width:0 0 2px 2px;border-radius:0 0 0 3px}
+.aire>*:not(.aire-bg):not(.brk-br):not(.brk-bl){position:relative;z-index:1}
+.aire-node{
+  width:68px;height:68px;border-radius:50%;margin:0 auto 18px;
+  background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.28);
+  display:flex;align-items:center;justify-content:center
+}
+.aire-node svg{width:34px;height:34px;overflow:visible}
+.aire-name{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:38px;font-weight:700;letter-spacing:-.01em;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;margin-bottom:10px
+}
+.aire-sub{font-size:13.5px;color:var(--muted);margin-bottom:26px}
+.tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.tag{
+  background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.25);
+  border-radius:20px;padding:5px 12px;
+  font-size:11.5px;font-weight:500;color:var(--cyan)
+}
+
+/* ── PHASE 4 output ── */
+.p4{border-color:rgba(201,168,76,.4)!important;padding:26px 28px}
+.p4-title{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:18px;font-weight:700;color:var(--gold);
+  margin-bottom:18px;display:flex;align-items:center;gap:10px
+}
+.p4-title svg{width:19px;height:19px;stroke:var(--gold);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.tscroll{overflow-x:auto;margin-bottom:20px}
+.ptbl{width:100%;border-collapse:collapse;min-width:560px}
+.ptbl thead th{
+  background:rgba(30,64,175,.16);
+  border:1px solid rgba(30,64,175,.28);
+  padding:9px 12px;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.13em;
+  color:var(--cyan);text-align:left
+}
+.ptbl tbody td{border:1px solid rgba(30,64,175,.16);padding:10px 12px;font-size:12.5px}
+.ptbl tbody tr:nth-child(even) td{background:rgba(10,22,40,.4)}
+.ptbl tbody tr{opacity:0;transform:translateY(6px);transition:opacity .32s ease,transform .32s ease}
+.ptbl tbody tr.on{opacity:1;transform:none}
+.ok{color:#22C55E;font-weight:600;font-size:12px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-o{
+  padding:9px 22px;border:1.5px solid var(--cyan);border-radius:8px;
+  background:transparent;color:var(--cyan);
+  font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;cursor:pointer;
+  transition:background .2s
+}
+.btn-o:hover{background:rgba(6,182,212,.1)}
+.btn-g{
+  padding:9px 22px;border:none;border-radius:8px;
+  background:var(--grad);color:#fff;
+  font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;cursor:pointer
+}
+
+/* ── PHASE 5 ── */
+.p5-row{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center}
+.ecard{padding:22px 18px;transition:border-color .25s,box-shadow .25s}
+.ecard:hover{border-color:rgba(6,182,212,.5);box-shadow:0 0 22px rgba(6,182,212,.22)}
+.ec-t{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;margin-bottom:7px}
+.ec-d{font-size:12px;color:var(--muted);line-height:1.5}
+.marr{padding:0 12px;display:flex;align-items:center}
+.marr svg{width:32px;height:14px;stroke:var(--cyan);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;fill:none;overflow:visible}
+
+/* ── feedback arc ── */
+#fb{position:absolute;top:0;right:-86px;pointer-events:none;overflow:visible;display:none}
+
+/* ── stats bar ── */
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  margin-top:54px;overflow:hidden;
+  opacity:0;transform:translateY(22px)
+}
+.stats.in{animation:up .6s ease forwards}
+.stat{padding:30px 16px;text-align:center;border-right:1px solid rgba(30,64,175,.28)}
+.stat:last-child{border-right:none}
+.sv{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:38px;font-weight:700;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;line-height:1;margin-bottom:8px
+}
+.sl{font-size:12px;color:var(--muted);line-height:1.45}
+
+/* ── responsive ── */
+@media(max-width:820px){
+  .page{padding-right:32px}
+  .p1-grid{grid-template-columns:repeat(2,1fr)}
+  .p5-row{grid-template-columns:1fr;gap:12px}
+  .marr{transform:rotate(90deg);justify-content:center;padding:4px 0}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:none}
+  .stat:nth-child(3),.stat:nth-child(4){border-top:1px solid rgba(30,64,175,.28)}
+  .stat:nth-child(4){border-right:none}
+  .aire{padding:36px 24px 30px}
+  .aire-name{font-size:28px}
+  .p2-checks{flex-direction:column;align-items:flex-start}
+  .title{font-size:24px}
+  #fb{display:none!important}
+}
+@media(max-width:500px){
+  .p1-grid{grid-template-columns:1fr}
+  .page{padding:36px 16px 56px}
+  .title{font-size:20px}
+  .ptbl thead th,.ptbl tbody td{padding:7px 8px;font-size:11px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<header class="hdr">
+  <p class="eyebrow">AIRE — AI Roster Engine</p>
+  <h1 class="title">How Neural Wings builds your daily flying programme</h1>
+</header>
+
+<div style="position:relative" id="flow">
+
+<!-- ════════ PHASE 1 ════════ -->
+<div class="ph" id="p1" data-d="0">
+  <div class="lbl">
+    <span class="lbl-n">01</span>
+    <span class="lbl-t">Phase 01 — Live Data Inputs</span>
+    <span class="lbl-r"></span>
+  </div>
+  <div class="p1-grid">
+
+    <!-- Students -->
+    <div class="g icard">
+      <div class="ib">
+        <svg viewBox="0 0 24 24">
+          <path d="M22 10v6"/>
+          <path d="M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+      </div>
+      <div class="ic-t">Students Database</div>
+      <div class="ic-d">Syllabus stage, completed exercises, medical validity, availability</div>
+    </div>
+
+    <!-- Instructors -->
+    <div class="g icard">
+      <div class="ib">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="7" r="4"/>
+          <path d="M6 21v-2a6 6 0 0112 0v2"/>
+          <rect x="9" y="13" width="6" height="4" rx="1"/>
+        </svg>
+      </div>
+      <div class="ic-t">Instructor Records</div>
+      <div class="ic-d">Ratings, authorisations, current duty hours, rest period status</div>
+    </div>
+
+    <!-- Fleet -->
+    <div class="g icard">
+      <div class="ib">
+        <svg viewBox="0 0 24 24">
+          <path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 3.2c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.1z"/>
+        </svg>
+      </div>
+      <div class="ic-t">Fleet Status</div>
+      <div class="ic-d">Serviceability, maintenance schedule, hours flown, pre-flight release</div>
+    </div>
+
+    <!-- Weather -->
+    <div class="g icard">
+      <div class="ib">
+        <svg viewBox="0 0 24 24">
+          <path d="M17.5 19H9a7 7 0 116.71-9h1.79a4.5 4.5 0 010 9z"/>
+          <path d="M22 10a3 3 0 00-3-3h-1a5 5 0 10-9.33 2.5" stroke-opacity=".4"/>
+        </svg>
+      </div>
+      <div class="ic-t">Live Weather (METAR/TAF)</div>
+      <div class="ic-d">Real-time visibility, wind, ceiling, and forecast for the aerodrome</div>
+    </div>
+
+    <!-- NOTAM -->
+    <div class="g icard">
+      <div class="ib">
+        <svg viewBox="0 0 24 24">
+          <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/>
+          <circle cx="12" cy="17" r=".6" fill="#06B6D4" stroke="none"/>
+        </svg>
+      </div>
+      <div class="ic-t">NOTAM Feed</div>
+      <div class="ic-d">Active NOTAMs, TFRs, airspace restrictions — fetched every 2 hours</div>
+    </div>
+
+    <!-- DGCA -->
+    <div class="g icard">
+      <div class="ib">
+        <svg viewBox="0 0 24 24">
+          <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 01-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 011-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 011.52 0C14.51 3.81 17 5 19 5a1 1 0 011 1z"/>
+          <path d="m9 12 2 2 4-4"/>
+        </svg>
+      </div>
+      <div class="ic-t">DGCA Rule Set</div>
+      <div class="ic-d">CAR Section 7 duty limits, rest rules, syllabus sequencing constraints</div>
+    </div>
+
+  </div>
+</div><!-- /p1 -->
+
+<!-- converging arrows -->
+<svg class="conv-svg" viewBox="0 0 1000 80" preserveAspectRatio="none">
+  <defs>
+    <marker id="mA" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <polygon points="0 0,7 2.5,0 5" fill="#06B6D4"/>
+    </marker>
+  </defs>
+  <line class="cl" x1="140" y1="2" x2="500" y2="74" stroke="#06B6D4" stroke-width="1.5" stroke-opacity=".7" marker-end="url(#mA)" stroke-dasharray="600" stroke-dashoffset="600"/>
+  <line class="cl" x1="490" y1="2" x2="500" y2="74" stroke="#06B6D4" stroke-width="1.5" stroke-opacity=".7" marker-end="url(#mA)" stroke-dasharray="600" stroke-dashoffset="600"/>
+  <line class="cl" x1="840" y1="2" x2="500" y2="74" stroke="#06B6D4" stroke-width="1.5" stroke-opacity=".7" marker-end="url(#mA)" stroke-dasharray="600" stroke-dashoffset="600"/>
+  <line class="cl" x1="195" y1="2" x2="500" y2="74" stroke="#06B6D4" stroke-width="1.5" stroke-opacity=".4" marker-end="url(#mA)" stroke-dasharray="600" stroke-dashoffset="600"/>
+  <line class="cl" x1="545" y1="2" x2="500" y2="74" stroke="#06B6D4" stroke-width="1.5" stroke-opacity=".4" marker-end="url(#mA)" stroke-dasharray="600" stroke-dashoffset="600"/>
+  <line class="cl" x1="785" y1="2" x2="500" y2="74" stroke="#06B6D4" stroke-width="1.5" stroke-opacity=".4" marker-end="url(#mA)" stroke-dasharray="600" stroke-dashoffset="600"/>
+</svg>
+
+<!-- ════════ PHASE 2 ════════ -->
+<div class="ph" id="p2" data-d="150">
+  <div class="lbl">
+    <span class="lbl-n">02</span>
+    <span class="lbl-t">Phase 02 — Constraint Validation</span>
+    <span class="lbl-r"></span>
+  </div>
+  <div class="g p2-wrap">
+    <div class="p2-sweep"></div>
+    <div class="p2-head">
+      <svg viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+      </svg>
+      Constraint Validation Engine
+    </div>
+    <div class="p2-checks">
+      <div class="chk">
+        <div class="chk-ico"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+        DGCA Duty Time Limits Enforced
+      </div>
+      <div class="chk">
+        <div class="chk-ico"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+        Aircraft–Instructor–Student Compatibility Checked
+      </div>
+      <div class="chk">
+        <div class="chk-ico"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+        Exercise Sequencing Validated (prerequisites confirmed)
+      </div>
+      <div class="chk">
+        <div class="chk-ico"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+        Weather Go/No-Go Filter Applied
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- arrow -->
+<div class="va">
+  <svg width="40" height="56" viewBox="0 0 40 56">
+    <defs><marker id="mB" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#06B6D4"/></marker></defs>
+    <line class="pl" x1="20" y1="4" x2="20" y2="50" stroke="#06B6D4" stroke-width="2" marker-end="url(#mB)" stroke-dasharray="100" stroke-dashoffset="100"/>
+  </svg>
+</div>
+
+<!-- ════════ PHASE 3 — AIRE ════════ -->
+<div class="ph" id="p3" data-d="300">
+  <div class="lbl">
+    <span class="lbl-n">03</span>
+    <span class="lbl-t">Phase 03 — AI Optimisation</span>
+    <span class="lbl-r"></span>
+  </div>
+  <div class="p3">
+    <div class="aire">
+      <div class="aire-bg"></div>
+      <div class="brk-br"></div>
+      <div class="brk-bl"></div>
+
+      <!-- neural network icon -->
+      <div class="aire-node">
+        <svg viewBox="0 0 34 34" fill="none">
+          <!-- outer nodes -->
+          <circle cx="17" cy="4"  r="2.4" stroke="#06B6D4" stroke-width="1.2" fill="rgba(6,182,212,.2)"/>
+          <circle cx="30" cy="12" r="2.4" stroke="#06B6D4" stroke-width="1.2" fill="rgba(6,182,212,.2)"/>
+          <circle cx="30" cy="22" r="2.4" stroke="#06B6D4" stroke-width="1.2" fill="rgba(6,182,212,.2)"/>
+          <circle cx="17" cy="30" r="2.4" stroke="#06B6D4" stroke-width="1.2" fill="rgba(6,182,212,.2)"/>
+          <circle cx="4"  cy="22" r="2.4" stroke="#06B6D4" stroke-width="1.2" fill="rgba(6,182,212,.2)"/>
+          <circle cx="4"  cy="12" r="2.4" stroke="#06B6D4" stroke-width="1.2" fill="rgba(6,182,212,.2)"/>
+          <!-- center -->
+          <circle cx="17" cy="17" r="3.8" stroke="#06B6D4" stroke-width="1.5" fill="rgba(6,182,212,.15)"/>
+          <!-- spokes -->
+          <line x1="17" y1="6.4"  x2="17" y2="13.2" stroke="#06B6D4" stroke-width=".9" opacity=".6"/>
+          <line x1="27.9" y1="13.2" x2="20.8" y2="15.5" stroke="#06B6D4" stroke-width=".9" opacity=".6"/>
+          <line x1="27.9" y1="20.8" x2="20.8" y2="18.5" stroke="#06B6D4" stroke-width=".9" opacity=".6"/>
+          <line x1="17" y1="27.6" x2="17" y2="20.8" stroke="#06B6D4" stroke-width=".9" opacity=".6"/>
+          <line x1="6.1" y1="20.8" x2="13.2" y2="18.5" stroke="#06B6D4" stroke-width=".9" opacity=".6"/>
+          <line x1="6.1" y1="13.2" x2="13.2" y2="15.5" stroke="#06B6D4" stroke-width=".9" opacity=".6"/>
+        </svg>
+      </div>
+
+      <div class="aire-name">AIRE ENGINE</div>
+      <div class="aire-sub">Generates optimal programme in &lt; 60 seconds</div>
+      <div class="tags">
+        <span class="tag">Multi-Constraint Optimisation</span>
+        <span class="tag">Zero Manual Conflicts</span>
+        <span class="tag">100% DGCA Compliant</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- arrow -->
+<div class="va">
+  <svg width="40" height="56" viewBox="0 0 40 56">
+    <defs><marker id="mC" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#06B6D4"/></marker></defs>
+    <line class="pl" x1="20" y1="4" x2="20" y2="50" stroke="#06B6D4" stroke-width="2" marker-end="url(#mC)" stroke-dasharray="100" stroke-dashoffset="100"/>
+  </svg>
+</div>
+
+<!-- ════════ PHASE 4 ════════ -->
+<div class="ph" id="p4" data-d="450">
+  <div class="lbl">
+    <span class="lbl-n">04</span>
+    <span class="lbl-t">Phase 04 — Flying Programme Generated</span>
+    <span class="lbl-r"></span>
+  </div>
+  <div class="g p4">
+    <div class="p4-title">
+      <svg viewBox="0 0 24 24">
+        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+        <polyline points="10 9 9 9 8 9"/>
+      </svg>
+      Daily Flying Programme
+    </div>
+    <div class="tscroll">
+      <table class="ptbl">
+        <thead>
+          <tr>
+            <th>Sortie</th><th>Time</th><th>Student</th>
+            <th>Instructor</th><th>Aircraft</th><th>Exercise</th><th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <tr class="tr"><td>001</td><td>06:30</td><td>A. Kapoor</td><td>Capt. Sharma</td><td>VT-SKY</td><td>Ex. 12 – Stalls</td><td><span class="ok">&#10003; Ready</span></td></tr>
+          <tr class="tr"><td>002</td><td>07:15</td><td>S. Gupta</td><td>Capt. Mehta</td><td>VT-SNA</td><td>Ex. 08 – Circuit</td><td><span class="ok">&#10003; Ready</span></td></tr>
+          <tr class="tr"><td>003</td><td>08:00</td><td>V. Singh</td><td>Capt. Verma</td><td>VT-NWA</td><td>Ex. 15 – Nav</td><td><span class="ok">&#10003; Ready</span></td></tr>
+          <tr class="tr"><td>004</td><td>08:45</td><td>P. Nair</td><td>Capt. Sharma</td><td>VT-SKY</td><td>Ex. 06 – Flapless</td><td><span class="ok">&#10003; Ready</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="btns">
+      <button class="btn-o">CFI Review</button>
+      <button class="btn-g">Publish Programme</button>
+    </div>
+  </div>
+</div>
+
+<!-- arrow -->
+<div class="va">
+  <svg width="40" height="56" viewBox="0 0 40 56">
+    <defs><marker id="mD" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#06B6D4"/></marker></defs>
+    <line class="pl" x1="20" y1="4" x2="20" y2="50" stroke="#06B6D4" stroke-width="2" marker-end="url(#mD)" stroke-dasharray="100" stroke-dashoffset="100"/>
+  </svg>
+</div>
+
+<!-- ════════ PHASE 5 ════════ -->
+<div class="ph" id="p5" data-d="600">
+  <div class="lbl">
+    <span class="lbl-n">05</span>
+    <span class="lbl-t">Phase 05 — Execution &amp; Learning Loop</span>
+    <span class="lbl-r"></span>
+  </div>
+  <div class="p5-row">
+
+    <div class="g ecard">
+      <div class="ib" style="margin-bottom:14px">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="#06B6D4" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 17h18"/><path d="M7 17V9l5-6 5 6v8"/>
+          <path d="M9 17v-4h6v4"/>
+        </svg>
+      </div>
+      <div class="ec-t">Sorties Executed</div>
+      <div class="ec-d">Aircraft depart and return. Every event timestamped in real time.</div>
+    </div>
+
+    <div class="marr">
+      <svg viewBox="0 0 32 14">
+        <line x1="0" y1="7" x2="25" y2="7"/>
+        <polyline points="19,1 25,7 19,13"/>
+      </svg>
+    </div>
+
+    <div class="g ecard">
+      <div class="ib" style="margin-bottom:14px">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="#06B6D4" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="23,4 23,10 17,10"/>
+          <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/>
+        </svg>
+      </div>
+      <div class="ec-t">Post-Flight Sync</div>
+      <div class="ec-d">Logbook auto-populated. Exercise marked complete. Hours updated.</div>
+    </div>
+
+    <div class="marr">
+      <svg viewBox="0 0 32 14">
+        <line x1="0" y1="7" x2="25" y2="7"/>
+        <polyline points="19,1 25,7 19,13"/>
+      </svg>
+    </div>
+
+    <div class="g ecard">
+      <div class="ib" style="margin-bottom:14px">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="#06B6D4" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+          <path d="M8 15h5"/><path d="M15 15l2 2-2 2"/>
+        </svg>
+      </div>
+      <div class="ec-t">Next-Day Feed</div>
+      <div class="ec-d">AIRE uses today's outcomes to optimise tomorrow's programme better.</div>
+    </div>
+
+  </div>
+</div><!-- /p5 -->
+
+<!-- feedback arc (JS-built) -->
+<svg id="fb"></svg>
+
+</div><!-- /flow -->
+
+<!-- STATS BAR -->
+<div class="g stats" id="stats">
+  <div class="stat"><div class="sv">&lt;&thinsp;60s</div><div class="sl">Programme<br>Generation</div></div>
+  <div class="stat"><div class="sv">100%</div><div class="sl">DGCA Rules<br>Enforced</div></div>
+  <div class="stat"><div class="sv">2h→5m</div><div class="sl">CFI Time Saved<br>Each Morning</div></div>
+  <div class="stat"><div class="sv">Zero</div><div class="sl">Manual<br>Conflicts</div></div>
+</div>
+
+</div><!-- /page -->
+
+<script>
+(function(){
+  // phase fade-in
+  var phs=document.querySelectorAll('.ph');
+  var io=new IntersectionObserver(function(ee){
+    ee.forEach(function(e){
+      if(!e.isIntersecting)return;
+      var el=e.target,d=parseInt(el.dataset.d||0,10);
+      el.style.animationDelay=d+'ms';
+      el.classList.add('in');
+      io.unobserve(el);
+    });
+  },{threshold:0.07});
+  phs.forEach(function(p){io.observe(p)});
+
+  // stats
+  var st=document.getElementById('stats');
+  var sio=new IntersectionObserver(function(ee){
+    ee.forEach(function(e){if(e.isIntersecting){st.classList.add('in');sio.unobserve(st)}});
+  },{threshold:0.1});
+  sio.observe(st);
+
+  // draw converging lines
+  function drawConv(){
+    document.querySelectorAll('.cl').forEach(function(l,i){
+      setTimeout(function(){
+        l.style.transition='stroke-dashoffset .6s ease';
+        l.style.strokeDashoffset='0';
+      },480+i*75);
+    });
+  }
+
+  // draw phase arrows
+  function drawArrows(){
+    document.querySelectorAll('.pl').forEach(function(l,i){
+      setTimeout(function(){
+        l.style.transition='stroke-dashoffset .42s ease';
+        l.style.strokeDashoffset='0';
+      },1050+i*350);
+    });
+  }
+
+  // table rows
+  function animRows(){
+    document.querySelectorAll('.tr').forEach(function(r,i){
+      setTimeout(function(){r.classList.add('on')},1650+i*200);
+    });
+  }
+
+  // feedback arc
+  function buildArc(){
+    if(window.innerWidth<900)return;
+    var flow=document.getElementById('flow');
+    var p1=document.getElementById('p1');
+    var p5=document.getElementById('p5');
+    var arc=document.getElementById('fb');
+    if(!flow||!p1||!p5||!arc)return;
+    var fr=flow.getBoundingClientRect();
+    var r1=p1.getBoundingClientRect();
+    var r5=p5.getBoundingClientRect();
+    var sy=r1.top-fr.top+r1.height*.5;
+    var ey=r5.top-fr.top+r5.height*.5;
+    var h=ey-sy+20,w=74;
+    arc.style.cssText='display:block;position:absolute;top:'+sy+'px;right:-86px;overflow:visible';
+    arc.setAttribute('width',w);
+    arc.setAttribute('height',h);
+    arc.setAttribute('viewBox','0 0 '+w+' '+h);
+    var ns='http://www.w3.org/2000/svg';
+    arc.innerHTML='';
+    // path
+    var p=document.createElementNS(ns,'path');
+    p.setAttribute('d','M 13 '+(h-8)+' Q '+(w-6)+' '+(h/2)+' 13 8');
+    p.setAttribute('stroke','#06B6D4');p.setAttribute('stroke-width','1.8');
+    p.setAttribute('fill','none');p.setAttribute('stroke-dasharray','8 5');
+    p.style.cssText='animation:dash 1.6s linear infinite;opacity:0;transition:opacity .8s ease';
+    arc.appendChild(p);
+    // arrowhead
+    var tip=document.createElementNS(ns,'polygon');
+    tip.setAttribute('points','6,19 13,8 20,19');
+    tip.setAttribute('fill','#06B6D4');
+    tip.style.cssText='opacity:0;transition:opacity .5s ease .15s';
+    arc.appendChild(tip);
+    // label
+    var tx=document.createElementNS(ns,'text');
+    var cx=w-9,cy=h/2;
+    tx.setAttribute('x',cx);tx.setAttribute('y',cy);
+    tx.setAttribute('fill','#C9A84C');tx.setAttribute('font-size','9.5');
+    tx.setAttribute('font-family','Space Grotesk,sans-serif');tx.setAttribute('font-weight','600');
+    tx.setAttribute('letter-spacing','.07em');tx.setAttribute('text-anchor','middle');
+    tx.setAttribute('transform','rotate(-90,'+cx+','+cy+')');
+    tx.textContent='Continuous Learning Loop';
+    arc.appendChild(tx);
+    setTimeout(function(){p.style.opacity='1';tip.style.opacity='1'},2700);
+  }
+
+  window.addEventListener('load',function(){
+    drawConv();drawArrows();animRows();
+    setTimeout(buildArc,420);
+  });
+
+  var rt;
+  window.addEventListener('resize',function(){
+    clearTimeout(rt);rt=setTimeout(buildArc,280);
+  });
+}());
+</script>
+</body>
+</html>

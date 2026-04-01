@@ -22,6 +22,7 @@ import { CTA } from './components/sections/CTA';
 // Import the new BookDemo page
 import { BookDemo } from './pages/BookDemo';
 import { WhyNeuralWings } from './pages/WhyNeuralWings';
+import { AirePage } from './pages/AirePage';
 
 function LandingPage() {
   const [introFinished, setIntroFinished] = useState(() => {
@@ -62,6 +63,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/book-demo" element={<BookDemo />} />
         <Route path="/why-neural-wings" element={<WhyNeuralWings />} />
+        <Route path="/aire" element={<AirePage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { cn } from '../../lib/utils';
@@ -13,7 +13,6 @@ const navLinks = [
   { label: 'Modules',    href: '#modules' },
   { label: 'AI Engine',  href: '#demo',     tab: 'ops' },
   { label: 'Dashboards', href: '#dashboards' },
-  { label: 'Pricing',    href: '#pricing' },
   { label: 'Demo',       href: '#demo' },
 ];
 
@@ -30,6 +29,8 @@ export function Navbar() {
   const [floatingVisible, setFloatingVisible] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,12 +49,28 @@ export function Navbar() {
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
+  // After navigating to home with a hash, scroll to the target section
+  useEffect(() => {
+    if (isHome && location.hash) {
+      const el = document.getElementById(location.hash.slice(1));
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [isHome, location.hash]);
+
   const handleNavClick = (link: typeof navLinks[0]) => {
     setMenuOpen(false);
+    if (!isHome) {
+      // Navigate to home first, then scroll to section (hash triggers the effect above)
+      navigate('/' + link.href);
+      return;
+    }
     if (link.tab) {
       document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' });
       window.dispatchEvent(new CustomEvent('openDemoTab', { detail: { tab: link.tab } }));
+      return;
     }
+    const el = document.getElementById(link.href.slice(1));
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -86,24 +103,20 @@ export function Navbar() {
           {/* Desktop center links */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              link.tab ? (
-                <button
-                  key={link.label}
-                  onClick={() => handleNavClick(link)}
-                  className="font-sans font-medium text-[14px] text-zinc-600 hover:text-sky-600 transition-colors"
-                >
-                  {link.label}
-                </button>
-              ) : (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="font-sans font-medium text-[14px] text-zinc-600 hover:text-sky-600 transition-colors"
-                >
-                  {link.label}
-                </a>
-              )
+              <button
+                key={link.label}
+                onClick={() => handleNavClick(link)}
+                className="font-sans font-medium text-[14px] text-zinc-600 hover:text-sky-600 transition-colors"
+              >
+                {link.label}
+              </button>
             ))}
+            <Link
+              to="/aire"
+              className="font-sans font-medium text-[14px] text-sky-600 hover:text-sky-700 transition-colors"
+            >
+              AIRE
+            </Link>
             <Link
               to="/why-neural-wings"
               className="font-sans font-medium text-[14px] text-red-500 hover:text-red-600 transition-colors"
@@ -172,26 +185,22 @@ export function Navbar() {
             >
               <div className="max-w-[1280px] mx-auto px-4 py-4 flex flex-col gap-1">
                 {navLinks.map((link) => (
-                  link.tab ? (
-                    <button
-                      key={link.label}
-                      onClick={() => handleNavClick(link)}
-                      className="w-full flex items-center px-4 py-3 rounded-xl text-[15px] font-semibold text-zinc-700 hover:bg-zinc-50 hover:text-sky-600 transition-colors text-left"
-                    >
-                      {link.label}
-                    </button>
-                  ) : (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      onClick={() => setMenuOpen(false)}
-                      className="flex items-center px-4 py-3 rounded-xl text-[15px] font-semibold text-zinc-700 hover:bg-zinc-50 hover:text-sky-600 transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  )
+                  <button
+                    key={link.label}
+                    onClick={() => handleNavClick(link)}
+                    className="w-full flex items-center px-4 py-3 rounded-xl text-[15px] font-semibold text-zinc-700 hover:bg-zinc-50 hover:text-sky-600 transition-colors text-left"
+                  >
+                    {link.label}
+                  </button>
                 ))}
 
+                <Link
+                  to="/aire"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center px-4 py-3 rounded-xl text-[15px] font-semibold text-sky-600 hover:bg-sky-50 hover:text-sky-700 transition-colors"
+                >
+                  AIRE
+                </Link>
                 <Link
                   to="/why-neural-wings"
                   onClick={() => setMenuOpen(false)}

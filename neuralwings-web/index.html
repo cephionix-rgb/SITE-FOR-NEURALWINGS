@@ -63,13 +63,13 @@
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()" />
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self';
-      script-src 'self' https://www.googletagmanager.com 'sha256-jCfyZBdPsSBxpFId9nJ2Dc+4qNaRnxKX65uv66d1fDA=' 'unsafe-inline';
+      script-src 'self' https://www.googletagmanager.com 'unsafe-inline';
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
       font-src 'self' https://fonts.gstatic.com;
       img-src 'self' data: blob: https://www.google-analytics.com https://*.tile.openstreetmap.org;
       media-src 'self' blob: https://d8j0ntlcm91z4.cloudfront.net;
       connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://region1.analytics.google.com https://api.open-meteo.com;
-      frame-src https://www.openstreetmap.org https://script.google.com;
+      frame-src 'self' https://www.openstreetmap.org https://script.google.com;
       object-src 'none';
       base-uri 'self';
       form-action 'self' https://script.google.com;
@@ -77,25 +77,10 @@
 
     <!-- Google Analytics 4 -->
     <!-- GitHub Pages SPA redirect handler -->
-    <script>
-      (function() {
-        var p = window.location.search && decodeURIComponent(window.location.search.slice(3));
-        if (p && p.startsWith('/')) {
-          window.history.replaceState(null, null, p + window.location.hash);
-        }
-      })();
-    </script>
+    <script src="/spa-redirect.js"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KQYZYE96XT"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-KQYZYE96XT', {
-        anonymize_ip: true,
-        cookie_flags: 'SameSite=Strict;Secure'
-      });
-    </script>
+    <script src="/analytics.js"></script>
   </head>
   <body>
     <div id="root"></div>

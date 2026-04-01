@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { Brain, Plane, Users, Shield, BookOpen, Settings, Wrench, Droplet, CheckCircle, Database, Calendar, Lock, Globe, FileText, Home, IndianRupee, MessageSquare, Zap, Target, Info } from 'lucide-react';
+import { Brain, Plane, Users, Shield, BookOpen, Settings, Wrench, Droplet, CheckCircle, Database, Calendar, Lock, Globe, FileText, Home, IndianRupee, MessageSquare, Zap, Target, Info, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 const MODULE_INFO: Record<string, { subtitle: string; description: string }> = {
@@ -161,15 +162,51 @@ export function SolarSystemExplorer() {
 
       {/* ── Mobile: horizontal slider (visible below md) ── */}
       <div className="md:hidden relative z-10 max-w-[1280px] mx-auto pb-6">
+
         {/* AIRE core chip */}
-        <div className="flex justify-center mb-5 px-4">
-          <div className="flex items-center gap-3 px-5 py-3 rounded-2xl border-2 border-blue-300 bg-white shadow-[0_0_30px_rgba(59,130,246,0.15)]">
+        <div className="flex justify-center mb-4 px-4">
+          <Link to="/aire" className="flex items-center gap-3 px-5 py-3 rounded-2xl border-2 border-blue-300 bg-white shadow-[0_0_30px_rgba(59,130,246,0.15)] hover:border-blue-500 hover:shadow-[0_0_40px_rgba(59,130,246,0.25)] transition-all">
             <Brain className="w-6 h-6 text-blue-500" />
             <div>
               <p className="font-heading font-extrabold text-sm text-zinc-900 tracking-widest">AIRE</p>
-              <p className="text-[10px] text-zinc-500 font-medium">Central AI Engine</p>
+              <p className="text-[10px] text-blue-500 font-semibold">See how it works →</p>
             </div>
-          </div>
+          </Link>
+        </div>
+
+        {/* Description box — sits ABOVE the slider so it's in view on tap */}
+        <div className="px-4 mb-4">
+          <AnimatePresence mode="wait">
+            {selectedModule && MODULE_INFO[selectedModule] ? (
+              <motion.div
+                key={selectedModule}
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.18 }}
+                className="bg-white border border-blue-200 rounded-2xl p-5 shadow-md"
+              >
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent-gold mb-1">
+                  {MODULE_INFO[selectedModule].subtitle}
+                </p>
+                <h3 className="font-heading font-bold text-lg text-zinc-900 mb-3">{selectedModule}</h3>
+                <div className="h-px w-full bg-gradient-to-r from-blue-300 to-transparent mb-3" />
+                <p className="text-zinc-600 text-sm leading-relaxed font-medium">
+                  {MODULE_INFO[selectedModule].description}
+                </p>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="empty-hint"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="bg-blue-50/50 border border-blue-100 border-dashed rounded-2xl p-4 text-center"
+              >
+                <p className="text-zinc-400 text-sm font-medium">Tap any module below to explore its capabilities.</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* Horizontal module slider */}
@@ -201,40 +238,6 @@ export function SolarSystemExplorer() {
           })}
         </div>
 
-        {/* Description box */}
-        <div className="px-4 mt-4">
-          <AnimatePresence mode="wait">
-            {selectedModule && MODULE_INFO[selectedModule] ? (
-              <motion.div
-                key={selectedModule}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 8 }}
-                transition={{ duration: 0.2 }}
-                className="bg-white border border-blue-200 rounded-2xl p-5 shadow-md"
-              >
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent-gold mb-1">
-                  {MODULE_INFO[selectedModule].subtitle}
-                </p>
-                <h3 className="font-heading font-bold text-lg text-zinc-900 mb-3">{selectedModule}</h3>
-                <div className="h-px w-full bg-gradient-to-r from-blue-300 to-transparent mb-3" />
-                <p className="text-zinc-600 text-sm leading-relaxed font-medium">
-                  {MODULE_INFO[selectedModule].description}
-                </p>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="empty-hint"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="bg-blue-50/50 border border-blue-100 border-dashed rounded-2xl p-5 text-center"
-              >
-                <p className="text-zinc-500 text-sm font-medium">← Slide and tap any module to explore its capabilities.</p>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
       </div>
 
       {/* ── Desktop solar system (hidden below md) ── */}
@@ -245,15 +248,19 @@ export function SolarSystemExplorer() {
 
           {/* Sun / Core: AIRE */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
-            <motion.div
-              initial={{ scale: 0.5, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white border-2 border-yellow-500 flex flex-col items-center justify-center shadow-[0_0_60px_rgba(202,138,4,0.4),0_0_120px_rgba(59,130,246,0.15)] cursor-pointer group"
-            >
-              <Brain className="w-8 h-8 sm:w-10 sm:h-10 text-blue-500 mb-1 group-hover:scale-110 transition-transform" />
-              <span className="font-heading font-extrabold text-xs sm:text-sm text-zinc-900 tracking-widest drop-shadow-md">AIRE</span>
-            </motion.div>
+            <Link to="/aire">
+              <motion.div
+                initial={{ scale: 0.5, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.1 }}
+                className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white border-2 border-yellow-500 flex flex-col items-center justify-center shadow-[0_0_60px_rgba(202,138,4,0.4),0_0_120px_rgba(59,130,246,0.15)] cursor-pointer group"
+              >
+                <Brain className="w-8 h-8 sm:w-10 sm:h-10 text-blue-500 mb-1 group-hover:scale-110 transition-transform" />
+                <span className="font-heading font-extrabold text-xs sm:text-sm text-zinc-900 tracking-widest drop-shadow-md">AIRE</span>
+                <span className="text-[8px] text-blue-500 font-semibold tracking-wide mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity">Learn more →</span>
+              </motion.div>
+            </Link>
           </div>
 
           {/* Rings and Planets */}
@@ -349,6 +356,38 @@ export function SolarSystemExplorer() {
           </AnimatePresence>
         </div>
       </div>{/* end desktop solar system */}
+
+      {/* AIRE callout strip */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="mt-14 mx-auto max-w-[720px] px-4"
+      >
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-gradient-to-r from-blue-50 to-sky-50 border border-blue-200/70 rounded-2xl px-6 py-5">
+          <div className="flex items-center gap-4">
+            <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center shrink-0">
+              <Brain className="w-5 h-5 text-blue-600" />
+            </div>
+            <div>
+              <p className="font-heading font-bold text-[14px] text-zinc-900 leading-tight">
+                Powered by AIRE — AI Roster Engine
+              </p>
+              <p className="font-sans text-[12.5px] text-zinc-500 mt-0.5">
+                See exactly how Neural Wings builds your daily flying programme in under 60 seconds.
+              </p>
+            </div>
+          </div>
+          <Link
+            to="/aire"
+            className="shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-600 text-white font-sans text-[13px] font-bold hover:bg-blue-700 transition-colors whitespace-nowrap"
+          >
+            How AIRE works
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+      </motion.div>
 
       <style>{`
         @keyframes spin {
