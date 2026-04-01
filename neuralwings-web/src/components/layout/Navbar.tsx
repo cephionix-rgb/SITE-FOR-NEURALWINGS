@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { cn } from '../../lib/utils';
@@ -104,6 +104,12 @@ export function Navbar() {
                 </a>
               )
             ))}
+            <Link
+              to="/why-neural-wings"
+              className="font-sans font-medium text-[14px] text-red-500 hover:text-red-600 transition-colors"
+            >
+              Why Neural Wings
+            </Link>
           </div>
 
           {/* Desktop CTA */}
@@ -185,6 +191,14 @@ export function Navbar() {
                     </a>
                   )
                 ))}
+
+                <Link
+                  to="/why-neural-wings"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center px-4 py-3 rounded-xl text-[15px] font-semibold text-red-500 hover:bg-red-50 hover:text-red-600 transition-colors"
+                >
+                  Why Neural Wings
+                </Link>
 
                 <div className="mt-2 pt-3 border-t border-zinc-100">
                   <a
