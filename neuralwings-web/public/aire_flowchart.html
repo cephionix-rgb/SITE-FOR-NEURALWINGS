@@ -895,36 +895,18 @@ function closeModal(){
 
 document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
 
-// ── SCROLL ANIMATIONS ──
-const io = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      const delay = +e.target.dataset.delay||0;
-      setTimeout(()=>e.target.classList.add('in'), delay);
-      io.unobserve(e.target);
-    }
-  });
-},{threshold:.08});
-
-document.querySelectorAll('.phase').forEach((el,i)=>{
-  el.dataset.delay = i*70;
-  io.observe(el);
+// ── LOAD ANIMATIONS (stagger on page load — no scroll observer needed inside iframe) ──
+document.querySelectorAll('.phase').forEach((el, i) => {
+  setTimeout(() => el.classList.add('in'), 120 + i * 70);
 });
 
 // ── TABLE ROW STAGGER ──
-const tio = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.querySelectorAll('tbody tr').forEach((tr,i)=>{
-        setTimeout(()=>tr.classList.add('row-in'), 150+i*130);
-      });
-      tio.unobserve(e.target);
-    }
-  });
-},{threshold:.25});
-
 const pt = document.getElementById('ptable');
-if(pt) tio.observe(pt);
+if (pt) {
+  pt.querySelectorAll('tbody tr').forEach((tr, i) => {
+    setTimeout(() => tr.classList.add('row-in'), 300 + i * 130);
+  });
+}
 </script>
 </body>
 </html>
