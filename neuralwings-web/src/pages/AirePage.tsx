@@ -20,11 +20,13 @@ export function AirePage() {
       }
     };
 
-    // Resize on load, then again after a short delay for async font/image loads
+    // Resize on load, then poll to catch async font/image/animation load
     iframe.addEventListener('load', () => {
       resize();
-      setTimeout(resize, 400);
-      setTimeout(resize, 1200);
+      setTimeout(resize, 300);
+      setTimeout(resize, 800);
+      setTimeout(resize, 2000);
+      setTimeout(resize, 4000);
     });
   }, []);
 
@@ -38,10 +40,10 @@ export function AirePage() {
           title="AIRE — AI Roster Engine"
           style={{
             width: '100%',
-            height: '100vh',   /* sensible default until JS resizes */
+            minHeight: '100vh',
+            height: 'auto',
             border: 'none',
             display: 'block',
-            overflow: 'hidden',
           }}
         />
       </div>
