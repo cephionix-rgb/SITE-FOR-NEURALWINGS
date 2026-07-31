@@ -88,7 +88,7 @@ export function Footer() {
             </div>
 
             <p className="text-zinc-300 text-base leading-relaxed max-w-[300px]">
-              The complete AI-powered Aviation Management System for DGCA-approved FTOs. Built by pilots, for pilots.
+              The complete AI-powered Aviation Management System for flight training organisations — DGCA-ready in India, available to academies worldwide. Built by pilots, for pilots.
             </p>
 
             {/* Cephionix badge */}
@@ -310,6 +310,8 @@ export function Footer() {
             <span className="text-zinc-400 text-xs md:text-sm font-medium">DGCA Compliant</span>
             <span className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
             <span className="text-zinc-400 text-xs md:text-sm font-medium">AI-Powered</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
+            <span className="text-zinc-400 text-xs md:text-sm font-medium">Available Worldwide</span>
           </div>
         </div>
 

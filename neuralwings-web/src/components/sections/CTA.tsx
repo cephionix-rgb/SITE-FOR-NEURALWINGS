@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, CalendarCheck, ShieldCheck, Zap } from 'lucide-react';
+import { ArrowRight, CalendarCheck, ShieldCheck, Zap, Globe } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { DemoForm } from '../forms/DemoForm';
 
@@ -7,6 +7,7 @@ const stats = [
   { icon: CalendarCheck, value: '< 72 hrs', label: 'Onboarding Time' },
   { icon: ShieldCheck, value: 'DGCA', label: 'Compliant by Design' },
   { icon: Zap, value: '12+', label: 'Intelligent Modules' },
+  { icon: Globe, value: 'Worldwide', label: 'Any Country, Any Academy' },
 ];
 
 export function CTA() {
@@ -76,8 +77,8 @@ export function CTA() {
           transition={{ delay: 0.15 }}
           className="text-zinc-400 text-[18px] md:text-[22px] max-w-[680px] leading-relaxed mb-14"
         >
-          Join the next generation of flying training organisations operating
-          intelligently, safely, and profitably — powered by Neural Wings.
+          Join the next generation of flying training organisations — in India and anywhere in the world —
+          operating intelligently, safely, and profitably, powered by Neural Wings.
         </motion.p>
 
         {/* Stat pills */}

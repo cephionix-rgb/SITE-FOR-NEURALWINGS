@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ShieldCheck, Cpu, Activity, LayoutDashboard, Target } from 'lucide-react';
+import { ShieldCheck, Cpu, Activity, LayoutDashboard, Target, Globe } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -121,7 +121,7 @@ export function Hero() {
             <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
           </span>
           <span className="font-sans font-bold text-[10px] text-sky-800 uppercase tracking-[0.2em] drop-shadow-sm">
-            Aviation Management System · India
+            Aviation Management System · Available Worldwide
           </span>
         </motion.div>
 
@@ -132,8 +132,8 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
           className="font-heading font-extrabold text-[36px] sm:text-[52px] md:text-[80px] lg:text-[96px] leading-[1.05] tracking-tight text-zinc-900 mb-6"
         >
-          <span className="block drop-shadow-sm">The Future of</span>
-          <span className="block text-gradient bg-[length:200%_auto] animate-[gradient_4s_ease-in-out_infinite] py-2">Indian Aviation</span>
+          <span className="block drop-shadow-sm">The Future of the</span>
+          <span className="block text-gradient bg-[length:200%_auto] animate-[gradient_4s_ease-in-out_infinite] py-2">Aviation Industry</span>
           <span className="block drop-shadow-sm">is Here.</span>
         </motion.h1>
 
@@ -144,8 +144,23 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="font-sans font-normal text-[15px] md:text-[18px] lg:text-[22px] text-zinc-700 font-medium max-w-2xl mx-auto leading-relaxed mb-10 md:mb-12 drop-shadow-sm px-2 md:px-0"
         >
-          Neural Wings is the first complete AI-powered Aviation Management System built for DGCA-approved FTOs. 19 integrated modules. One platform. Zero paper.
+          Neural Wings is the first complete AI-powered Aviation Management System for flight training organisations — DGCA-ready in India, and available to academies in any country. 19 integrated modules. One platform. Zero paper.
         </motion.p>
+
+        {/* Global availability strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.25, ease: 'easeOut' }}
+          className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 -mt-6 mb-10 md:mb-12"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-sky-200 bg-white/70 backdrop-blur-sm shadow-sm">
+            <Globe className="w-3.5 h-3.5 text-sky-500" />
+            <span className="font-sans text-[12px] md:text-[13px] font-semibold text-zinc-700">
+              Built for every country — any flight academy, anywhere in the world
+            </span>
+          </div>
+        </motion.div>
 
         {/* CTA Buttons */}
         <motion.div
