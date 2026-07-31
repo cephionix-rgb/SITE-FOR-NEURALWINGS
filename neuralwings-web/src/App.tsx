@@ -2,8 +2,18 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      // Let the new route paint before looking for the anchor.
+      const id = hash.slice(1);
+      const timer = setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      }, 80);
+      return () => clearTimeout(timer);
+    }
+    window.scrollTo(0, 0);
+  }, [pathname, hash]);
   return null;
 }
 import { Layout } from './components/layout/Layout';
@@ -23,6 +33,10 @@ import { CTA } from './components/sections/CTA';
 import { BookDemo } from './pages/BookDemo';
 import { WhyNeuralWings } from './pages/WhyNeuralWings';
 import { AirePage } from './pages/AirePage';
+import { About } from './pages/About';
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
+import { Terms } from './pages/Terms';
+import { NotFound } from './pages/NotFound';
 
 function LandingPage() {
   const [introFinished, setIntroFinished] = useState(() => {
@@ -64,6 +78,13 @@ function App() {
         <Route path="/book-demo" element={<BookDemo />} />
         <Route path="/why-neural-wings" element={<WhyNeuralWings />} />
         <Route path="/aire" element={<AirePage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/careers" element={<About />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/terms-of-service" element={<Terms />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

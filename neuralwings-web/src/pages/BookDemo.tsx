@@ -134,7 +134,7 @@ export function BookDemo() {
                            </button>
                         </div>
                         <p className="text-center text-[10px] text-zinc-400 font-medium mt-4">
-                           By submitting, your details will be securely sent to our team at cephionix@gmail.com to process your demo request.
+                           By submitting, your details will be securely sent to our team at hello@neuralwings.org to process your demo request.
                         </p>
                      </form>
                   </>

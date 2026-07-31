@@ -1,20 +1,52 @@
-import { Mail, Phone, Globe, MapPin, ArrowUpRight } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Mail, LifeBuoy, Phone, Globe, MapPin, ArrowUpRight } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logoUrl from '../../assets/logo.png';
+import { CONTACT_EMAIL, SUPPORT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_TEL } from '../../lib/contact';
 
-const modules = [
-  'Flight Operations', 'Fleet Management', 'Fuel Management',
-  'AIRE Scheduler', 'Go/No-Go Engine', 'Digital Logbook',
-  'Safety SMS', 'Finance', 'Student Portal', 'DGCA Compliance',
+// `module` matches the module name used by SolarSystemExplorer; `to` is a plain route.
+const modules: { label: string; module?: string; to?: string }[] = [
+  { label: 'Flight Operations', module: 'Flight Ops' },
+  { label: 'Fleet Management', module: 'Fleet Mgmt' },
+  { label: 'Fuel Management', module: 'Fuel Mgmt' },
+  { label: 'AIRE Scheduler', to: '/aire' },
+  { label: 'Go/No-Go Engine', module: 'Go/No-Go' },
+  { label: 'Digital Logbook', module: 'Digital Logbook' },
+  { label: 'Safety SMS', module: 'SMS' },
+  { label: 'Finance', module: 'Finance & Accounts' },
+  { label: 'Student Portal', module: 'Student Mgmt' },
+  { label: 'DGCA Compliance', module: 'DGCA Calendar' },
 ];
 
 const company = [
-  'About Cephionix', 'Neural Wings', 'VERIOS (Oncology)',
-  'Careers', 'Blog', 'Privacy Policy', 'Terms',
+  { label: 'About Cephionix', to: '/about' },
+  { label: 'Neural Wings', to: '/' },
+  { label: 'VERIOS (Oncology)', to: '/about#verios' },
+  { label: 'AIRE Engine', to: '/aire' },
+  { label: 'Why Neural Wings', to: '/why-neural-wings' },
+  { label: 'Careers', to: '/about#careers' },
+  { label: 'Privacy Policy', to: '/privacy' },
+  { label: 'Terms of Service', to: '/terms' },
 ];
 
 export function Footer() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Scroll to the module explorer and open the requested module's detail panel.
+  const openModule = (name: string) => {
+    const reveal = () => {
+      document.getElementById('modules')?.scrollIntoView({ behavior: 'smooth' });
+      window.dispatchEvent(new CustomEvent('openModule', { detail: { module: name } }));
+    };
+
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Give the landing page a moment to mount before targeting the section.
+      setTimeout(reveal, 400);
+      return;
+    }
+    reveal();
+  };
 
   return (
     <footer className="relative bg-[#050810] overflow-hidden" id="contact">
@@ -58,10 +90,13 @@ export function Footer() {
             </p>
 
             {/* Cephionix badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/30 bg-amber-500/10 w-max">
+            <Link
+              to="/about"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/30 bg-amber-500/10 w-max hover:border-amber-500/60 hover:bg-amber-500/15 transition-colors"
+            >
               <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_6px_2px_rgba(251,191,36,0.5)]" />
               <span className="text-amber-300 text-xs font-bold tracking-widest uppercase">A product of Cephionix</span>
-            </div>
+            </Link>
 
             {/* Status pill */}
             <div className="inline-flex items-center gap-2">
@@ -89,16 +124,27 @@ export function Footer() {
               <span className="w-5 h-[2px] rounded-full bg-gradient-to-r from-cyan-400 to-blue-500" />
               <h4 className="text-xs font-extrabold text-cyan-400 uppercase tracking-[0.2em]">Modules</h4>
             </div>
-            {modules.map((link) => (
-              <a
-                key={link}
-                href="#"
-                className="group flex items-center gap-2 text-zinc-400 text-[15px] font-medium hover:text-white transition-colors duration-200"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-zinc-700 group-hover:bg-cyan-500 transition-colors shrink-0" />
-                {link}
-              </a>
-            ))}
+            {modules.map((link) =>
+              link.to ? (
+                <Link
+                  key={link.label}
+                  to={link.to}
+                  className="group flex items-center gap-2 text-zinc-400 text-[15px] font-medium hover:text-white transition-colors duration-200 text-left"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-zinc-700 group-hover:bg-cyan-500 transition-colors shrink-0" />
+                  {link.label}
+                </Link>
+              ) : (
+                <button
+                  key={link.label}
+                  onClick={() => openModule(link.module!)}
+                  className="group flex items-center gap-2 text-zinc-400 text-[15px] font-medium hover:text-white transition-colors duration-200 text-left"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-zinc-700 group-hover:bg-cyan-500 transition-colors shrink-0" />
+                  {link.label}
+                </button>
+              )
+            )}
           </div>
 
           {/* ── Company col ── */}
@@ -108,14 +154,14 @@ export function Footer() {
               <h4 className="text-xs font-extrabold text-amber-400 uppercase tracking-[0.2em]">Cephionix</h4>
             </div>
             {company.map((link) => (
-              <a
-                key={link}
-                href="#"
+              <Link
+                key={link.label}
+                to={link.to}
                 className="group flex items-center gap-2 text-zinc-400 text-[15px] font-medium hover:text-white transition-colors duration-200"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-zinc-700 group-hover:bg-amber-500 transition-colors shrink-0" />
-                {link}
-              </a>
+                {link.label}
+              </Link>
             ))}
           </div>
 
@@ -127,22 +173,37 @@ export function Footer() {
             </div>
 
             <a
-              href="mailto:cephionix@gmail.com"
+              href={`mailto:${CONTACT_EMAIL}`}
               className="flex items-center gap-3 p-3.5 rounded-xl border border-white/[0.07] bg-white/[0.03] hover:border-cyan-500/35 hover:bg-white/[0.07] transition-all duration-200 group"
             >
               <div className="w-9 h-9 rounded-xl bg-cyan-500/15 flex items-center justify-center shrink-0">
                 <Mail className="w-4 h-4 text-cyan-400" />
               </div>
               <div className="flex flex-col min-w-0">
-                <span className="text-zinc-500 text-[11px] font-bold uppercase tracking-widest mb-0.5">Email</span>
+                <span className="text-zinc-500 text-[11px] font-bold uppercase tracking-widest mb-0.5">Contact</span>
                 <span className="text-zinc-300 group-hover:text-white text-sm font-medium transition-colors truncate">
-                  cephionix@gmail.com
+                  {CONTACT_EMAIL}
                 </span>
               </div>
             </a>
 
             <a
-              href="tel:+919914801833"
+              href={`mailto:${SUPPORT_EMAIL}`}
+              className="flex items-center gap-3 p-3.5 rounded-xl border border-white/[0.07] bg-white/[0.03] hover:border-emerald-500/35 hover:bg-white/[0.07] transition-all duration-200 group"
+            >
+              <div className="w-9 h-9 rounded-xl bg-emerald-500/15 flex items-center justify-center shrink-0">
+                <LifeBuoy className="w-4 h-4 text-emerald-400" />
+              </div>
+              <div className="flex flex-col min-w-0">
+                <span className="text-zinc-500 text-[11px] font-bold uppercase tracking-widest mb-0.5">Support</span>
+                <span className="text-zinc-300 group-hover:text-white text-sm font-medium transition-colors truncate">
+                  {SUPPORT_EMAIL}
+                </span>
+              </div>
+            </a>
+
+            <a
+              href={`tel:${CONTACT_PHONE_TEL}`}
               className="flex items-center gap-3 p-3.5 rounded-xl border border-white/[0.07] bg-white/[0.03] hover:border-violet-500/35 hover:bg-white/[0.07] transition-all duration-200 group"
             >
               <div className="w-9 h-9 rounded-xl bg-violet-500/15 flex items-center justify-center shrink-0">
@@ -151,7 +212,7 @@ export function Footer() {
               <div className="flex flex-col">
                 <span className="text-zinc-500 text-[11px] font-bold uppercase tracking-widest mb-0.5">Phone</span>
                 <span className="text-zinc-300 group-hover:text-white text-sm font-medium transition-colors">
-                  +91 9914801833
+                  {CONTACT_PHONE}
                 </span>
               </div>
             </a>
@@ -189,6 +250,36 @@ export function Footer() {
       {/* ── Bottom bar ── */}
       <div className="relative z-10 max-w-[1280px] mx-auto px-4 md:px-6 mt-12 md:mt-16 pt-6 pb-10">
         <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent mb-6" />
+
+        {/* Legal links */}
+        <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-5 gap-y-2 mb-5">
+          <Link to="/privacy" className="text-zinc-400 hover:text-white text-sm font-medium transition-colors">
+            Privacy Policy
+          </Link>
+          <span className="w-1 h-1 rounded-full bg-zinc-700 hidden md:block" />
+          <Link to="/terms" className="text-zinc-400 hover:text-white text-sm font-medium transition-colors">
+            Terms of Service
+          </Link>
+          <span className="w-1 h-1 rounded-full bg-zinc-700 hidden md:block" />
+          <Link to="/about" className="text-zinc-400 hover:text-white text-sm font-medium transition-colors">
+            About
+          </Link>
+          <span className="w-1 h-1 rounded-full bg-zinc-700 hidden md:block" />
+          <a
+            href={`mailto:${CONTACT_EMAIL}`}
+            className="text-zinc-400 hover:text-white text-sm font-medium transition-colors"
+          >
+            Contact
+          </a>
+          <span className="w-1 h-1 rounded-full bg-zinc-700 hidden md:block" />
+          <a
+            href={`mailto:${SUPPORT_EMAIL}`}
+            className="text-zinc-400 hover:text-white text-sm font-medium transition-colors"
+          >
+            Support
+          </a>
+        </div>
+
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <span className="text-zinc-500 text-sm font-medium">© 2026 Cephionix. All rights reserved.</span>
           <span className="text-zinc-400 text-sm font-semibold italic">"Built by Pilots. Built for Pilots."</span>

@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Brain, Plane, Users, Shield, BookOpen, Settings, Wrench, Droplet, CheckCircle, Database, Calendar, Lock, Globe, FileText, Home, IndianRupee, MessageSquare, Zap, Target, Info, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const MODULE_INFO: Record<string, { subtitle: string; description: string }> = {
   'Flight Ops': {
@@ -125,6 +125,19 @@ const allModules = rings.flatMap(r => r.items);
 export function SolarSystemExplorer() {
   const [hoveredModule, setHoveredModule] = useState<string | null>(null);
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
+
+  // Footer module links open a specific module's detail panel.
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const name = (e as CustomEvent).detail?.module;
+      if (name && MODULE_INFO[name]) {
+        setSelectedModule(name);
+        setHoveredModule(name);
+      }
+    };
+    window.addEventListener('openModule', handler);
+    return () => window.removeEventListener('openModule', handler);
+  }, []);
 
   return (
     <section id="modules" className="relative py-[80px] md:py-[120px] bg-gradient-to-b from-[#F0F7FF] to-white overflow-hidden border-y border-blue-100">
