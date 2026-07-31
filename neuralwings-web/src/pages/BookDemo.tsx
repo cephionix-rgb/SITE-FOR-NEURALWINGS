@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Layout } from '../components/layout/Layout';
 
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby3cWlW8uq1RpkEPCrT8jwky4CE18Y1TIu6WWCQG35__WxxPPvnAfFpqarDDifRVEHKtQ/exec";
+// Apps Script web app owned by hello@neuralwings.org, so notifications are sent
+// from that address. Source and deploy steps live in /apps-script.
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby2YLrcFi1GNiz5RcCxJAEy_2Tn-Gdw7laGC5RCssGkU-03ZeX4AlcGlpN8e5F6qhEK/exec";
 
 export function BookDemo() {
   const [submitted, setSubmitted] = useState(false);
