@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, CalendarCheck, ShieldCheck, Zap } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { DemoForm } from '../forms/DemoForm';
 
 const stats = [
   { icon: CalendarCheck, value: '< 72 hrs', label: 'Onboarding Time' },
@@ -111,9 +112,16 @@ export function CTA() {
           transition={{ delay: 0.3 }}
           className="flex flex-col sm:flex-row items-center gap-4"
         >
-          {/* Primary */}
+          {/* Primary — the form sits directly below, so scroll to it rather than leaving the page */}
           <button
-            onClick={() => navigate('/book-demo')}
+            onClick={() => {
+              document.getElementById('demo-form')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              // preventScroll, or focusing mid-flight yanks the page and the smooth scroll overshoots
+              setTimeout(
+                () => document.querySelector<HTMLInputElement>('#demo-form input[name="name"]')?.focus({ preventScroll: true }),
+                700
+              );
+            }}
             className="group relative px-8 py-4 rounded-2xl font-bold text-[15px] text-white overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-2 shadow-[0_0_40px_-8px_rgba(34,211,238,0.5)] hover:shadow-[0_0_55px_-4px_rgba(34,211,238,0.7)]"
             style={{ background: 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)' }}
           >
@@ -131,6 +139,30 @@ export function CTA() {
           >
             Contact Sales
           </button>
+        </motion.div>
+
+        {/* Inline demo request form */}
+        <motion.div
+          id="demo-form"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.35 }}
+          className="w-full max-w-[620px] mt-14 scroll-mt-24"
+        >
+          <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] backdrop-blur-sm p-6 md:p-9 shadow-[0_20px_70px_-20px_rgba(0,0,0,0.6)]">
+            <div className="text-center mb-8">
+              <h3 className="font-heading font-extrabold text-[24px] md:text-[28px] text-white tracking-tight mb-2">
+                Tell us about your FTO
+              </h3>
+              <p className="text-zinc-400 text-[14px] leading-relaxed max-w-[420px] mx-auto">
+                Send us your details and we will come back to you with a walkthrough built around how your
+                organisation actually operates.
+              </p>
+            </div>
+
+            <DemoForm variant="dark" />
+          </div>
         </motion.div>
 
         {/* Footnote */}

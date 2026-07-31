@@ -78,9 +78,9 @@ export function Footer() {
           {/* ── Brand col ── */}
           <div className="lg:col-span-4 flex flex-col gap-6">
             <div className="flex items-center gap-3">
-              <div className="relative">
-                <div className="absolute inset-0 rounded-xl bg-cyan-500/20 blur-md" />
-                <img src={logoUrl} alt="Neural Wings" className="relative h-[46px] w-auto" />
+              {/* The logo is dark artwork on transparency — it needs a light plate to read on this background */}
+              <div className="flex items-center justify-center rounded-xl bg-white p-2 shadow-[0_0_28px_-6px_rgba(34,211,238,0.55)]">
+                <img src={logoUrl} alt="Neural Wings" className="h-[46px] w-auto" />
               </div>
               <span className="font-heading font-extrabold text-2xl text-white tracking-widest">
                 NEURAL WINGS
