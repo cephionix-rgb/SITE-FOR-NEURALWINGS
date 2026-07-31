@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Plane, Activity, ArrowRight } from 'lucide-react';
+import { Plane, Activity, GraduationCap, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { DocPage, DocSection, DocList } from '../components/layout/DocPage';
 import { CONTACT_EMAIL } from '../lib/contact';
 
@@ -44,6 +44,27 @@ export function About() {
             >
               Explore the platform <ArrowRight className="w-3.5 h-3.5" />
             </Link>
+          </div>
+
+          <div id="earnwings" className="scroll-mt-28 p-6 rounded-2xl border border-zinc-200 bg-white shadow-sm">
+            <div className="w-11 h-11 rounded-xl bg-amber-50 flex items-center justify-center mb-4">
+              <GraduationCap className="w-5 h-5 text-amber-500" />
+            </div>
+            <h3 className="font-heading font-bold text-[19px] text-zinc-900 mb-2">EARNWINGS</h3>
+            <p className="text-[14px] leading-relaxed text-zinc-600 mb-4">
+              The cadet side of the same problem. EARNWINGS is a DGCA CPL and ATPL preparation app — real-airway
+              flight planning, an RT trainer, an AI Captain, visual notes, and full mock exams — built to get
+              student pilots through their exams and into the right seat. Currently taking founding-cadet
+              sign-ups.
+            </p>
+            <a
+              href="https://earnwings.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-[13px] font-bold text-amber-600 hover:text-amber-700 transition-colors"
+            >
+              Visit earnwings.org <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
           </div>
 
           <div id="verios" className="scroll-mt-28 p-6 rounded-2xl border border-zinc-200 bg-white shadow-sm">

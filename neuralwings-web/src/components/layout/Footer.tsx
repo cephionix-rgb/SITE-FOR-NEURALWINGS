@@ -17,9 +17,10 @@ const modules: { label: string; module?: string; to?: string }[] = [
   { label: 'DGCA Compliance', module: 'DGCA Calendar' },
 ];
 
-const company = [
+const company: { label: string; to: string; external?: boolean }[] = [
   { label: 'About Cephionix', to: '/about' },
   { label: 'Neural Wings', to: '/' },
+  { label: 'EARNWINGS (Cadet Prep)', to: 'https://earnwings.org', external: true },
   { label: 'VERIOS (Oncology)', to: '/about#verios' },
   { label: 'AIRE Engine', to: '/aire' },
   { label: 'Why Neural Wings', to: '/why-neural-wings' },
@@ -154,16 +155,30 @@ export function Footer() {
               <span className="w-5 h-[2px] rounded-full bg-gradient-to-r from-amber-400 to-orange-500" />
               <h4 className="text-xs font-extrabold text-amber-400 uppercase tracking-[0.2em]">Cephionix</h4>
             </div>
-            {company.map((link) => (
-              <Link
-                key={link.label}
-                to={link.to}
-                className="group flex items-center gap-2 text-zinc-400 text-[15px] font-medium hover:text-white transition-colors duration-200"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-zinc-700 group-hover:bg-amber-500 transition-colors shrink-0" />
-                {link.label}
-              </Link>
-            ))}
+            {company.map((link) =>
+              link.external ? (
+                <a
+                  key={link.label}
+                  href={link.to}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-2 text-zinc-400 text-[15px] font-medium hover:text-white transition-colors duration-200"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-zinc-700 group-hover:bg-amber-500 transition-colors shrink-0" />
+                  {link.label}
+                  <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600 group-hover:text-amber-400 transition-colors shrink-0" />
+                </a>
+              ) : (
+                <Link
+                  key={link.label}
+                  to={link.to}
+                  className="group flex items-center gap-2 text-zinc-400 text-[15px] font-medium hover:text-white transition-colors duration-200"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-zinc-700 group-hover:bg-amber-500 transition-colors shrink-0" />
+                  {link.label}
+                </Link>
+              )
+            )}
           </div>
 
           {/* ── Contact col ── */}
@@ -300,7 +315,8 @@ export function Footer() {
 
         {/* IP notice */}
         <p className="mt-7 text-zinc-500 text-[12px] leading-relaxed text-center md:text-left max-w-[900px]">
-          Neural Wings, Cephionix, AIRE, VERIOS, the Neural Wings logo, and "Built by Pilots. Built for Pilots."
+          Neural Wings, Cephionix, AIRE, EARNWINGS, VERIOS, the Neural Wings logo, and "Built by Pilots. Built
+          for Pilots."
           are trade marks of Cephionix. The software, source code, designs, dashboards, screenshots, module
           structure, and the manner in which information is presented in this website and in the Neural Wings
           platform are the exclusive property of Cephionix and are protected by copyright, trade mark, design,

@@ -94,7 +94,7 @@ export function Terms() {
             <><strong className="text-zinc-800">The AIRE engine.</strong> The rules, logic, parameter sets, scoring methods, decision thresholds, prompts, and models behind the Go/No-Go engine, the scheduler, and every automated recommendation the platform makes.</>,
             <><strong className="text-zinc-800">The design.</strong> Every screen, dashboard, layout, wireframe, navigation structure, interaction pattern, animation, chart design, icon set, illustration, colour system, and typographic treatment.</>,
             <><strong className="text-zinc-800">The content.</strong> All text, headings, module names, module descriptions, feature explanations, marketing copy, diagrams, flowcharts, videos, and imagery on this website and inside the product.</>,
-            <><strong className="text-zinc-800">The brand.</strong> The Neural Wings and Cephionix names and logos, the AIRE and VERIOS names, and the tagline "Built by Pilots. Built for Pilots."</>,
+            <><strong className="text-zinc-800">The brand.</strong> The Neural Wings and Cephionix names and logos, the AIRE, EARNWINGS, and VERIOS names, and the tagline "Built by Pilots. Built for Pilots."</>,
             <><strong className="text-zinc-800">The know-how.</strong> Our documentation, training materials, implementation methodology, pricing structures, and any non-public information disclosed in a demonstration or proposal.</>,
           ]}
         />
@@ -108,9 +108,9 @@ export function Terms() {
 
       <DocSection title="8. Trade marks and brand">
         <p>
-          "Neural Wings", "Cephionix", "AIRE", "VERIOS", the Neural Wings winged logo and wordmark, our module
-          names, and our visual identity are trade marks of Cephionix, whether registered or protected as
-          unregistered marks through use.
+          "Neural Wings", "Cephionix", "AIRE", "EARNWINGS", "VERIOS", the Neural Wings winged logo and wordmark,
+          our module names, and our visual identity are trade marks of Cephionix, whether registered or
+          protected as unregistered marks through use.
         </p>
         <p>You may not, without our prior written permission:</p>
         <DocList

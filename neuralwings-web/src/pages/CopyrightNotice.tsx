@@ -17,7 +17,7 @@ const protectedWorks = [
     icon: BadgeCheck,
     tone: 'amber',
     title: 'The logo and the brand',
-    body: 'The Neural Wings winged logo and wordmark, the Cephionix name, AIRE, VERIOS, and "Built by Pilots. Built for Pilots." are our trade marks. No copies, no lookalikes.',
+    body: 'The Neural Wings winged logo and wordmark, the Cephionix name, AIRE, EARNWINGS, VERIOS, and "Built by Pilots. Built for Pilots." are our trade marks. No copies, no lookalikes.',
   },
   {
     icon: Camera,
