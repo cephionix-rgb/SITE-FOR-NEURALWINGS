@@ -26,6 +26,7 @@ const company = [
   { label: 'Careers', to: '/about#careers' },
   { label: 'Privacy Policy', to: '/privacy' },
   { label: 'Terms of Service', to: '/terms' },
+  { label: 'Copyright & IP', to: '/copyright' },
 ];
 
 export function Footer() {
@@ -261,6 +262,10 @@ export function Footer() {
             Terms of Service
           </Link>
           <span className="w-1 h-1 rounded-full bg-zinc-700 hidden md:block" />
+          <Link to="/copyright" className="text-zinc-400 hover:text-white text-sm font-medium transition-colors">
+            Copyright & IP
+          </Link>
+          <span className="w-1 h-1 rounded-full bg-zinc-700 hidden md:block" />
           <Link to="/about" className="text-zinc-400 hover:text-white text-sm font-medium transition-colors">
             About
           </Link>
@@ -292,6 +297,20 @@ export function Footer() {
             <span className="text-zinc-400 text-xs md:text-sm font-medium">AI-Powered</span>
           </div>
         </div>
+
+        {/* IP notice */}
+        <p className="mt-7 text-zinc-500 text-[12px] leading-relaxed text-center md:text-left max-w-[900px]">
+          Neural Wings, Cephionix, AIRE, VERIOS, the Neural Wings logo, and "Built by Pilots. Built for Pilots."
+          are trade marks of Cephionix. The software, source code, designs, dashboards, screenshots, module
+          structure, and the manner in which information is presented in this website and in the Neural Wings
+          platform are the exclusive property of Cephionix and are protected by copyright, trade mark, design,
+          and trade secret law. No part may be copied, reproduced, reverse engineered, imitated, or used to
+          build a similar product without prior written permission. See our{' '}
+          <Link to="/copyright" className="text-zinc-400 hover:text-white font-semibold underline underline-offset-2">
+            Intellectual Property Notice
+          </Link>
+          .
+        </p>
       </div>
 
     </footer>

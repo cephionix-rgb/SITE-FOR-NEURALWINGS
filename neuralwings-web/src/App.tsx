@@ -36,6 +36,7 @@ import { AirePage } from './pages/AirePage';
 import { About } from './pages/About';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { Terms } from './pages/Terms';
+import { CopyrightNotice } from './pages/CopyrightNotice';
 import { NotFound } from './pages/NotFound';
 
 function LandingPage() {
@@ -84,6 +85,9 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/terms-of-service" element={<Terms />} />
+        <Route path="/copyright" element={<CopyrightNotice />} />
+        <Route path="/ip" element={<CopyrightNotice />} />
+        <Route path="/intellectual-property" element={<CopyrightNotice />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

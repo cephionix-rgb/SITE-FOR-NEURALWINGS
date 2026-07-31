@@ -11,6 +11,7 @@ const links = [
   { label: 'About Cephionix', to: '/about' },
   { label: 'Privacy Policy', to: '/privacy' },
   { label: 'Terms of Service', to: '/terms' },
+  { label: 'Copyright & IP', to: '/copyright' },
 ];
 
 export function NotFound() {

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../../lib/utils';
 import {
@@ -199,6 +200,16 @@ export function InteractiveDemo() {
             </div>
           </div>
         </motion.div>
+
+        {/* Proprietary interface notice */}
+        <p className="mt-6 text-center font-sans text-[12px] text-zinc-400 max-w-[760px] mx-auto leading-relaxed">
+          © 2026 Cephionix. The dashboards, layouts, and data presentation shown here are proprietary interfaces
+          of Neural Wings. Screenshots, recordings, and imitation of these designs are prohibited —{' '}
+          <Link to="/copyright" className="text-zinc-500 hover:text-sky-600 font-semibold underline underline-offset-2">
+            see our IP notice
+          </Link>
+          .
+        </p>
 
       </div>
     </section>
