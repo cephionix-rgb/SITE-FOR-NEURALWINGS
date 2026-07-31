@@ -73,8 +73,26 @@ All settings live in the `CONFIG` block at the top of `Code.gs`:
 - `SHEET_ID` — leave empty and a log spreadsheet is created automatically in
   hello@neuralwings.org's Drive on the first submission, its id cached in
   script properties. Set an id to use an existing sheet.
-- `SEND_ACK` — off by default. Turn on to auto-acknowledge the person who
-  submitted the form.
+- `SEND_ACK` — on. Every requester gets a branded confirmation email built by
+  `acknowledgementHtml()`. Set to `false` to stop sending it.
+- `LOGO_URL` — the logo shown in that email, served from
+  `neuralwings-web/public/email-logo.png`. It must stay at a public, stable URL:
+  the bundled site logo is 2.3 MB behind a build hash, so it cannot be used.
+
+### Editing the confirmation email
+
+The template is table-based with inline styles because email clients strip
+stylesheets and Outlook ignores modern CSS. To preview a change without
+sending mail, render it locally — `acknowledgementHtml()` touches no Apps
+Script APIs:
+
+```bash
+node -e "eval(require('fs').readFileSync('apps-script/Code.gs','utf8'));
+  require('fs').writeFileSync('/tmp/preview.html',
+    acknowledgementHtml('Hi Arjun,', 'Apex Aviation Academy',
+      [['Name','Capt. Arjun Mehta'],['Organisation','Apex Aviation Academy']]))"
+open /tmp/preview.html
+```
 
 ## Notes
 
