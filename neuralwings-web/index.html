@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Neural Wings | AI-Powered Aviation Management Platform for Flight Academies</title>
-    <meta name="description" content="Neural Wings is an AI-powered aviation management platform for flight training organisations anywhere in the world — automating rostering, training records, safety SMS, fleet tracking, and DGCA compliance in one system." />
-    <meta name="keywords" content="aviation management software, flight academy management, FTO software, DGCA compliance, pilot training management, flight school ERP, aviation SMS, aircraft fleet management, India flight training" />
+    <!-- Per-route title/description/canonical are written at build time by scripts/prerender.mjs -->
+    <title>Neural Wings | FTO Management Software &amp; AI Aviation Management System</title>
+    <meta name="description" content="Neural Wings is AI-powered FTO management software for flight training organisations — flight ops, fleet, cadet records, safety SMS, billing and DGCA compliance in one platform. Used by academies in India and worldwide." />
+    <meta name="keywords" content="FTO management software, FTO management app, flight training organisation software, aviation management software, flight academy management system, flight school ERP, DGCA compliance software, pilot training management, aviation SMS software, aircraft fleet management" />
     <meta name="author" content="Cephionix Technologies" />
     <meta name="robots" content="index, follow" />
     <meta name="copyright" content="© 2026 Cephionix. All rights reserved." />
@@ -38,36 +39,87 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Neural Wings",
-      "url": "https://neuralwings.org",
-      "logo": "https://neuralwings.org/favicon.png",
-      "description": "Neural Wings is an AI-powered aviation management platform for flight training organisations. It automates rostering, training records, DGCA compliance, fleet tracking, and safety management.",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Web",
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "INR",
-        "availability": "https://schema.org/OnlineOnly"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Cephionix Technologies",
-        "url": "https://neuralwings.org"
-      },
-      "creator": {
-        "@type": "Organization",
-        "name": "Cephionix Technologies"
-      },
-      "copyrightHolder": {
-        "@type": "Organization",
-        "name": "Cephionix Technologies"
-      },
-      "copyrightYear": "2026",
-      "copyrightNotice": "© 2026 Cephionix. All rights reserved. Proprietary software — no part may be copied, reproduced, reverse engineered, or imitated without written permission.",
-      "license": "https://neuralwings.org/copyright",
-      "usageInfo": "https://neuralwings.org/terms",
-      "keywords": "aviation management, flight academy software, FTO management, DGCA compliance, pilot training, flight school ERP"
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://neuralwings.org/#organization",
+          "name": "Cephionix",
+          "alternateName": ["Cephionix Technologies", "Neural Wings"],
+          "url": "https://neuralwings.org",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://neuralwings.org/email-logo.png",
+            "width": 320,
+            "height": 320
+          },
+          "email": "hello@neuralwings.org",
+          "description": "Cephionix builds AI-assisted software for regulated, safety-critical industries, including Neural Wings for flight training organisations.",
+          "address": { "@type": "PostalAddress", "addressCountry": "IN" },
+          "contactPoint": [{
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "email": "hello@neuralwings.org",
+            "telephone": "+91-9914801833",
+            "areaServed": "Worldwide",
+            "availableLanguage": ["en"]
+          }, {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "support@neuralwings.org",
+            "areaServed": "Worldwide",
+            "availableLanguage": ["en"]
+          }],
+          "sameAs": ["https://earnwings.org"]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://neuralwings.org/#website",
+          "url": "https://neuralwings.org",
+          "name": "Neural Wings",
+          "alternateName": ["NeuralWings", "Neural Wings by Cephionix", "neuralwings.org"],
+          "publisher": { "@id": "https://neuralwings.org/#organization" },
+          "inLanguage": "en"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://neuralwings.org/#software",
+          "name": "Neural Wings",
+          "alternateName": "NeuralWings FTO Management Software",
+          "url": "https://neuralwings.org",
+          "image": "https://neuralwings.org/og-image.png",
+          "description": "Neural Wings is AI-powered FTO management software for flight training organisations. Nineteen integrated modules cover flight operations, Go/No-Go dispatch, fleet airworthiness, cadet records, ground training, digital logbooks, safety management, finance and DGCA compliance.",
+          "applicationCategory": "BusinessApplication",
+          "applicationSubCategory": "Aviation Management Software",
+          "operatingSystem": "Web, iOS, Android",
+          "softwareHelp": "https://neuralwings.org/aire",
+          "featureList": [
+            "Flight operations and sortie management",
+            "AI Go/No-Go dispatch authority",
+            "Automated rostering with the AIRE engine",
+            "Fleet airworthiness and maintenance tracking",
+            "Student cadet records and licensing",
+            "Ground training and simulator scheduling",
+            "Tamper-proof digital logbook",
+            "ICAO Annex 19 safety management system",
+            "DGCA compliance calendar and audit readiness",
+            "Finance, invoicing and flying-hour billing"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "INR",
+            "availability": "https://schema.org/OnlineOnly",
+            "url": "https://neuralwings.org/book-demo"
+          },
+          "publisher": { "@id": "https://neuralwings.org/#organization" },
+          "creator": { "@id": "https://neuralwings.org/#organization" },
+          "copyrightHolder": { "@id": "https://neuralwings.org/#organization" },
+          "copyrightYear": "2026",
+          "copyrightNotice": "© 2026 Cephionix. All rights reserved. Proprietary software — no part may be copied, reproduced, reverse engineered, or imitated without written permission.",
+          "license": "https://neuralwings.org/copyright",
+          "usageInfo": "https://neuralwings.org/terms",
+          "keywords": "FTO management software, FTO management app, flight training organisation software, aviation management software, flight academy management, DGCA compliance, pilot training management, flight school ERP"
+        }
+      ]
     }
     </script>
 

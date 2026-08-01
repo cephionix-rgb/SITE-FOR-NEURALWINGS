@@ -1,0 +1,77 @@
+{
+  "origin": "https://neuralwings.org",
+  "routes": [
+    {
+      "path": "/",
+      "title": "Neural Wings | FTO Management Software & AI Aviation Management System",
+      "description": "Neural Wings is AI-powered FTO management software for flight training organisations — flight ops, fleet, cadet records, safety SMS, billing and DGCA compliance in one platform. Used by academies in India and worldwide.",
+      "h1": "Neural Wings — the complete FTO management platform",
+      "summary": "An AI-powered aviation management system for flight training organisations: 19 integrated modules covering flight operations, Go/No-Go dispatch, fleet airworthiness, cadet records, ground training, safety management, finance and DGCA compliance. Available to flight academies in any country.",
+      "priority": "1.0",
+      "changefreq": "weekly"
+    },
+    {
+      "path": "/aire",
+      "title": "AIRE | The AI Engine Behind Neural Wings FTO Software",
+      "description": "AIRE is the intelligence engine inside Neural Wings — automated rostering, a 15-parameter Go/No-Go dispatch check, and continuous compliance monitoring for flight training organisations.",
+      "h1": "AIRE — the intelligence engine inside Neural Wings",
+      "summary": "AIRE evaluates aircraft airworthiness, cadet and instructor currency, duty time, weather minima, fuel and NOTAMs before authorising every sortie, and builds the flying programme automatically. Every decision is logged with its inputs for DGCA audit.",
+      "priority": "0.9",
+      "changefreq": "monthly"
+    },
+    {
+      "path": "/why-neural-wings",
+      "title": "Why Neural Wings | What Spreadsheet-Run Flight Academies Lose",
+      "description": "The real cost of running a flight training organisation on spreadsheets — grounded aircraft, expired medicals, missed billing and audit scrambles — and how Neural Wings removes each one.",
+      "h1": "Why flight training organisations switch to Neural Wings",
+      "summary": "A breakdown of the failures that spreadsheets and paper create inside an FTO — expired licences found too late, aircraft grounded without warning, flying hours never invoiced, safety reports that go nowhere — and what an integrated system does about them.",
+      "priority": "0.9",
+      "changefreq": "monthly"
+    },
+    {
+      "path": "/book-demo",
+      "title": "Book a Demo | Neural Wings FTO Management Software",
+      "description": "See Neural Wings running on your own numbers. Book a live walkthrough of the aviation management platform for flight training organisations — onboarding typically under 72 hours.",
+      "h1": "Book a live demonstration of Neural Wings",
+      "summary": "Request a walkthrough for your flight training organisation. Tell us your academy, base and number of branches, and our team will schedule a demonstration built around how you operate.",
+      "priority": "0.8",
+      "changefreq": "monthly"
+    },
+    {
+      "path": "/about",
+      "title": "About Cephionix | Makers of Neural Wings and EARNWINGS",
+      "description": "Cephionix builds AI-assisted software for regulated, safety-critical industries — Neural Wings for flight training organisations, EARNWINGS for DGCA cadets, and VERIOS in oncology.",
+      "h1": "About Cephionix",
+      "summary": "Cephionix designs operating systems for organisations that run on compliance, records and timing. Our products are Neural Wings for flight training organisations, EARNWINGS for DGCA CPL and ATPL candidates, and VERIOS in oncology.",
+      "priority": "0.6",
+      "changefreq": "monthly"
+    },
+    {
+      "path": "/privacy",
+      "title": "Privacy Policy | Neural Wings",
+      "description": "How Cephionix collects, uses, retains and protects information across the Neural Wings website and platform, including your rights under India's DPDP Act, 2023.",
+      "h1": "Privacy Policy",
+      "summary": "What we collect from demo requests and analytics, the processors we rely on, how long data is kept, and how to exercise your rights over it.",
+      "priority": "0.3",
+      "changefreq": "yearly"
+    },
+    {
+      "path": "/terms",
+      "title": "Terms of Service | Neural Wings",
+      "description": "The terms governing use of the Neural Wings website and platform, including acceptable use, operational responsibility, and Cephionix's intellectual property rights.",
+      "h1": "Terms of Service",
+      "summary": "Acceptance, acceptable use, customer responsibilities, operational and regulatory responsibility, intellectual property, enforcement, liability and governing law.",
+      "priority": "0.3",
+      "changefreq": "yearly"
+    },
+    {
+      "path": "/copyright",
+      "title": "Intellectual Property Notice | Neural Wings by Cephionix",
+      "description": "Neural Wings — its software, logo, screens, screenshots and the way information is presented — is the exclusive property of Cephionix. Copying or imitation is prohibited.",
+      "h1": "Intellectual Property Notice",
+      "summary": "What is protected, what you may not do with it, what you may do, and what happens if our software, designs or product presentation are copied.",
+      "priority": "0.3",
+      "changefreq": "yearly"
+    }
+  ]
+}

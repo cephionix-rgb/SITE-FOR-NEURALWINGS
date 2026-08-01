@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { useRouteMeta } from './lib/useRouteMeta';
+
+function RouteMeta() {
+  useRouteMeta();
+  return null;
+}
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -74,6 +80,7 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <RouteMeta />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/book-demo" element={<BookDemo />} />

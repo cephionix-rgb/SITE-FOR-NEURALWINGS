@@ -32,8 +32,36 @@ export function AirePage() {
 
   return (
     <Layout>
-      {/* paddingTop clears the fixed navbar; flowchart has its own inner padding */}
-      <div style={{ paddingTop: '72px', background: '#F5F8FF', marginTop: 0 }}>
+      {/* The flowchart below lives in an iframe, whose text belongs to that document and not
+          to this page. This header is what describes /aire to a reader or a crawler. */}
+      <section className="pt-[112px] pb-10 px-6 bg-[#F5F8FF]">
+        <div className="max-w-[860px] mx-auto text-center">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-sky-200 bg-sky-50 font-sans text-[12px] font-semibold text-sky-600 tracking-wide mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse" />
+            The engine inside Neural Wings
+          </span>
+
+          <h1 className="font-heading font-extrabold text-[34px] md:text-[52px] text-zinc-900 leading-tight mb-5">
+            AIRE — the intelligence engine behind every dispatch decision
+          </h1>
+
+          <p className="font-sans text-[16px] md:text-[17px] text-zinc-600 leading-relaxed max-w-[720px] mx-auto mb-4">
+            AIRE is the autonomous rostering and dispatch engine at the core of Neural Wings. It builds the
+            daily flying programme, then evaluates more than fifteen parameters before any sortie is authorised
+            — aircraft airworthiness, cadet and instructor currency, duty-time limits, weather minima, fuel
+            sufficiency and active NOTAMs.
+          </p>
+
+          <p className="font-sans text-[15px] text-zinc-500 leading-relaxed max-w-[720px] mx-auto">
+            Every authorisation it issues is logged with the inputs behind it, so the decision trail is
+            reviewable by a Chief Flight Instructor and defensible in a DGCA audit. The diagram below walks
+            through that logic end to end.
+          </p>
+        </div>
+      </section>
+
+      {/* flowchart has its own inner padding */}
+      <div style={{ background: '#F5F8FF', marginTop: 0 }}>
         <iframe
           ref={iframeRef}
           src="/aire_flowchart.html"
