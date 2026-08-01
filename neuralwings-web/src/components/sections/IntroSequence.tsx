@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import logoUrl from '../../assets/logo.png';
+// The intro renders the logo at up to 420px, so it gets the larger asset.
+// Navbar and Footer use the 160px one, which every page pays for.
+import logoUrl from '../../assets/logo-large.png';
 import videoUrl from '../../assets/POV_flight_through.mp4';
 
 interface IntroSequenceProps {

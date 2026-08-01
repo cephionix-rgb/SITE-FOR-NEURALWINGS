@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useRouteMeta } from './lib/useRouteMeta';
 
@@ -35,15 +35,16 @@ import { TechStack } from './components/sections/TechStack';
 import { Security } from './components/sections/Security';
 import { CTA } from './components/sections/CTA';
 
-// Import the new BookDemo page
-import { BookDemo } from './pages/BookDemo';
-import { WhyNeuralWings } from './pages/WhyNeuralWings';
-import { AirePage } from './pages/AirePage';
-import { About } from './pages/About';
-import { PrivacyPolicy } from './pages/PrivacyPolicy';
-import { Terms } from './pages/Terms';
-import { CopyrightNotice } from './pages/CopyrightNotice';
-import { NotFound } from './pages/NotFound';
+// Secondary pages are code-split: a visitor landing on the home page should not
+// download the legal pages, the AIRE page and the war-room dashboards up front.
+const BookDemo = lazy(() => import('./pages/BookDemo').then((m) => ({ default: m.BookDemo })));
+const WhyNeuralWings = lazy(() => import('./pages/WhyNeuralWings').then((m) => ({ default: m.WhyNeuralWings })));
+const AirePage = lazy(() => import('./pages/AirePage').then((m) => ({ default: m.AirePage })));
+const About = lazy(() => import('./pages/About').then((m) => ({ default: m.About })));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy').then((m) => ({ default: m.PrivacyPolicy })));
+const Terms = lazy(() => import('./pages/Terms').then((m) => ({ default: m.Terms })));
+const CopyrightNotice = lazy(() => import('./pages/CopyrightNotice').then((m) => ({ default: m.CopyrightNotice })));
+const NotFound = lazy(() => import('./pages/NotFound').then((m) => ({ default: m.NotFound })));
 
 function LandingPage() {
   const [introFinished, setIntroFinished] = useState(() => {
@@ -81,22 +82,24 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <RouteMeta />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/book-demo" element={<BookDemo />} />
-        <Route path="/why-neural-wings" element={<WhyNeuralWings />} />
-        <Route path="/aire" element={<AirePage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/careers" element={<About />} />
-        <Route path="/privacy" element={<PrivacyPolicy />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/terms" element={<Terms />} />
-        <Route path="/terms-of-service" element={<Terms />} />
-        <Route path="/copyright" element={<CopyrightNotice />} />
-        <Route path="/ip" element={<CopyrightNotice />} />
-        <Route path="/intellectual-property" element={<CopyrightNotice />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Suspense fallback={<div className="min-h-screen bg-[#F8FBFF]" />}>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/book-demo" element={<BookDemo />} />
+          <Route path="/why-neural-wings" element={<WhyNeuralWings />} />
+          <Route path="/aire" element={<AirePage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/careers" element={<About />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/terms-of-service" element={<Terms />} />
+          <Route path="/copyright" element={<CopyrightNotice />} />
+          <Route path="/ip" element={<CopyrightNotice />} />
+          <Route path="/intellectual-property" element={<CopyrightNotice />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }
