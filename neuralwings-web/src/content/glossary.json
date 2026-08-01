@@ -1,0 +1,196 @@
+[
+  {
+    "group": "Regulation and licensing",
+    "items": [
+      {
+        "term": "DGCA",
+        "definition": "The Directorate General of Civil Aviation, India's civil aviation regulator. It approves flying training organisations, issues and renews pilot licences, oversees airworthiness, and conducts the audits an academy must stay ready for."
+      },
+      {
+        "term": "FTO (Flying Training Organisation)",
+        "definition": "A flight school approved by the regulator to deliver training that counts towards a pilot licence. In India an FTO holds DGCA approval and must meet the conditions in the applicable Civil Aviation Requirements. The same abbreviation is used outside aviation for police Field Training Officer programmes and for Freedom-To-Operate patent analysis."
+      },
+      {
+        "term": "CAR (Civil Aviation Requirements)",
+        "definition": "The body of regulations issued by DGCA, organised into sections and series. Section 7 covers flight crew standards, training and licensing, and contains the requirements that govern how an FTO trains and documents its cadets."
+      },
+      {
+        "term": "SPL (Student Pilot Licence)",
+        "definition": "The first licence a cadet holds, permitting supervised training flights including solo flying under an instructor's authorisation. It has a validity period, and an expired SPL grounds the cadet until it is renewed."
+      },
+      {
+        "term": "PPL (Private Pilot Licence)",
+        "definition": "A licence permitting the holder to fly as pilot-in-command privately, but not for hire or reward. It is normally the intermediate step between the student licence and a commercial licence."
+      },
+      {
+        "term": "CPL (Commercial Pilot Licence)",
+        "definition": "A licence permitting the holder to be paid to fly. In India it requires a minimum of 200 hours of flight time along with passes in the DGCA ground examinations, a Class 1 medical and a skill test."
+      },
+      {
+        "term": "ATPL (Airline Transport Pilot Licence)",
+        "definition": "The highest level of pilot licence, required to act as pilot-in-command of a multi-crew commercial aircraft. It carries higher flight-hour and examination requirements than a CPL."
+      },
+      {
+        "term": "Class 1 / Class 2 medical",
+        "definition": "Aeromedical certificates issued after examination by an authorised medical examiner. A Class 1 is required for commercial licences and a Class 2 for private flying. Each has a fixed validity, and an expired medical grounds the holder immediately."
+      },
+      {
+        "term": "RTR(A)",
+        "definition": "Radio Telephony Restricted (Aeronautical), the radio operator licence required to use aeronautical radio in India. It is examined and issued by the WPC wing of the Ministry of Communications rather than by DGCA."
+      },
+      {
+        "term": "FTO ranking",
+        "definition": "A ranking system for DGCA-approved flying training organisations, introduced from October 2025 and published on a bi-annual cycle. It scores academies on published parameters, giving prospective cadets a comparison and giving academies a measurable reason to tighten their operations and record-keeping."
+      }
+    ]
+  },
+  {
+    "group": "Post holders and staff",
+    "items": [
+      {
+        "term": "Accountable Manager",
+        "definition": "The person with corporate authority for ensuring the organisation's activities are financed and carried out to the required standard. Regulatory responsibility for the FTO ultimately sits with this post."
+      },
+      {
+        "term": "CFI (Chief Flight Instructor)",
+        "definition": "The post holder responsible for all flying training at an FTO — instructor standardisation, cadet progress, authorisation of sorties and the overall quality of training delivered."
+      },
+      {
+        "term": "CGI (Chief Ground Instructor)",
+        "definition": "The post holder responsible for ground school: syllabus coverage across the required subjects, classroom and simulator instruction, and internal examinations preparing cadets for the DGCA papers."
+      },
+      {
+        "term": "AME (Aircraft Maintenance Engineer)",
+        "definition": "A licensed engineer authorised to carry out and certify maintenance on aircraft. An AME's signature releases an aircraft back to service after a scheduled inspection or a rectified defect. In a medical context the same abbreviation is used for an Aviation Medical Examiner."
+      }
+    ]
+  },
+  {
+    "group": "Operations and dispatch",
+    "items": [
+      {
+        "term": "Sortie",
+        "definition": "A single flight from takeoff to landing, treated as the basic unit of a training operation. Each sortie carries an authorisation, an exercise from the syllabus, a crew, an aircraft and a set of recorded times."
+      },
+      {
+        "term": "Go/No-Go decision",
+        "definition": "The dispatch check made before a sortie is authorised, confirming that the aircraft, the crew, the weather and the paperwork all permit the flight. Formalising it means the same conditions are tested every time rather than depending on who is on duty."
+      },
+      {
+        "term": "Duty time limitation",
+        "definition": "The regulatory ceiling on how long a pilot or instructor may be on duty and flying within a defined period, intended to prevent fatigue. Rostering someone beyond the limit is a compliance breach regardless of whether the flight was otherwise safe."
+      },
+      {
+        "term": "Dual and solo",
+        "definition": "Dual flight time is flown with an instructor on board; solo time is flown by the cadet alone under an instructor's authorisation. Licences specify minimum hours of each, so the classification of every sortie affects when a cadet qualifies."
+      },
+      {
+        "term": "PIC (Pilot-in-Command)",
+        "definition": "The pilot responsible for the operation and safety of the aircraft during flight time. Whatever a system recommends, the final decision to fly rests with the PIC."
+      },
+      {
+        "term": "Cross-country",
+        "definition": "A navigation flight between aerodromes beyond the local training area, flown to build route-planning, navigation and radio skills. Licences require a minimum of such flying, including specified solo cross-country distances."
+      },
+      {
+        "term": "Squawk code",
+        "definition": "The four-digit transponder code assigned to an aircraft by air traffic control so it can be identified on radar. Codes are logged against the sortie as part of the operational record."
+      },
+      {
+        "term": "ADS-B",
+        "definition": "Automatic Dependent Surveillance–Broadcast, by which an aircraft transmits its position derived from satellite navigation. It allows an operations room to track training aircraft live rather than waiting for a radio call."
+      }
+    ]
+  },
+  {
+    "group": "Weather and planning",
+    "items": [
+      {
+        "term": "METAR",
+        "definition": "A routine coded observation of actual weather at an aerodrome, issued typically every half hour or hour. It reports wind, visibility, cloud, temperature, dew point and pressure, and is the primary check on whether current conditions permit a training flight."
+      },
+      {
+        "term": "TAF",
+        "definition": "Terminal Aerodrome Forecast, a coded forecast of expected weather at an aerodrome over a set period. It is used to decide whether conditions will still permit a flight at its planned return time."
+      },
+      {
+        "term": "NOTAM",
+        "definition": "Notice to Air Missions, a notice of any temporary change affecting flight safety — a closed runway, unserviceable navigation aid, airspace restriction or hazard. Active NOTAMs must be checked before dispatch."
+      },
+      {
+        "term": "SIGMET",
+        "definition": "A warning of weather significantly hazardous to aircraft, such as thunderstorms, severe turbulence, icing or dust storms, issued for a defined area and period."
+      },
+      {
+        "term": "VFR and IFR",
+        "definition": "Visual Flight Rules require the pilot to navigate by outside visual reference and demand minimum visibility and cloud clearance. Instrument Flight Rules permit flight by reference to instruments under air traffic control. Most early training is conducted under VFR, so VFR minima determine whether the day's programme can run."
+      },
+      {
+        "term": "Weight and balance",
+        "definition": "The calculation confirming that an aircraft's loaded weight and centre of gravity fall within the limits published for that type. It is performed before flight, and an out-of-limits result is a no-go regardless of other conditions."
+      }
+    ]
+  },
+  {
+    "group": "Airworthiness and maintenance",
+    "items": [
+      {
+        "term": "Certificate of Airworthiness",
+        "definition": "The document certifying that an aircraft conforms to its approved type design and is in a condition for safe operation. An aircraft without a valid certificate cannot be flown, so its expiry date is tracked like a licence."
+      },
+      {
+        "term": "Snag",
+        "definition": "A reported defect or malfunction on an aircraft. Snags are raised, assigned to an engineer, and tracked to a certified rectification, forming a maintenance history an auditor can follow."
+      },
+      {
+        "term": "Component lifing",
+        "definition": "Tracking the accumulated hours or cycles on life-limited components such as engines, propellers and instruments, so each is inspected or replaced before it reaches its limit."
+      },
+      {
+        "term": "Scheduled maintenance",
+        "definition": "Inspections due at fixed intervals — commonly 50-hour, 100-hour and annual checks. Because intervals are driven by flying hours, maintenance planning depends on accurate hour recording from every sortie."
+      },
+      {
+        "term": "AOG",
+        "definition": "Aircraft on Ground: an aircraft unavailable for flight because of a defect or overdue maintenance. In a training operation an AOG aircraft immediately displaces every cadet booked on it that day."
+      }
+    ]
+  },
+  {
+    "group": "Training, safety and records",
+    "items": [
+      {
+        "term": "Stage check",
+        "definition": "A progress test flown with a senior instructor at the end of a training phase, confirming a cadet has reached the required standard before moving on. Results form part of the cadet's permanent training record."
+      },
+      {
+        "term": "FNPT II",
+        "definition": "Flight and Navigation Procedures Trainer level II, a simulator approved for a limited number of training hours that count towards a licence. Simulator time is cheaper than aircraft time and is unaffected by weather, so its utilisation directly affects training throughput."
+      },
+      {
+        "term": "FSTD",
+        "definition": "Flight Simulation Training Device, the general term for approved synthetic training devices, of which the FNPT and FTD are categories."
+      },
+      {
+        "term": "SMS (Safety Management System)",
+        "definition": "A systematic approach to managing safety, comprising safety policy, risk management, safety assurance and safety promotion. It requires hazards to be reported, assessed for risk, assigned to a responsible person and tracked to closure."
+      },
+      {
+        "term": "ICAO Annex 19",
+        "definition": "The International Civil Aviation Organization annex that sets out safety management requirements for states and aviation service providers, and the standard on which a compliant SMS is built."
+      },
+      {
+        "term": "Hazard and risk matrix",
+        "definition": "A hazard is a condition with the potential to cause harm; a risk matrix scores its likelihood against its severity to decide how urgently it must be addressed. Plotting reported hazards over time exposes recurring patterns that individual reports hide."
+      },
+      {
+        "term": "Digital logbook",
+        "definition": "An electronic flight record populated from verified sortie data rather than transcribed by hand, recording aircraft, times, exercise and dual or solo classification. Entries become tamper-proof once signed by the authorising instructor."
+      },
+      {
+        "term": "MIS return",
+        "definition": "A management information report submitted to the regulator on a defined cycle, covering flying hours, utilisation and training progress. Because the figures come from operational records, the effort required depends entirely on how well those records were kept."
+      }
+    ]
+  }
+]

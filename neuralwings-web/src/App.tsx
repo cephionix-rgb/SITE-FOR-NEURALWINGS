@@ -44,6 +44,8 @@ const About = lazy(() => import('./pages/About').then((m) => ({ default: m.About
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy').then((m) => ({ default: m.PrivacyPolicy })));
 const Terms = lazy(() => import('./pages/Terms').then((m) => ({ default: m.Terms })));
 const CopyrightNotice = lazy(() => import('./pages/CopyrightNotice').then((m) => ({ default: m.CopyrightNotice })));
+const Faq = lazy(() => import('./pages/Faq').then((m) => ({ default: m.Faq })));
+const Glossary = lazy(() => import('./pages/Glossary').then((m) => ({ default: m.Glossary })));
 const NotFound = lazy(() => import('./pages/NotFound').then((m) => ({ default: m.NotFound })));
 
 function LandingPage() {
@@ -88,6 +90,8 @@ function App() {
           <Route path="/book-demo" element={<BookDemo />} />
           <Route path="/why-neural-wings" element={<WhyNeuralWings />} />
           <Route path="/aire" element={<AirePage />} />
+          <Route path="/faq" element={<Faq />} />
+          <Route path="/glossary" element={<Glossary />} />
           <Route path="/about" element={<About />} />
           <Route path="/careers" element={<About />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />

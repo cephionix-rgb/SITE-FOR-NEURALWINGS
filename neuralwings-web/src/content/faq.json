@@ -1,0 +1,90 @@
+[
+  {
+    "section": "About the platform",
+    "items": [
+      {
+        "q": "What is Neural Wings?",
+        "a": "Neural Wings is an AI-powered aviation management platform for flight training organisations. It replaces the spreadsheets, paper registers and disconnected tools an academy typically runs on with nineteen integrated modules covering flight operations, dispatch authorisation, fleet airworthiness, cadet records, ground training, digital logbooks, safety management, finance and regulatory compliance. It is built by Cephionix and used by flight academies in India and other countries."
+      },
+      {
+        "q": "What is an FTO in aviation?",
+        "a": "An FTO, or Flying Training Organisation, is a flight school approved by its national regulator to deliver training that counts towards a pilot licence. In India, FTOs are approved by the Directorate General of Civil Aviation (DGCA) and must meet the requirements set out in the Civil Aviation Requirements. Note that outside aviation, the abbreviation FTO also refers to police Field Training Officer programmes and to Freedom-To-Operate patent analysis, which are unrelated."
+      },
+      {
+        "q": "Which modules are included in Neural Wings?",
+        "a": "Nineteen modules ship as one platform: Flight Operations, Go/No-Go dispatch, Meteorology, Reporting and MIS, Fleet Management, Student Management, Instructor Management, Ground Training, Digital Logbook, Safety Management System, DGCA Compliance Calendar, Fuel Management, Flight Planning, Legal and Compliance, User and Role Access Control, Hostel Management, Finance and Accounts, HR Management, and Internal Communications. They share one database, so a completed sortie updates the logbook, the fleet hours, the cadet's progress and the billing ledger at the same time."
+      },
+      {
+        "q": "What is AIRE?",
+        "a": "AIRE is the intelligence engine inside Neural Wings. It builds the daily flying programme automatically and evaluates more than fifteen parameters before a sortie is authorised, including aircraft airworthiness, cadet and instructor currency, duty-time limits, weather minima, fuel sufficiency and active NOTAMs. Every authorisation is logged with the inputs behind it, so the reasoning behind each decision remains reviewable and auditable."
+      },
+      {
+        "q": "How does the Go/No-Go engine work?",
+        "a": "The Go/No-Go engine is a rules-based check that runs before dispatch. It evaluates aircraft airworthiness status, student medical and licence validity, instructor duty time, current weather against VFR minima, fuel sufficiency, active NOTAMs, and whether weight and balance are within limits. It returns a clear authorise-or-hold result with the reason attached, and the decision is recorded with a digital signature as part of the dispatch record."
+      }
+    ]
+  },
+  {
+    "section": "Compliance and responsibility",
+    "items": [
+      {
+        "q": "Does Neural Wings help with DGCA compliance?",
+        "a": "Yes. DGCA requirements are modelled inside the system rather than reported on afterwards, so the audit trail is a by-product of daily work. The compliance calendar tracks every mandated renewal — pilot medicals, licence validity, aircraft Certificate of Airworthiness, radio telephony licences and instructor authorisations — and sends staged alerts before each due date. Standard MIS returns and flying-hour statements are generated in the required formats."
+      },
+      {
+        "q": "Does the software make regulatory decisions for us?",
+        "a": "No. Neural Wings is a decision-support and record-keeping system. It surfaces the information and flags the conflicts, but operational, airworthiness and regulatory decisions remain with the customer's qualified personnel — the Accountable Manager, Chief Flight Instructor, Pilot-in-Command and maintenance staff. The platform does not replace their judgement or their legal responsibility."
+      },
+      {
+        "q": "Is the digital logbook acceptable for licensing?",
+        "a": "The digital logbook populates entries automatically from verified sortie data — aircraft registration, times, exercise flown, and dual or solo classification — and entries become tamper-proof once signed by the authorising instructor. Cumulative totals, day and night splits and cross-country distances are maintained in DGCA-compliant format and can be exported as a signed PDF at any time. Whether a given authority accepts a digital record in place of a physical logbook is determined by that authority's current rules, so confirm the position with your regulator."
+      },
+      {
+        "q": "Can Neural Wings be used outside India?",
+        "a": "Yes. The platform is available to flight academies in any country, and the operational modules — scheduling, fleet, training records, safety management, billing — are not specific to one jurisdiction. The compliance modules are modelled on DGCA requirements, so an academy under EASA, FAA or another authority should discuss its specific regulatory reporting needs with us before implementation."
+      }
+    ]
+  },
+  {
+    "section": "Data and security",
+    "items": [
+      {
+        "q": "Who owns the data we put into Neural Wings?",
+        "a": "The customer does. Operational records entered by an academy — student, instructor, fleet, flight, safety and finance data — remain the property of that academy. Cephionix processes them on the academy's instructions as its data processor, and returns or deletes them at the end of the agreement, subject to any retention period the regulator requires."
+      },
+      {
+        "q": "How is our data protected?",
+        "a": "Access is controlled by role, mapped to the FTO's actual hierarchy, so staff see only what their post requires. Data is encrypted in transit using HTTPS/TLS, and every login, data access and system action is recorded in an audit log by user and timestamp. Security concerns can be reported to support@neuralwings.org."
+      },
+      {
+        "q": "Does Neural Wings comply with Indian data protection law?",
+        "a": "Cephionix handles personal information in line with India's Digital Personal Data Protection Act, 2023. Individuals can request access to, correction of, or deletion of their personal data, and can withdraw consent, by writing to hello@neuralwings.org. Where the data belongs to an academy using the platform, the request is directed to that academy, which controls it."
+      }
+    ]
+  },
+  {
+    "section": "Getting started",
+    "items": [
+      {
+        "q": "How long does implementation take?",
+        "a": "A new flight training organisation can be operational in under 72 hours. That covers configuring the academy's fleet, bases, roles and syllabus structure, and importing existing records so the system starts from the academy's real position rather than an empty database."
+      },
+      {
+        "q": "How much does Neural Wings cost?",
+        "a": "Pricing depends on fleet size, number of bases and cadet volume, so it is quoted per academy rather than published as a fixed list. Request a demonstration and our team will provide a quote against your actual operation. There is no credit card requirement to see the platform."
+      },
+      {
+        "q": "Can it handle multiple bases or branches?",
+        "a": "Yes. The platform supports multi-base operations, with fleet, instructors, cadets and scheduling tracked per base while management reporting consolidates across the whole organisation."
+      },
+      {
+        "q": "What do we need to run it?",
+        "a": "Neural Wings runs in a web browser, so it needs no installation on academy computers and works on desktops, laptops and tablets on the airfield. Access is by login, with permissions determined by the user's role."
+      },
+      {
+        "q": "How do we see a demonstration?",
+        "a": "Request one at neuralwings.org/book-demo with your academy name, base and number of branches, or write to hello@neuralwings.org. Demonstrations are run against the kind of numbers your operation actually produces rather than a generic slide deck."
+      }
+    ]
+  }
+]

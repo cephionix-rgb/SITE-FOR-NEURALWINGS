@@ -64,6 +64,54 @@ function noscriptBlock(route) {
   );
 }
 
+/**
+ * Per-route JSON-LD, built from the same content the page renders so the two
+ * cannot drift. FAQPage and DefinedTermSet are what AI answer engines and
+ * Google's rich results actually read.
+ */
+function structuredDataFor(route) {
+  if (!route.schema) return '';
+
+  let data = null;
+
+  if (route.schema === 'faq') {
+    const faq = JSON.parse(readFileSync(join(root, 'src/content/faq.json'), 'utf8'));
+    data = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faq.flatMap((section) =>
+        section.items.map((item) => ({
+          '@type': 'Question',
+          name: item.q,
+          acceptedAnswer: { '@type': 'Answer', text: item.a },
+        }))
+      ),
+    };
+  }
+
+  if (route.schema === 'glossary') {
+    const terms = JSON.parse(readFileSync(join(root, 'src/content/glossary.json'), 'utf8'));
+    data = {
+      '@context': 'https://schema.org',
+      '@type': 'DefinedTermSet',
+      '@id': `${origin}/glossary/#termset`,
+      name: 'Aviation Training Glossary',
+      description: 'Definitions of the regulatory, operational and training terms used across Indian flight training organisations.',
+      hasDefinedTerm: terms.flatMap((group) =>
+        group.items.map((item) => ({
+          '@type': 'DefinedTerm',
+          name: item.term,
+          description: item.definition,
+          inDefinedTermSet: `${origin}/glossary/#termset`,
+        }))
+      ),
+    };
+  }
+
+  if (!data) return '';
+  return `\n    <script type="application/ld+json">\n    ${JSON.stringify(data, null, 2).replace(/\n/g, '\n    ')}\n    </script>\n  `;
+}
+
 let written = 0;
 
 for (const route of routes) {
@@ -79,6 +127,7 @@ for (const route of routes) {
   html = setTagContent(html, 'name="twitter:url"', 'content', url);
   html = setTagContent(html, 'name="twitter:title"', 'content', route.title);
   html = setTagContent(html, 'name="twitter:description"', 'content', route.description);
+  html = html.replace('</head>', `${structuredDataFor(route)}</head>`);
   html = html.replace('</body>', `${noscriptBlock(route)}</body>`);
 
   const outDir = route.path === '/' ? dist : join(dist, route.path);
