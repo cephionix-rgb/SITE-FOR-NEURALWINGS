@@ -6,6 +6,12 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- The intro poster is the first full-screen paint. React only creates the
+         <video> tag after the bundle boots, so without this the image would not
+         start downloading until then — making it a late, and therefore very
+         slow, Largest Contentful Paint. -->
+    <link rel="preload" as="image" href="/intro-poster.jpg" fetchpriority="high" />
+
     <!-- Fonts: preconnect so the handshake overlaps, and load the stylesheet
          without blocking the first paint. media="print" makes it a low-priority,
          non-render-blocking fetch; onload promotes it to the real stylesheet.
