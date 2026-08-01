@@ -6,13 +6,24 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Fonts: preconnect first so the handshake overlaps the CSS download -->
+    <!-- Fonts: preconnect so the handshake overlaps, and load the stylesheet
+         without blocking the first paint. media="print" makes it a low-priority,
+         non-render-blocking fetch; onload promotes it to the real stylesheet.
+         display=swap means text paints in a fallback face meanwhile. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      />
+    </noscript>
     <!-- Per-route title/description/canonical are written at build time by scripts/prerender.mjs -->
     <title>Neural Wings | FTO Management Software &amp; AI Aviation Management System</title>
     <meta name="description" content="Neural Wings is AI-powered FTO management software for flight training organisations — flight ops, fleet, cadet records, safety SMS, billing and DGCA compliance in one platform. Used by academies in India and worldwide." />
@@ -154,8 +165,9 @@
     <!-- GitHub Pages SPA redirect handler -->
     <script src="/spa-redirect.js"></script>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KQYZYE96XT"></script>
-    <script src="/analytics.js"></script>
+    <!-- Analytics is loaded by /analytics.js once the page is idle: gtag.js is
+         164 KB and competes with the assets needed for first paint. -->
+    <script src="/analytics.js" defer></script>
   </head>
   <body>
     <div id="root"></div>

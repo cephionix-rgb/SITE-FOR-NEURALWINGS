@@ -16,8 +16,8 @@ export function IntroSequence({ onComplete }: IntroSequenceProps) {
 
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const text1Ref = useRef<HTMLHeadingElement>(null);
-  const text2Ref = useRef<HTMLHeadingElement>(null);
+  const text1Ref = useRef<HTMLDivElement>(null);
+  const text2Ref = useRef<HTMLDivElement>(null);
   const whiteOverlayRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLImageElement>(null);
   const burstRef = useRef<HTMLDivElement>(null);
@@ -36,10 +36,9 @@ export function IntroSequence({ onComplete }: IntroSequenceProps) {
       video.src = videoUrl;
     }
 
-    // Text animations — appear early, gone before logo emerges from clouds (~5s)
+    // The two lines fade in from CSS (.intro-line-1 / .intro-line-2) so they
+    // paint without waiting for this bundle. GSAP only handles the exit.
     const textTl = gsap.timeline();
-    textTl.to(text1Ref.current, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 0.4);
-    textTl.to(text2Ref.current, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 1.2);
     textTl.to([text1Ref.current, text2Ref.current], { opacity: 0, y: -20, duration: 0.5, ease: 'power2.in' }, 3.2);
 
     // Logo reveal — triggered only when video actually ends
@@ -121,18 +120,21 @@ export function IntroSequence({ onComplete }: IntroSequenceProps) {
       {/* Text overlays */}
       <div className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none">
         <div className="relative w-full h-full flex items-center justify-center">
-          <h1
+          {/* Divs, not h1s: these are decorative, and the page's real h1 is in
+              the Hero. They also animate from CSS so they paint before the JS
+              bundle has loaded — see .intro-line-* in index.css. */}
+          <div
             ref={text1Ref}
-            className="absolute font-heading font-bold text-[36px] md:text-[52px] text-white tracking-[0.08em] drop-shadow-xl opacity-0 translate-y-10 text-center px-4"
+            className="intro-line-1 absolute font-heading font-bold text-[36px] md:text-[52px] text-white tracking-[0.08em] drop-shadow-xl text-center px-4"
           >
             BUILT BY PILOTS.
-          </h1>
-          <h1
+          </div>
+          <div
             ref={text2Ref}
-            className="absolute mt-32 font-heading font-bold text-[36px] md:text-[52px] text-accent-gold tracking-[0.08em] drop-shadow-xl opacity-0 translate-y-10 text-center px-4"
+            className="intro-line-2 absolute mt-32 font-heading font-bold text-[36px] md:text-[52px] text-accent-gold tracking-[0.08em] drop-shadow-xl text-center px-4"
           >
             BUILT FOR PILOTS.
-          </h1>
+          </div>
         </div>
       </div>
 
