@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, MapPin } from 'lucide-react';
+import { ArrowRight, MapPin, ExternalLink } from 'lucide-react';
 import { JurisdictionGlobe, jurisdictions } from './JurisdictionGlobe';
 
 export function JurisdictionReport() {
@@ -48,7 +48,7 @@ export function JurisdictionReport() {
                       className="w-2 h-2 rounded-full"
                       style={{ background: active ? 'rgba(255,255,255,0.85)' : item.colour }}
                     />
-                    {item.authority === 'National authorities' ? item.region : item.authority}
+                    {item.authority.length > 16 ? item.region : item.authority}
                   </button>
                 );
               })}
@@ -105,9 +105,30 @@ export function JurisdictionReport() {
               >
                 {j.cta} <ArrowRight className="w-4 h-4" />
               </Link>
-              <span className="font-sans text-[12px] text-zinc-400">
-                Demand figures: Boeing · {j.demand.regionLabel}. Regulatory facts as cited in Sources below.
-              </span>
+            </div>
+
+            <div className="mt-6 pt-5 border-t border-zinc-100">
+              <h4 className="font-sans text-[11px] font-bold tracking-[0.16em] text-zinc-400 uppercase mb-2.5">
+                Where these figures come from
+              </h4>
+              <ul className="flex flex-col gap-1.5">
+                {j.sources.map((src) => (
+                  <li key={src.url}>
+                    <a
+                      href={src.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 font-sans text-[13px] text-zinc-500 hover:text-sky-600 transition-colors"
+                    >
+                      {src.label} <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <p className="font-sans text-[11px] text-zinc-400 mt-3 leading-relaxed">
+                Published by the organisations named. Not our research, and not an endorsement of Neural Wings
+                by any of them. Regional demand figures are Boeing's, for {j.demand.regionLabel}.
+              </p>
             </div>
           </article>
         </div>

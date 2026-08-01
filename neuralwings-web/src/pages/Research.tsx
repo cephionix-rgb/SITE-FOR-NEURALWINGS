@@ -1,12 +1,12 @@
 import type { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LabelList, Cell,
 } from 'recharts';
-import { Info, ExternalLink, ArrowRight } from 'lucide-react';
+import { Info, ExternalLink } from 'lucide-react';
 import { Layout } from '../components/layout/Layout';
 import data from '../content/research.json';
 import { JurisdictionReport } from '../components/research/JurisdictionReport';
+import { ArgumentChain } from '../components/research/ArgumentChain';
 
 /* Palette validated for colour-vision deficiency, chroma and contrast against a
    light surface (sky-600 / amber-600). Single-hue where a chart shows one
@@ -452,54 +452,7 @@ export function Research() {
             What we take from this, and why we built Neural Wings
           </h2>
 
-          <div className="flex flex-col gap-5 font-sans text-[16px] text-zinc-600 leading-relaxed max-w-[760px]">
-            <p>
-              Three findings sit on top of each other. Demand for pilots is large, sustained and global — Europe
-              needs more new personnel than any other region, North America has already absorbed a near-tripling
-              of student pilots, and Asia is growing fastest of all. Training capacity everywhere is bounded by
-              supervision ratios that cannot be waived. And in India, roughly two in five new commercial pilots
-              are already going abroad to qualify.
-            </p>
-            <p>
-              A fourth pressure runs underneath: ICAO Annex 19 requires a functioning safety management system,
-              and its next amendment applies from November 2026. DGCA now ranks approved academies twice a year
-              on published parameters. The administrative standard an academy is held to is rising at the same
-              time as the volume it is asked to handle.
-            </p>
-            <p>
-              <strong className="text-zinc-800">
-                If capacity cannot grow by relaxing the ratio, the remaining lever is utilisation.
-              </strong>{' '}
-              An aircraft grounded because a 100-hour inspection was noticed late, a cadet stood down because a
-              medical quietly expired, an instructor unavailable because duty hours were tracked in a different
-              file — each of those is a training slot lost from a system with roughly 3,500 of them. Lost slots
-              are the difference between a cadet finishing in India and finishing somewhere else.
-            </p>
-            <p>
-              That is the problem Neural Wings was built for: hold every operational record in one system, let
-              an intelligence layer watch the expiries, the hours and the conflicts continuously, and surface
-              the decision before it becomes a cancellation. Not because software is interesting, but because
-              the arithmetic above leaves very little room for avoidable losses — and that arithmetic is the
-              same whether the academy answers to DGCA, EASA or the FAA. The operational core is built on ICAO
-              standards for exactly that reason; the reporting layer is what we localise, DGCA first, with EASA
-              and FAA frameworks in development.
-            </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 mt-9">
-            <Link
-              to="/book-demo"
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-sky-500 text-white font-sans font-bold text-[15px] shadow-lg shadow-sky-200 hover:bg-sky-600 transition-colors"
-            >
-              See the platform <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              to="/why-neural-wings"
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-zinc-200 bg-white text-zinc-800 font-sans font-bold text-[15px] hover:border-zinc-300 transition-all"
-            >
-              What academies lose today
-            </Link>
-          </div>
+          <ArgumentChain />
         </div>
       </section>
 

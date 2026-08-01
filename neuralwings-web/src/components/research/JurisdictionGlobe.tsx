@@ -4,6 +4,7 @@ import { feature } from 'topojson-client';
 import type { FeatureCollection, Feature, Geometry } from 'geojson';
 import worldData from 'world-atlas/countries-110m.json';
 import jurisdictions from '../../content/jurisdictions.json';
+import indiaPov from '../../content/india-pov-boundaries.json';
 
 type Jurisdiction = (typeof jurisdictions)[number];
 
@@ -30,7 +31,17 @@ export function JurisdictionGlobe({ selectedId, onSelect }: Props) {
   const countries = useMemo(() => {
     // world-atlas ships TopoJSON; the cast is the documented shape.
     const fc = feature(worldData as never, (worldData as never as { objects: { countries: never } }).objects.countries);
-    return (fc as unknown as FeatureCollection).features;
+    const features = [...(fc as unknown as FeatureCollection).features];
+
+    // India, Pakistan and China are replaced with Natural Earth's India
+    // point-of-view boundaries. The default dataset draws the de-facto line of
+    // control, which depicts India's territory incorrectly under Indian law.
+    const overrides = new Map(indiaPov.map((o) => [o.name, o.geometry]));
+    return features.map((f) => {
+      const name = (f.properties as { name?: string })?.name ?? '';
+      const geometry = overrides.get(name);
+      return geometry ? ({ ...f, geometry } as Feature<Geometry>) : f;
+    });
   }, []);
 
   // Idle auto-rotation, stopped by any interaction and by reduced-motion.
@@ -137,6 +148,9 @@ export function JurisdictionGlobe({ selectedId, onSelect }: Props) {
 
       <p className="font-sans text-[12px] text-zinc-400 mt-3 text-center">
         Drag to rotate · click a highlighted country, or choose below
+      </p>
+      <p className="font-sans text-[11px] text-zinc-400/90 mt-1.5 text-center max-w-[380px] leading-relaxed">
+        Boundaries: Natural Earth, India point-of-view edition.
       </p>
     </div>
   );
