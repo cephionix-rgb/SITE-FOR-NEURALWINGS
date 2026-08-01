@@ -1,0 +1,167 @@
+[
+  {
+    "id": "dgca",
+    "authority": "DGCA",
+    "region": "India",
+    "colour": "#0284C7",
+    "countries": ["India"],
+    "focus": [22, 79],
+    "headline": "41 academies, 3,500 seats, and two in five cadets leaving to train elsewhere",
+    "regulator": "The Directorate General of Civil Aviation approves flying training organisations under the Civil Aviation Requirements. Section 7 governs flight crew standards, training and licensing, and since October 2025 DGCA has ranked approved academies on published parameters, twice a year.",
+    "stats": [
+      { "value": "1,652", "label": "CPLs issued in 2025", "note": "1,331 more in Jan–Jun 2026" },
+      { "value": "41%", "label": "Of new CPLs trained abroad", "note": "540 of 1,331, Jan–Jun 2026" },
+      { "value": "41", "label": "DGCA-approved FTOs", "note": "across 63 bases" },
+      { "value": "~3,500", "label": "Students the country can hold", "note": "at the 1:1:10 ratio" }
+    ],
+    "demand": { "pilots": 45000, "total": 141000, "regionLabel": "South Asia" },
+    "conclusion": "India cannot expand training capacity by enrolling more students, because the 1:1:10 aircraft-instructor-student ratio is a regulatory floor on supervision. Capacity grows only by adding aircraft, adding instructors, or losing fewer training slots to preventable causes — a snag noticed late, a medical that quietly expired, an instructor rostered past a duty limit. With 41 per cent of new Indian commercial pilots already qualifying overseas, every slot an academy loses is a cadet who may finish somewhere else. Neural Wings exists to make those losses visible before they happen, and it is DGCA-ready today: the compliance calendar, the MIS returns and the audit trail are built to what your inspector actually asks for.",
+    "cta": "See it running on your fleet"
+  },
+  {
+    "id": "easa",
+    "authority": "EASA",
+    "region": "Europe",
+    "colour": "#7C3AED",
+    "countries": [
+      "Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czechia", "Denmark", "Estonia",
+      "Finland", "France", "Germany", "Greece", "Hungary", "Ireland", "Italy", "Latvia",
+      "Lithuania", "Luxembourg", "Netherlands", "Poland", "Portugal", "Romania", "Slovakia",
+      "Slovenia", "Spain", "Sweden", "Norway", "Iceland", "Switzerland"
+    ],
+    "focus": [50, 10],
+    "headline": "The largest personnel demand of any region on earth — split across dozens of national authorities",
+    "regulator": "Every European training organisation is approved as an ATO under Commission Regulation (EU) No 1178/2011, the Aircrew Regulation. The rulebook is common, but the register of approved organisations is held by each national aviation authority rather than centrally by EASA — so an operator working across member states answers to several authorities, several registers and several reporting cadences.",
+    "stats": [
+      { "value": "550,000", "label": "Aviation personnel needed by 2044", "note": "Eurasia — the largest of any region" },
+      { "value": "149,000", "label": "Of them, pilots", "note": "more than North America" },
+      { "value": "1178/2011", "label": "The Aircrew Regulation", "note": "ATO approval basis" },
+      { "value": "Nov 2026", "label": "ICAO Annex 19 Amendment 2 applies", "note": "safety management tightens" }
+    ],
+    "demand": { "pilots": 149000, "total": 550000, "regionLabel": "Eurasia" },
+    "conclusion": "Europe needs more new aviation professionals than any other region, and its training organisations carry an unusual administrative burden to deliver them: one shared rulebook, but national authorities each holding their own register and their own reporting rhythm. An ATO operating in more than one member state is effectively maintaining several compliance positions from the same set of flights. That is precisely the case for a system whose operational core is built on ICAO standards, with the reporting layer configured per authority rather than rebuilt. Our EASA reporting layer is in active development — if you run an ATO, tell us which national authority you answer to and which returns you file, and we will tell you honestly what is ready and what is not.",
+    "cta": "Talk to us about your ATO"
+  },
+  {
+    "id": "faa",
+    "authority": "FAA",
+    "region": "United States",
+    "colour": "#D97706",
+    "countries": ["United States of America"],
+    "focus": [39, -98],
+    "headline": "370,286 student pilots on the register — nearly three times the 2016 figure",
+    "regulator": "Approved schools operate under 14 CFR Part 141 with an FAA-approved syllabus and mandatory stage checks, which is what lowers the commercial minimum to 190 hours against 250 under the unstructured Part 61 route. That approval is also what obliges a school to prove its syllabus was followed, cadet by cadet.",
+    "stats": [
+      { "value": "887,519", "label": "Active US pilots", "note": "as at 31 December 2025" },
+      { "value": "370,286", "label": "Student pilot certificates", "note": "up 7.2% on 2024" },
+      { "value": "2.9×", "label": "Growth in student pilots since 2016", "note": "from 128,501" },
+      { "value": "435,000", "label": "Personnel needed by 2044", "note": "North America" }
+    ],
+    "demand": { "pilots": 119000, "total": 435000, "regionLabel": "North America" },
+    "conclusion": "American flight schools have already lived through the volume surge the rest of the world is forecasting: student certificates have nearly tripled since 2016, and 370,286 of them sit on the register today. Under Part 141, that volume comes with a documentary obligation — an approved syllabus is only worth its reduced hour minimums if you can evidence that every cadet actually followed it, stage check by stage check. Doing that across hundreds of students in spreadsheets is where schools lose both time and defensibility. Neural Wings holds the syllabus, the stage checks, the aircraft hours and the instructor currency in one record. Our FAA reporting layer is in development; the operational core, built on ICAO standards, is what you would run from day one.",
+    "cta": "Talk to us about your Part 141 school"
+  },
+  {
+    "id": "china",
+    "authority": "CAAC",
+    "region": "China",
+    "colour": "#0369A1",
+    "countries": ["China"],
+    "focus": [35, 104],
+    "headline": "426,000 aviation professionals needed, including 124,000 pilots",
+    "regulator": "Training in China is overseen by the Civil Aviation Administration of China. We have not yet built a reporting layer for CAAC requirements, and we will not claim otherwise.",
+    "stats": [
+      { "value": "426,000", "label": "Aviation personnel needed by 2044", "note": "Boeing forecast" },
+      { "value": "124,000", "label": "Of them, pilots", "note": "second only to Eurasia" }
+    ],
+    "demand": { "pilots": 124000, "total": 426000, "regionLabel": "China" },
+    "conclusion": "China's forecast demand is second only to Europe's, at 426,000 people including 124,000 pilots. The operational problems an academy faces at that volume — aircraft utilisation, instructor currency, syllabus tracking, safety reporting — are the same ones Neural Wings was built around, because they follow from ICAO structure rather than from any single national rulebook. What we have not built is a CAAC-specific reporting layer, and we would rather say so than imply a compliance claim we cannot support today.",
+    "cta": "Start a conversation"
+  },
+  {
+    "id": "middleeast",
+    "authority": "GCAA / regional authorities",
+    "region": "Middle East",
+    "colour": "#0891B2",
+    "countries": ["United Arab Emirates", "Saudi Arabia", "Qatar", "Oman", "Kuwait", "Bahrain", "Jordan", "Israel", "Lebanon"],
+    "focus": [25, 47],
+    "headline": "234,000 aviation professionals needed, including 67,000 pilots",
+    "regulator": "Each state runs its own civil aviation authority implementing ICAO standards. We have not built state-specific reporting layers for this region yet.",
+    "stats": [
+      { "value": "234,000", "label": "Aviation personnel needed by 2044", "note": "Boeing forecast" },
+      { "value": "67,000", "label": "Of them, pilots", "note": "ahead of Southeast Asia" }
+    ],
+    "demand": { "pilots": 67000, "total": 234000, "regionLabel": "Middle East" },
+    "conclusion": "The Middle East needs 67,000 new pilots by 2044, more than Southeast Asia and half again what South Asia requires. Academies here typically train an internationally mixed cadet population against several licensing regimes at once, which multiplies the record-keeping rather than the flying. A system that holds one operational truth and reports from it in different shapes is worth more here than almost anywhere. Our ICAO-based core applies directly; region-specific reporting is a conversation, not a claim.",
+    "cta": "Start a conversation"
+  },
+  {
+    "id": "seasia",
+    "authority": "National authorities",
+    "region": "Southeast Asia",
+    "colour": "#0D9488",
+    "countries": ["Indonesia", "Malaysia", "Thailand", "Vietnam", "Philippines", "Singapore", "Cambodia", "Laos", "Myanmar", "Brunei"],
+    "focus": [5, 110],
+    "headline": "One of the two fastest-growing regions on earth for aviation staffing",
+    "regulator": "Each state operates its own civil aviation authority under ICAO standards. Boeing names Southeast Asia, with South Asia, as the fastest-growing region for personnel demand.",
+    "stats": [
+      { "value": "243,000", "label": "Aviation personnel needed by 2044", "note": "Boeing forecast" },
+      { "value": "62,000", "label": "Of them, pilots", "note": "more than South Asia" },
+      { "value": "3×", "label": "Expected growth in staffing demand", "note": "Boeing, fastest-growing regions" }
+    ],
+    "demand": { "pilots": 62000, "total": 243000, "regionLabel": "Southeast Asia" },
+    "conclusion": "Boeing expects staffing demand across Southeast Asia to more than triple, and the region already needs more pilots than South Asia does. Growth of that shape is exactly when an academy outgrows its spreadsheets: the aircraft still fly, but nobody can say with confidence which cadet is behind, which aircraft is closest to an inspection, or which instructor is nearest a duty limit. Neural Wings was built for that transition, on ICAO structure so it does not assume one country's paperwork.",
+    "cta": "Start a conversation"
+  },
+  {
+    "id": "latam",
+    "authority": "National authorities",
+    "region": "Latin America",
+    "colour": "#65A30D",
+    "countries": ["Brazil", "Argentina", "Chile", "Colombia", "Peru", "Mexico", "Ecuador", "Bolivia", "Paraguay", "Uruguay", "Venezuela", "Panama", "Costa Rica", "Guatemala", "Dominican Rep.", "Cuba", "Honduras", "Nicaragua", "El Salvador"],
+    "focus": [-15, -60],
+    "headline": "134,000 aviation professionals needed, including 37,000 pilots",
+    "regulator": "Each state operates its own civil aviation authority implementing ICAO standards.",
+    "stats": [
+      { "value": "134,000", "label": "Aviation personnel needed by 2044", "note": "Boeing forecast" },
+      { "value": "37,000", "label": "Of them, pilots", "note": "Boeing forecast" }
+    ],
+    "demand": { "pilots": 37000, "total": 134000, "regionLabel": "Latin America" },
+    "conclusion": "Latin America needs 37,000 new pilots by 2044. Academies across the region train against a patchwork of national requirements built on shared ICAO foundations — which is the situation our architecture assumes rather than the exception it has to work around. The operational core applies immediately; the reporting layer is what we would discuss with you.",
+    "cta": "Start a conversation"
+  },
+  {
+    "id": "africa",
+    "authority": "National authorities",
+    "region": "Africa",
+    "colour": "#CA8A04",
+    "countries": ["South Africa", "Kenya", "Nigeria", "Egypt", "Ethiopia", "Morocco", "Ghana", "Tanzania", "Uganda", "Algeria", "Tunisia", "Zambia", "Zimbabwe", "Namibia", "Botswana", "Senegal", "Angola", "Mozambique"],
+    "focus": [2, 20],
+    "headline": "74,000 aviation professionals needed, including 23,000 pilots",
+    "regulator": "Each state operates its own civil aviation authority implementing ICAO standards.",
+    "stats": [
+      { "value": "74,000", "label": "Aviation personnel needed by 2044", "note": "Boeing forecast" },
+      { "value": "23,000", "label": "Of them, pilots", "note": "Boeing forecast" }
+    ],
+    "demand": { "pilots": 23000, "total": 74000, "regionLabel": "Africa" },
+    "conclusion": "Africa's forecast is the smallest in absolute terms and among the most demanding operationally: fleets are often older, spares and instructors are scarcer, and an aircraft grounded unexpectedly costs proportionally more training capacity than it would elsewhere. Predictive maintenance tracking and honest utilisation data are worth the most exactly where slack is thinnest. Our core is ICAO-based and applies here directly.",
+    "cta": "Start a conversation"
+  },
+  {
+    "id": "oceania",
+    "authority": "CASA / CAA NZ",
+    "region": "Oceania",
+    "colour": "#DB2777",
+    "countries": ["Australia", "New Zealand", "Papua New Guinea", "Fiji"],
+    "focus": [-25, 140],
+    "headline": "41,000 aviation professionals needed, including 11,000 pilots",
+    "regulator": "Australia's Civil Aviation Safety Authority and New Zealand's Civil Aviation Authority each implement ICAO standards through their own rules. We have not built reporting layers specific to either.",
+    "stats": [
+      { "value": "41,000", "label": "Aviation personnel needed by 2044", "note": "Boeing forecast" },
+      { "value": "11,000", "label": "Of them, pilots", "note": "Boeing forecast" }
+    ],
+    "demand": { "pilots": 11000, "total": 41000, "regionLabel": "Oceania" },
+    "conclusion": "Oceania trains a disproportionate share of the world's cadets relative to its own demand, drawing students from across Asia into Australian and New Zealand academies. That makes multi-cohort tracking, licence-regime differences and defensible records a daily concern rather than an occasional one — which is what our platform is organised around. Reporting for CASA or CAA NZ specifically is not built yet, and we would tell you that before you asked.",
+    "cta": "Start a conversation"
+  }
+]

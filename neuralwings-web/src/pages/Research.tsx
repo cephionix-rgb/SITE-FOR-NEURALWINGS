@@ -6,6 +6,7 @@ import {
 import { Info, ExternalLink, ArrowRight } from 'lucide-react';
 import { Layout } from '../components/layout/Layout';
 import data from '../content/research.json';
+import { JurisdictionReport } from '../components/research/JurisdictionReport';
 
 /* Palette validated for colour-vision deficiency, chroma and contrast against a
    light surface (sky-600 / amber-600). Single-hue where a chart shows one
@@ -158,6 +159,8 @@ export function Research() {
           <Stat value="~3,500" label="Students India's FTOs can hold at once" note="41 FTOs, 63 bases, MoCA" />
         </div>
       </section>
+
+      <JurisdictionReport />
 
       {/* ── Figures ── */}
       <section className="relative py-12 md:py-16 bg-white">
