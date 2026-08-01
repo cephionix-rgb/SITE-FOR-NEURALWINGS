@@ -3,7 +3,17 @@ import gsap from 'gsap';
 // The intro renders the logo at up to 420px, so it gets the larger asset.
 // Navbar and Footer use the 160px one, which every page pays for.
 import logoUrl from '../../assets/logo-large.png';
-import videoUrl from '../../assets/POV_flight_through.mp4';
+// Served from /public at stable paths rather than imported as hashed assets.
+// A hashed filename changes on every deploy, so Search Console kept seeing a
+// brand new video URL it had never indexed. These URLs now stay put.
+const videoUrl = '/intro.mp4';
+// Phones get the closing 3.2s of the same flight instead of the full 8s:
+// 175 KB rather than 795 KB, and a much shorter wait on a mobile connection.
+const videoUrlMobile = '/intro-mobile.mp4';
+const posterUrl = '/intro-poster.jpg';
+
+const isMobile = () =>
+  typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches;
 
 interface IntroSequenceProps {
   onComplete: () => void;
@@ -29,17 +39,23 @@ export function IntroSequence({ onComplete }: IntroSequenceProps) {
     }
 
     const video = videoRef.current;
+    const mobile = isMobile();
 
     // Only assign src when the intro will actually play — prevents mobile from
     // downloading the video on repeat visits even if the element is in the DOM.
     if (video && !sessionStorage.getItem('introPlayed')) {
-      video.src = videoUrl;
+      video.src = mobile ? videoUrlMobile : videoUrl;
     }
 
     // The two lines fade in from CSS (.intro-line-1 / .intro-line-2) so they
-    // paint without waiting for this bundle. GSAP only handles the exit.
+    // paint without waiting for this bundle. GSAP only handles the exit, timed
+    // to land just before the clip ends — 3.2s on mobile, 8s on desktop.
     const textTl = gsap.timeline();
-    textTl.to([text1Ref.current, text2Ref.current], { opacity: 0, y: -20, duration: 0.5, ease: 'power2.in' }, 3.2);
+    textTl.to(
+      [text1Ref.current, text2Ref.current],
+      { opacity: 0, y: -20, duration: 0.5, ease: 'power2.in' },
+      mobile ? 2.3 : 3.2
+    );
 
     // Logo reveal — triggered only when video actually ends
     const showLogo = () => {
@@ -57,8 +73,13 @@ export function IntroSequence({ onComplete }: IntroSequenceProps) {
       // Burst glow + logo pop in
       logoTl.to(burstRef.current, { opacity: 0.15, scale: 2, duration: 1.5, ease: 'power2.out' }, '-=0.6');
       logoTl.to(logoRef.current, { scale: 1, opacity: 1, duration: 1.0, ease: 'back.out(1.7)' }, '-=1.2');
-      // Hold for 2s then slide down
-      logoTl.to(containerRef.current, { y: '100%', duration: 1.5, ease: 'power3.inOut' }, '+=2.0');
+      // Hold, then slide down. The hold is shorter on mobile — the whole point
+      // there is to get the visitor to the page quickly.
+      logoTl.to(
+        containerRef.current,
+        { y: '100%', duration: mobile ? 1.0 : 1.5, ease: 'power3.inOut' },
+        mobile ? '+=0.7' : '+=2.0'
+      );
     };
 
     if (video) {
@@ -76,12 +97,15 @@ export function IntroSequence({ onComplete }: IntroSequenceProps) {
   return (
     <div ref={containerRef} className="fixed inset-0 z-[9999] bg-[#04011A] overflow-hidden flex items-center justify-center">
       {/* Video Background */}
+      {/* poster gives Google a thumbnail to index and paints instantly instead
+          of a black rectangle while the clip downloads */}
       <video
         ref={videoRef}
         autoPlay
         muted
         playsInline
         preload="none"
+        poster={posterUrl}
         className="w-full h-full object-cover"
       />
 
