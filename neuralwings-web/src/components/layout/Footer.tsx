@@ -24,6 +24,7 @@ const company: { label: string; to: string; external?: boolean }[] = [
   { label: 'VERIOS (Oncology)', to: '/about#verios' },
   { label: 'AIRE Engine', to: '/aire' },
   { label: 'Why Neural Wings', to: '/why-neural-wings' },
+  { label: 'Industry Research', to: '/research' },
   { label: 'FAQ', to: '/faq' },
   { label: 'Glossary', to: '/glossary' },
   { label: 'Careers', to: '/about#careers' },

@@ -38,6 +38,15 @@
       "changefreq": "monthly"
     },
     {
+      "path": "/research",
+      "title": "Aviation Training Industry Research | Pilot Demand & FTO Capacity Data",
+      "description": "Published data from Boeing, ICAO and India's Ministry of Civil Aviation on pilot demand to 2044, DGCA commercial licence issuance, FTO capacity and safety management requirements \u2014 collected and charted.",
+      "h1": "The world needs 660,000 new pilots. Who is going to train them?",
+      "summary": "Third-party research on aviation workforce demand and flight training capacity: Boeing forecasts 660,000 new pilots and 2.4 million aviation professionals by 2044, with 45,000 pilots needed in South Asia. India issued 1,331 commercial pilot licences in the first half of 2026, 41 per cent to cadets trained abroad, against a national capacity of roughly 3,500 students across 41 DGCA-approved FTOs.",
+      "priority": "0.9",
+      "changefreq": "monthly"
+    },
+    {
       "path": "/faq",
       "title": "FAQ | Neural Wings Flight School Management Software",
       "description": "Answers on what Neural Wings does, DGCA compliance, data ownership and security, implementation time, pricing and multi-base support for flight training organisations.",

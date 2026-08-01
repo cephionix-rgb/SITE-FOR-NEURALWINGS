@@ -1,0 +1,67 @@
+{
+  "note": "Every figure here is taken from the third-party source named alongside it. Nothing in this file is Cephionix research.",
+  "cplByYear": [
+    { "year": "2022", "licences": 1165 },
+    { "year": "2023", "licences": 1622 },
+    { "year": "2024", "licences": 1347 },
+    { "year": "2025", "licences": 1652 }
+  ],
+  "cplOrigin": [
+    { "label": "Trained at Indian FTOs", "value": 791 },
+    { "label": "Trained abroad", "value": 540 }
+  ],
+  "boeingDemand": [
+    { "role": "Cabin crew", "people": 1000000 },
+    { "role": "Technicians", "people": 710000 },
+    { "role": "Pilots", "people": 660000 }
+  ],
+  "southAsia": [
+    { "role": "Pilots", "people": 45000 },
+    { "role": "Technicians", "people": 45000 },
+    { "role": "Cabin crew", "people": 51000 }
+  ],
+  "sources": [
+    {
+      "id": "boeing",
+      "title": "Pilot and Technician Outlook 2025–2044",
+      "publisher": "The Boeing Company",
+      "date": "22 July 2025",
+      "url": "https://www.boeing.com/commercial/market/pilot-technician-outlook",
+      "secondaryUrl": "https://investors.boeing.com/investors/news/press-release-details/2025/Boeing-Forecasts-20-Year-Global-Demand-for-Nearly-2-4-Million-New-Commercial-Pilots-Technicians-Cabin-Crew/default.aspx",
+      "finding": "The industry will need 2.4 million new aviation professionals through 2044 — 660,000 pilots, 710,000 maintenance technicians and 1,000,000 cabin crew. Boeing names South Asia and Southeast Asia as the fastest-growing regions for personnel, with staffing demand expected to more than triple. South Asia alone accounts for 141,000 people, including 45,000 pilots."
+    },
+    {
+      "id": "mocacpl",
+      "title": "Commercial pilot licences issued in India, stated in the Rajya Sabha",
+      "publisher": "Ministry of Civil Aviation, Government of India (Minister of State Murlidhar Mohol)",
+      "date": "21 July 2026",
+      "url": "https://www.prokerala.com/news/articles/a1790456.html",
+      "finding": "India issued 1,331 commercial pilot licences between January and June 2026. Of those, 791 went to cadets trained at Indian flying training organisations and 540 to cadets trained abroad — roughly 41 per cent of the country's new commercial pilots qualified outside India. Full-year figures were 1,652 in 2025, 1,347 in 2024, 1,622 in 2023 and 1,165 in 2022."
+    },
+    {
+      "id": "capacity",
+      "title": "India's flying training capacity, stated in the Rajya Sabha",
+      "publisher": "Ministry of Civil Aviation, Government of India",
+      "date": "21 July 2026",
+      "url": "https://www.prokerala.com/news/articles/a1790456.html",
+      "finding": "India has 41 DGCA-approved flying training organisations operating across 63 bases with a fleet of more than 400 training aircraft. Under the mandated aircraft-to-instructor-to-student ratio of 1:1:10, that ecosystem can hold roughly 3,500 students at any one time."
+    },
+    {
+      "id": "annex19",
+      "title": "Annex 19 — Safety Management",
+      "publisher": "International Civil Aviation Organization (ICAO)",
+      "date": "Adopted 2013; Amendment 2 applicable November 2026",
+      "url": "https://store.icao.int/en/annex-19-safety-management",
+      "secondaryUrl": "https://skybrary.aero/articles/icao-annex-19-safety-management",
+      "finding": "Annex 19 consolidated safety management provisions into a single annex and requires service providers to run a Safety Management System built on four pillars: safety policy, risk management, safety assurance and safety promotion. It was the first new ICAO annex in over thirty years. Amendment 2, adopted in 2025, pushes towards a more integrated and proactive approach and becomes applicable in November 2026."
+    },
+    {
+      "id": "ftorank",
+      "title": "Ranking system for DGCA-approved flying training organisations",
+      "publisher": "Directorate General of Civil Aviation, India",
+      "date": "Effective 1 October 2025",
+      "url": "https://www.dgca.gov.in/digigov-portal/",
+      "finding": "DGCA introduced a ranking system for approved flying training organisations from October 2025, published on a bi-annual cycle. Academies are scored on published parameters, which makes operational discipline and record quality publicly comparable for the first time."
+    }
+  ]
+}

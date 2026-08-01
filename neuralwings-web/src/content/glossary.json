@@ -45,6 +45,51 @@
     ]
   },
   {
+    "group": "International regulators and frameworks",
+    "items": [
+      {
+        "term": "ICAO",
+        "definition": "The International Civil Aviation Organization, the United Nations agency that sets the global Standards and Recommended Practices on which national aviation rules are built. ICAO does not regulate an academy directly; its standards are given force by each country's own authority, which is why systems built to ICAO structure port across jurisdictions more easily than ones built to a single rulebook."
+      },
+      {
+        "term": "EASA",
+        "definition": "The European Union Aviation Safety Agency, the regulator for civil aviation across EU member states. It publishes the Part-FCL licensing rules and approves training organisations, taking the role DGCA holds in India and the FAA in the United States."
+      },
+      {
+        "term": "FAA",
+        "definition": "The Federal Aviation Administration, the civil aviation authority of the United States. It certificates pilots and flight schools, and publishes the regulations in Title 14 of the Code of Federal Regulations."
+      },
+      {
+        "term": "CAA",
+        "definition": "Civil Aviation Authority, the generic term for a country's national aviation regulator — for example the UK CAA. Each CAA implements ICAO standards through its own regulations, which is why the same training activity generates different paperwork in different countries."
+      },
+      {
+        "term": "ATO (Approved Training Organisation)",
+        "definition": "The EASA term for a training organisation approved to deliver courses towards Part-FCL licences. It is the European counterpart of an Indian FTO, with an approved syllabus, nominated post holders and a compliance monitoring function."
+      },
+      {
+        "term": "Part-FCL",
+        "definition": "The EASA regulation covering flight crew licensing, defining licence categories including LAPL, PPL, CPL and ATPL along with the training, experience and testing required for each."
+      },
+      {
+        "term": "14 CFR Part 141",
+        "definition": "The United States regulation for FAA-certificated pilot schools, which operate an FAA-approved syllabus under structured oversight and require stage checks at defined points in training. Because the course is approved, licence hour minimums are lower than the unstructured route — for example 190 hours towards a commercial certificate against 250 under Part 61."
+      },
+      {
+        "term": "14 CFR Part 61",
+        "definition": "The United States regulation covering pilot certification through flexible, instructor-led training outside an approved school syllabus. It requires no stage checks and carries higher hour minimums than Part 141 — 40 hours for a private certificate against 35, and 250 hours for commercial against 190."
+      },
+      {
+        "term": "ICAO Annex 1",
+        "definition": "The ICAO annex covering Personnel Licensing, which sets the international baseline for pilot licences, ratings, medical standards and instructor qualifications that national licensing rules are built on."
+      },
+      {
+        "term": "State Safety Programme (SSP)",
+        "definition": "The integrated set of regulations and activities through which a country manages aviation safety, required by ICAO Annex 19. An academy's own Safety Management System is the organisation-level counterpart that feeds it."
+      }
+    ]
+  },
+  {
     "group": "Post holders and staff",
     "items": [
       {

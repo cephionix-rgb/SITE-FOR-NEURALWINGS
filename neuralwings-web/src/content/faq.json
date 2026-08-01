@@ -4,15 +4,15 @@
     "items": [
       {
         "q": "What is Neural Wings?",
-        "a": "Neural Wings is an AI-powered aviation management platform for flight training organisations. It replaces the spreadsheets, paper registers and disconnected tools an academy typically runs on with nineteen integrated modules covering flight operations, dispatch authorisation, fleet airworthiness, cadet records, ground training, digital logbooks, safety management, finance and regulatory compliance. It is built by Cephionix and used by flight academies in India and other countries."
+        "a": "Neural Wings is an AI-powered aviation management platform for flight training organisations. It replaces the spreadsheets, paper registers and disconnected tools an academy typically runs on with nineteen integrated modules covering flight operations, dispatch authorisation, fleet airworthiness, cadet records, ground training, digital logbooks, safety management, finance and regulatory compliance. It is built by Cephionix and is available to flight academies worldwide."
       },
       {
         "q": "What is an FTO in aviation?",
-        "a": "An FTO, or Flying Training Organisation, is a flight school approved by its national regulator to deliver training that counts towards a pilot licence. In India, FTOs are approved by the Directorate General of Civil Aviation (DGCA) and must meet the requirements set out in the Civil Aviation Requirements. Note that outside aviation, the abbreviation FTO also refers to police Field Training Officer programmes and to Freedom-To-Operate patent analysis, which are unrelated."
+        "a": "An FTO, or Flying Training Organisation, is a flight school approved by its national regulator to deliver training that counts towards a pilot licence. In India an FTO is approved by the Directorate General of Civil Aviation; the European equivalent is an EASA Approved Training Organisation, and in the United States a comparable school operates under 14 CFR Part 141. Outside aviation the same abbreviation refers to police Field Training Officer programmes and to Freedom-To-Operate patent analysis, which are unrelated."
       },
       {
         "q": "Which modules are included in Neural Wings?",
-        "a": "Nineteen modules ship as one platform: Flight Operations, Go/No-Go dispatch, Meteorology, Reporting and MIS, Fleet Management, Student Management, Instructor Management, Ground Training, Digital Logbook, Safety Management System, DGCA Compliance Calendar, Fuel Management, Flight Planning, Legal and Compliance, User and Role Access Control, Hostel Management, Finance and Accounts, HR Management, and Internal Communications. They share one database, so a completed sortie updates the logbook, the fleet hours, the cadet's progress and the billing ledger at the same time."
+        "a": "Nineteen modules ship as one platform: Flight Operations, Go/No-Go dispatch, Meteorology, Reporting and MIS, Fleet Management, Student Management, Instructor Management, Ground Training, Digital Logbook, Safety Management System, Compliance Calendar, Fuel Management, Flight Planning, Legal and Compliance, User and Role Access Control, Hostel Management, Finance and Accounts, HR Management, and Internal Communications. They share one database, so a completed sortie updates the logbook, the fleet hours, the cadet's progress and the billing ledger at the same time."
       },
       {
         "q": "What is AIRE?",
@@ -20,16 +20,40 @@
       },
       {
         "q": "How does the Go/No-Go engine work?",
-        "a": "The Go/No-Go engine is a rules-based check that runs before dispatch. It evaluates aircraft airworthiness status, student medical and licence validity, instructor duty time, current weather against VFR minima, fuel sufficiency, active NOTAMs, and whether weight and balance are within limits. It returns a clear authorise-or-hold result with the reason attached, and the decision is recorded with a digital signature as part of the dispatch record."
+        "a": "The Go/No-Go engine is a rules-based check that runs before dispatch. It evaluates aircraft airworthiness status, student medical and licence validity, instructor duty time, current weather against applicable minima, fuel sufficiency, active NOTAMs, and whether weight and balance are within limits. It returns a clear authorise-or-hold result with the reason attached, and the decision is recorded with a digital signature as part of the dispatch record."
+      },
+      {
+        "q": "How is this different from a general-purpose ERP or school management system?",
+        "a": "A generic system can hold names, fees and timetables, but it does not know that an expired Class 1 medical grounds a cadet, that a 100-hour inspection falls due mid-week, or that an instructor is three hours from a duty limit. Neural Wings models those rules directly, so conflicts surface before they become cancellations, and the records a regulator asks for are produced as a by-product of daily work rather than reconstructed afterwards."
+      },
+      {
+        "q": "Who is Neural Wings for?",
+        "a": "Approved flight training organisations, flying clubs and academies of any size, from a single-base operation with a couple of aircraft to a multi-base organisation running a large cadet pipeline. The module set is the same in both cases; what changes is how much of it an academy switches on."
+      },
+      {
+        "q": "Who builds Neural Wings?",
+        "a": "Cephionix, a company building AI-assisted software for regulated, safety-critical industries. Neural Wings was specified with pilots, instructors and FTO post holders rather than adapted from a generic business template, which is why its structure follows how an academy actually operates."
       }
     ]
   },
   {
-    "section": "Compliance and responsibility",
+    "section": "Regulators and compliance",
     "items": [
       {
-        "q": "Does Neural Wings help with DGCA compliance?",
-        "a": "Yes. DGCA requirements are modelled inside the system rather than reported on afterwards, so the audit trail is a by-product of daily work. The compliance calendar tracks every mandated renewal — pilot medicals, licence validity, aircraft Certificate of Airworthiness, radio telephony licences and instructor authorisations — and sends staged alerts before each due date. Standard MIS returns and flying-hour statements are generated in the required formats."
+        "q": "Does Neural Wings only work for DGCA-approved academies?",
+        "a": "No. The platform is built on ICAO standards, which are the common foundation beneath national rulebooks, so the operational core — scheduling, dispatch checks, training records, fleet airworthiness, safety management and billing — applies to an academy under any authority. DGCA compliance reporting is what ships today; support for EASA and FAA regulatory frameworks is in active development. If you operate under another authority, tell us which returns and record formats you must produce and we will confirm exactly what is available now and what is on the roadmap."
+      },
+      {
+        "q": "Can an academy outside India use it?",
+        "a": "Yes. Neural Wings is available to flight academies in any country, and the operational modules are not specific to one jurisdiction. What differs between countries is the regulatory reporting layer — the formats and returns each authority demands — so an academy under EASA, the FAA or another regulator should discuss its specific reporting obligations with us before implementation."
+      },
+      {
+        "q": "How does it help with DGCA compliance?",
+        "a": "DGCA requirements are modelled inside the system rather than reported on afterwards, so the audit trail is a by-product of daily work. The compliance calendar tracks every mandated renewal — pilot medicals, licence validity, aircraft Certificate of Airworthiness, radio telephony licences and instructor authorisations — and sends staged alerts before each due date. Standard MIS returns and flying-hour statements are generated in the required formats."
+      },
+      {
+        "q": "Is the safety module aligned to ICAO Annex 19?",
+        "a": "Yes. The Safety Management System module follows the four pillars set out in ICAO Annex 19 — safety policy, risk management, safety assurance and safety promotion. Hazards are reported digitally, scored on a risk matrix by likelihood and severity, assigned to a responsible person and tracked to closure, with recurring patterns visualised across the operation."
       },
       {
         "q": "Does the software make regulatory decisions for us?",
@@ -37,16 +61,49 @@
       },
       {
         "q": "Is the digital logbook acceptable for licensing?",
-        "a": "The digital logbook populates entries automatically from verified sortie data — aircraft registration, times, exercise flown, and dual or solo classification — and entries become tamper-proof once signed by the authorising instructor. Cumulative totals, day and night splits and cross-country distances are maintained in DGCA-compliant format and can be exported as a signed PDF at any time. Whether a given authority accepts a digital record in place of a physical logbook is determined by that authority's current rules, so confirm the position with your regulator."
+        "a": "The digital logbook populates entries automatically from verified sortie data — aircraft registration, times, exercise flown, and dual or solo classification — and entries become tamper-proof once signed by the authorising instructor. Cumulative totals, day and night splits and cross-country distances are maintained in the required format and can be exported as a signed PDF at any time. Whether a given authority accepts a digital record in place of a physical logbook is determined by that authority's current rules, so confirm the position with your regulator."
       },
       {
-        "q": "Can Neural Wings be used outside India?",
-        "a": "Yes. The platform is available to flight academies in any country, and the operational modules — scheduling, fleet, training records, safety management, billing — are not specific to one jurisdiction. The compliance modules are modelled on DGCA requirements, so an academy under EASA, FAA or another authority should discuss its specific regulatory reporting needs with us before implementation."
+        "q": "How are instructor duty time and currency tracked?",
+        "a": "Each instructor's licence validity, medical currency and accumulated hours are held against their record, and duty time is calculated automatically as sorties are flown. Rostering that would breach a duty limit is flagged before it is published, and competency checks and standardisation flights are scheduled from the same record, so only current and qualified staff are assigned."
       }
     ]
   },
   {
-    "section": "Data and security",
+    "section": "Day-to-day operation",
+    "items": [
+      {
+        "q": "How does billing work?",
+        "a": "Flying-hour billing is calculated from verified sortie records rather than re-entered by hand, so the hours a cadet flew and the hours they are invoiced for cannot drift apart. Tuition, ground training, hostel and mess charges consolidate into a single cadet account statement, and dashboards show revenue, collection rate and ageing of outstanding dues in real time."
+      },
+      {
+        "q": "How does weather reach the system?",
+        "a": "Live METAR, TAF, SIGMET and PIREP feeds are integrated into the operations dashboard, with automated assessments of conditions for the local training area and trend graphs for visibility and ceiling. Weather holds and cancellations are recorded automatically against the flying programme with timestamps, so a lost day is documented rather than argued about later."
+      },
+      {
+        "q": "Does it handle simulator scheduling?",
+        "a": "Yes. Simulator bookings for approved devices such as FNPT II and FTD sit in the same calendar as aircraft sorties, which prevents double-booking, keeps device utilisation visible, and lets an academy move training to the simulator when the weather closes in."
+      },
+      {
+        "q": "How does safety reporting work?",
+        "a": "Any staff member or cadet can raise a hazard or safety event digitally. Each report is classified by severity, scored on a risk matrix, assigned to a responsible person and tracked to closure, with the full history retained. Risk heatmaps show recurring patterns across the operation, which is what turns individual reports into something a safety manager can act on."
+      },
+      {
+        "q": "Can it handle multiple bases or branches?",
+        "a": "Yes. Fleet, instructors, cadets and scheduling are tracked per base, while management reporting consolidates across the whole organisation. A director sees the group position; a base sees its own operation."
+      },
+      {
+        "q": "Can we migrate our existing records?",
+        "a": "Yes. Existing records are imported during implementation so the system starts from your real position — current cadets, hours already flown, fleet status and outstanding dues — rather than an empty database that someone has to backfill by hand."
+      },
+      {
+        "q": "Can we get our data and reports out?",
+        "a": "Yes. Reports export as PDF or Excel, the digital logbook exports as a signed PDF, and scheduled reports can be delivered automatically to management or regulatory recipients. Your records remain yours and are returned or deleted at the end of the agreement."
+      }
+    ]
+  },
+  {
+    "section": "Data, security and access",
     "items": [
       {
         "q": "Who owns the data we put into Neural Wings?",
@@ -54,11 +111,15 @@
       },
       {
         "q": "How is our data protected?",
-        "a": "Access is controlled by role, mapped to the FTO's actual hierarchy, so staff see only what their post requires. Data is encrypted in transit using HTTPS/TLS, and every login, data access and system action is recorded in an audit log by user and timestamp. Security concerns can be reported to support@neuralwings.org."
+        "a": "Access is controlled by role, mapped to the academy's actual hierarchy, so staff see only what their post requires. Data is encrypted in transit using HTTPS/TLS, and every login, data access and system action is recorded in an audit log by user and timestamp. Security concerns can be reported to support@neuralwings.org."
       },
       {
         "q": "Does Neural Wings comply with Indian data protection law?",
         "a": "Cephionix handles personal information in line with India's Digital Personal Data Protection Act, 2023. Individuals can request access to, correction of, or deletion of their personal data, and can withdraw consent, by writing to hello@neuralwings.org. Where the data belongs to an academy using the platform, the request is directed to that academy, which controls it."
+      },
+      {
+        "q": "What devices does it run on?",
+        "a": "Neural Wings runs in a web browser today, so it needs no installation and works on desktops, laptops and tablets on the airfield. Native iOS and Android applications are in development, and the platform is being built so the same login and the same data serve all three."
       }
     ]
   },
@@ -67,19 +128,11 @@
     "items": [
       {
         "q": "How long does implementation take?",
-        "a": "A new flight training organisation can be operational in under 72 hours. That covers configuring the academy's fleet, bases, roles and syllabus structure, and importing existing records so the system starts from the academy's real position rather than an empty database."
+        "a": "A new flight training organisation can be operational in under 72 hours. That covers configuring the academy's fleet, bases, roles and syllabus structure, and importing existing records so the system starts from the academy's real position."
       },
       {
         "q": "How much does Neural Wings cost?",
         "a": "Pricing depends on fleet size, number of bases and cadet volume, so it is quoted per academy rather than published as a fixed list. Request a demonstration and our team will provide a quote against your actual operation. There is no credit card requirement to see the platform."
-      },
-      {
-        "q": "Can it handle multiple bases or branches?",
-        "a": "Yes. The platform supports multi-base operations, with fleet, instructors, cadets and scheduling tracked per base while management reporting consolidates across the whole organisation."
-      },
-      {
-        "q": "What do we need to run it?",
-        "a": "Neural Wings runs in a web browser, so it needs no installation on academy computers and works on desktops, laptops and tablets on the airfield. Access is by login, with permissions determined by the user's role."
       },
       {
         "q": "How do we see a demonstration?",
