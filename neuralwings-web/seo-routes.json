@@ -39,10 +39,10 @@
     },
     {
       "path": "/research",
-      "title": "Aviation Training Industry Research | Pilot Demand & FTO Capacity Data",
-      "description": "Published data from Boeing, ICAO and India's Ministry of Civil Aviation on pilot demand to 2044, DGCA commercial licence issuance, FTO capacity and safety management requirements \u2014 collected and charted.",
+      "title": "Global Flight Training Research | Pilot Demand, EASA, FAA & DGCA Data",
+      "description": "Published data from Boeing, the FAA, EASA, ICAO and India's Ministry of Civil Aviation: 660,000 new pilots needed by 2044, Europe the largest regional demand, 370,286 US student pilots, and how DGCA, EASA and FAA training rules compare.",
       "h1": "The world needs 660,000 new pilots. Who is going to train them?",
-      "summary": "Third-party research on aviation workforce demand and flight training capacity: Boeing forecasts 660,000 new pilots and 2.4 million aviation professionals by 2044, with 45,000 pilots needed in South Asia. India issued 1,331 commercial pilot licences in the first half of 2026, 41 per cent to cadets trained abroad, against a national capacity of roughly 3,500 students across 41 DGCA-approved FTOs.",
+      "summary": "Third-party research on worldwide flight training demand and capacity. Boeing forecasts 660,000 new pilots by 2044, with Eurasia needing 550,000 aviation personnel, North America 435,000 and South Asia 141,000. The FAA counted 887,519 active US pilots and 370,286 student certificates at the end of 2025. ICAO Annex 19 requires a safety management system, EASA approves training organisations under Regulation (EU) No 1178/2011, and India's 41 DGCA-approved FTOs can hold roughly 3,500 students at once.",
       "priority": "0.9",
       "changefreq": "monthly"
     },

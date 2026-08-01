@@ -1,24 +1,60 @@
 {
   "note": "Every figure here is taken from the third-party source named alongside it. Nothing in this file is Cephionix research.",
   "cplByYear": [
-    { "year": "2022", "licences": 1165 },
-    { "year": "2023", "licences": 1622 },
-    { "year": "2024", "licences": 1347 },
-    { "year": "2025", "licences": 1652 }
+    {
+      "year": "2022",
+      "licences": 1165
+    },
+    {
+      "year": "2023",
+      "licences": 1622
+    },
+    {
+      "year": "2024",
+      "licences": 1347
+    },
+    {
+      "year": "2025",
+      "licences": 1652
+    }
   ],
   "cplOrigin": [
-    { "label": "Trained at Indian FTOs", "value": 791 },
-    { "label": "Trained abroad", "value": 540 }
+    {
+      "label": "Trained at Indian FTOs",
+      "value": 791
+    },
+    {
+      "label": "Trained abroad",
+      "value": 540
+    }
   ],
   "boeingDemand": [
-    { "role": "Cabin crew", "people": 1000000 },
-    { "role": "Technicians", "people": 710000 },
-    { "role": "Pilots", "people": 660000 }
+    {
+      "role": "Cabin crew",
+      "people": 1000000
+    },
+    {
+      "role": "Technicians",
+      "people": 710000
+    },
+    {
+      "role": "Pilots",
+      "people": 660000
+    }
   ],
   "southAsia": [
-    { "role": "Pilots", "people": 45000 },
-    { "role": "Technicians", "people": 45000 },
-    { "role": "Cabin crew", "people": 51000 }
+    {
+      "role": "Pilots",
+      "people": 45000
+    },
+    {
+      "role": "Technicians",
+      "people": 45000
+    },
+    {
+      "role": "Cabin crew",
+      "people": 51000
+    }
   ],
   "sources": [
     {
@@ -29,6 +65,23 @@
       "url": "https://www.boeing.com/commercial/market/pilot-technician-outlook",
       "secondaryUrl": "https://investors.boeing.com/investors/news/press-release-details/2025/Boeing-Forecasts-20-Year-Global-Demand-for-Nearly-2-4-Million-New-Commercial-Pilots-Technicians-Cabin-Crew/default.aspx",
       "finding": "The industry will need 2.4 million new aviation professionals through 2044 — 660,000 pilots, 710,000 maintenance technicians and 1,000,000 cabin crew. Boeing names South Asia and Southeast Asia as the fastest-growing regions for personnel, with staffing demand expected to more than triple. South Asia alone accounts for 141,000 people, including 45,000 pilots."
+    },
+    {
+      "id": "faa",
+      "title": "U.S. Civil Airmen Statistics",
+      "publisher": "Federal Aviation Administration (FAA), Aeronautical Center, Oklahoma City",
+      "date": "As at 31 December 2025",
+      "url": "https://www.faa.gov/data_research/aviation_data_statistics/civil_airmen_statistics",
+      "secondaryUrl": "https://stats-2025.skyfareracademy.com/",
+      "finding": "The United States had 887,519 active pilots at the end of 2025, including 370,286 active student pilot certificates — up 7.2 per cent on 2024. Student certificates have nearly tripled since 2016, when the figure was 128,501, which is the clearest available measure of how much training volume American flight schools have absorbed in under a decade."
+    },
+    {
+      "id": "easa",
+      "title": "Approved Training Organisations (ATOs) and Regulation (EU) No 1178/2011",
+      "publisher": "European Union Aviation Safety Agency (EASA)",
+      "date": "Aircrew Regulation, as amended",
+      "url": "https://www.easa.europa.eu/en/domains/aircrew-and-medical/approved-training-organisations-ato",
+      "finding": "Every pilot training organisation in Europe must comply with Commission Regulation (EU) No 1178/2011, the Aircrew Regulation, and is approved as an ATO. Notably, the register of approved organisations is maintained by each national aviation authority rather than centrally by EASA, so an operator working across European states deals with several authorities, several registers and several reporting cadences under one common rulebook."
     },
     {
       "id": "mocacpl",
@@ -62,6 +115,72 @@
       "date": "Effective 1 October 2025",
       "url": "https://www.dgca.gov.in/digigov-portal/",
       "finding": "DGCA introduced a ranking system for approved flying training organisations from October 2025, published on a bi-annual cycle. Academies are scored on published parameters, which makes operational discipline and record quality publicly comparable for the first time."
+    }
+  ],
+  "boeingByRegion": [
+    {
+      "region": "Eurasia (Europe)",
+      "pilots": 149000,
+      "total": 550000
+    },
+    {
+      "region": "China",
+      "pilots": 124000,
+      "total": 426000
+    },
+    {
+      "region": "North America",
+      "pilots": 119000,
+      "total": 435000
+    },
+    {
+      "region": "Middle East",
+      "pilots": 67000,
+      "total": 234000
+    },
+    {
+      "region": "Southeast Asia",
+      "pilots": 62000,
+      "total": 243000
+    },
+    {
+      "region": "South Asia",
+      "pilots": 45000,
+      "total": 141000
+    },
+    {
+      "region": "Latin America",
+      "pilots": 37000,
+      "total": 134000
+    },
+    {
+      "region": "Africa",
+      "pilots": 23000,
+      "total": 74000
+    },
+    {
+      "region": "Northeast Asia",
+      "pilots": 23000,
+      "total": 92000
+    },
+    {
+      "region": "Oceania",
+      "pilots": 11000,
+      "total": 41000
+    }
+  ],
+  "usStudentPilots": [
+    {
+      "year": "2016",
+      "students": 128501
+    },
+    {
+      "year": "2024",
+      "students": 345495
+    },
+    {
+      "year": "2025",
+      "students": 370286
     }
   ]
 }

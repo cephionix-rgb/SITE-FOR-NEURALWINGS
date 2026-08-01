@@ -127,9 +127,10 @@ export function Research() {
           </h1>
 
           <p className="font-sans text-[17px] md:text-[18px] text-zinc-600 leading-relaxed max-w-[720px]">
-            We pulled the published figures from Boeing, ICAO and India's Ministry of Civil Aviation and put
-            them in one place. Read together, they describe an industry being asked to train more pilots than
-            ever, to a rising safety standard, using infrastructure that is already close to full.
+            We pulled the published figures from Boeing, the FAA, EASA, ICAO and India's Ministry of Civil
+            Aviation and put them in one place. Read together, they describe a worldwide industry being asked to
+            train more pilots than ever, to a rising safety standard, on infrastructure that is already close to
+            full — in Europe and North America as much as in Asia.
           </p>
 
           {/* Attribution — stated before any of the data */}
@@ -194,6 +195,64 @@ export function Research() {
 
           <Figure
             number="02"
+            title="Every region needs pilots — Europe most of all"
+            subtitle="Boeing's forecast broken down by region. Eurasia, which covers Europe, needs more new personnel than anywhere else on earth at 550,000, ahead of North America at 435,000 and China at 426,000. This is not one country's problem, and no region is exempt."
+            source="Boeing, Pilot and Technician Outlook 2025–2044 (22 July 2025)"
+            table={<DataTable head={['Region', 'Pilots needed by 2044', 'All personnel']} rows={data.boeingByRegion.map((d) => [d.region, d.pilots, d.total])} />}
+          >
+            <div className="h-[380px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={data.boeingByRegion} layout="vertical" margin={{ top: 4, right: 56, bottom: 4, left: 4 }}>
+                  <XAxis type="number" hide />
+                  <YAxis
+                    type="category" dataKey="region" width={132} tickLine={false} axisLine={false}
+                    tick={{ fill: INK, fontSize: 12.5, fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
+                  />
+                  <Tooltip {...tooltipStyle} formatter={((v: unknown) => [Number(v).toLocaleString('en-IN'), 'Pilots needed']) as never} />
+                  <Bar dataKey="pilots" fill={BLUE} radius={[0, 4, 4, 0]} barSize={20}>
+                    <LabelList
+                      dataKey="pilots" position="right" formatter={((v: unknown) => compact(Number(v))) as never}
+                      style={{ fill: INK, fontSize: 12.5, fontWeight: 700, fontFamily: 'Inter, sans-serif' }}
+                    />
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </Figure>
+
+          <Figure
+            number="03"
+            title="American flight schools have absorbed a near-tripling of students"
+            subtitle="Active student pilot certificates on the FAA register. The United States went from 128,501 student pilots in 2016 to 370,286 at the end of 2025 — the same throughput pressure India is under, arriving earlier and at far greater scale."
+            source="FAA, U.S. Civil Airmen Statistics (as at 31 December 2025)"
+            table={<DataTable head={['Year', 'Active student pilot certificates']} rows={data.usStudentPilots.map((d) => [d.year, d.students])} />}
+          >
+            <div className="h-[240px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={data.usStudentPilots} margin={{ top: 24, right: 8, bottom: 4, left: 4 }}>
+                  <XAxis
+                    dataKey="year" tickLine={false} axisLine={{ stroke: '#e4e4e7' }}
+                    tick={{ fill: MUTED, fontSize: 13, fontFamily: 'Inter, sans-serif' }}
+                  />
+                  <YAxis hide />
+                  <Tooltip {...tooltipStyle} formatter={((v: unknown) => [Number(v).toLocaleString('en-IN'), 'Student certificates']) as never} />
+                  <Bar dataKey="students" fill={BLUE} radius={[4, 4, 0, 0]} barSize={60}>
+                    <LabelList
+                      dataKey="students" position="top" formatter={((v: unknown) => compact(Number(v))) as never}
+                      style={{ fill: INK, fontSize: 13, fontWeight: 700, fontFamily: 'Inter, sans-serif' }}
+                    />
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+            <p className="font-sans text-[13px] text-zinc-500 mt-3 leading-relaxed">
+              The FAA counted <strong className="text-zinc-800">887,519</strong> active pilots in total at the
+              end of 2025.
+            </p>
+          </Figure>
+
+          <Figure
+            number="04"
             title="India is issuing more commercial licences than a decade ago"
             subtitle="Full-year commercial pilot licences issued by DGCA. The trend is up, but it moves in steps rather than a straight line — capacity, weather and aircraft availability all cap how fast an academy can push cadets through."
             source="Ministry of Civil Aviation, stated in the Rajya Sabha (21 July 2026)"
@@ -225,7 +284,7 @@ export function Research() {
           </Figure>
 
           <Figure
-            number="03"
+            number="05"
             title={`${abroadShare}% of India's new commercial pilots earned their licence abroad`}
             subtitle="Of the 1,331 commercial pilot licences India issued in the first half of 2026, more than five hundred went to cadets who trained outside the country. That is demand Indian academies could serve and currently do not."
             source="Ministry of Civil Aviation, stated in the Rajya Sabha (21 July 2026)"
@@ -263,7 +322,7 @@ export function Research() {
           </Figure>
 
           <Figure
-            number="04"
+            number="06"
             title="South Asia's share of the hiring wave"
             subtitle="Boeing projects 141,000 new aviation personnel for South Asia through 2044, and names it among the two fastest-growing regions in the world, with staffing demand expected to more than triple."
             source="Boeing, Pilot and Technician Outlook 2025–2044 (22 July 2025)"
@@ -291,6 +350,64 @@ export function Research() {
               </ResponsiveContainer>
             </div>
           </Figure>
+        </div>
+      </section>
+
+      {/* ── Regulators ── */}
+      <section className="relative py-12 md:py-16 bg-white border-t border-zinc-100">
+        <div className="max-w-[900px] mx-auto px-6">
+          <span className="font-sans text-[11px] font-bold tracking-[0.18em] text-sky-600 uppercase">
+            One standard, three rulebooks
+          </span>
+          <h2 className="font-heading font-extrabold text-[26px] md:text-[36px] text-zinc-900 leading-tight mt-2 mb-4">
+            The same aircraft, the same syllabus, different paperwork
+          </h2>
+          <p className="font-sans text-[16px] text-zinc-600 leading-relaxed max-w-[760px] mb-8">
+            ICAO sets the standards that national authorities implement, which is why an academy in Pune, Prague
+            and Phoenix teaches broadly the same exercises but files entirely different returns. The operational
+            layer is common; the reporting layer is local.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              {
+                code: 'ICAO',
+                name: 'The global baseline',
+                body: 'Annex 19 requires a Safety Management System on four pillars — policy, risk management, assurance and promotion. Annex 1 sets the licensing baseline. National rules are built on top of these, which is why a system modelled on ICAO structure ports between countries.',
+                note: 'Amendment 2 applicable November 2026',
+                tone: 'sky',
+              },
+              {
+                code: 'EASA',
+                name: 'Europe',
+                body: 'Training organisations are approved as ATOs under Regulation (EU) No 1178/2011. Registers are held by each national authority rather than centrally, so an operator working across member states answers to several authorities under one shared rulebook.',
+                note: 'Largest regional demand: 550,000 people',
+                tone: 'violet',
+              },
+              {
+                code: 'FAA',
+                name: 'United States',
+                body: 'Approved schools operate under 14 CFR Part 141 with an FAA-approved syllabus and mandatory stage checks, which is what lowers the commercial minimum to 190 hours against 250 under the unstructured Part 61 route.',
+                note: '370,286 student certificates on register',
+                tone: 'amber',
+              },
+            ].map((r) => (
+              <div key={r.code} className="p-6 rounded-2xl border border-zinc-200 bg-white shadow-sm flex flex-col">
+                <div className="flex items-baseline gap-2 mb-1">
+                  <span className={`font-heading font-extrabold text-[20px] ${
+                    r.tone === 'sky' ? 'text-sky-600' : r.tone === 'violet' ? 'text-violet-600' : 'text-amber-600'
+                  }`}>
+                    {r.code}
+                  </span>
+                  <span className="font-sans text-[13px] font-semibold text-zinc-500">{r.name}</span>
+                </div>
+                <p className="font-sans text-[14px] text-zinc-600 leading-relaxed flex-1">{r.body}</p>
+                <p className="font-sans text-[12px] font-semibold text-zinc-400 mt-4 pt-3 border-t border-zinc-100">
+                  {r.note}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -334,9 +451,11 @@ export function Research() {
 
           <div className="flex flex-col gap-5 font-sans text-[16px] text-zinc-600 leading-relaxed max-w-[760px]">
             <p>
-              Three findings sit on top of each other. Demand for pilots is large and sustained. India's
-              training capacity is bounded by a supervision ratio that cannot be waived. And roughly two in five
-              new Indian commercial pilots are already going abroad to qualify.
+              Three findings sit on top of each other. Demand for pilots is large, sustained and global — Europe
+              needs more new personnel than any other region, North America has already absorbed a near-tripling
+              of student pilots, and Asia is growing fastest of all. Training capacity everywhere is bounded by
+              supervision ratios that cannot be waived. And in India, roughly two in five new commercial pilots
+              are already going abroad to qualify.
             </p>
             <p>
               A fourth pressure runs underneath: ICAO Annex 19 requires a functioning safety management system,
@@ -357,7 +476,10 @@ export function Research() {
               That is the problem Neural Wings was built for: hold every operational record in one system, let
               an intelligence layer watch the expiries, the hours and the conflicts continuously, and surface
               the decision before it becomes a cancellation. Not because software is interesting, but because
-              the arithmetic above leaves very little room for avoidable losses.
+              the arithmetic above leaves very little room for avoidable losses — and that arithmetic is the
+              same whether the academy answers to DGCA, EASA or the FAA. The operational core is built on ICAO
+              standards for exactly that reason; the reporting layer is what we localise, DGCA first, with EASA
+              and FAA frameworks in development.
             </p>
           </div>
 
