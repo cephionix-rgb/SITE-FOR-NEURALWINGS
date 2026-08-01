@@ -24,6 +24,13 @@ const today = new Date().toISOString().slice(0, 10);
 const escapeHtml = (value) =>
   String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
+/**
+ * Canonical URLs carry a trailing slash: each route is a directory, and Pages
+ * 301s /aire to /aire/. Advertising the pre-redirect form would point Google at
+ * a URL that immediately bounces.
+ */
+const canonicalUrl = (path) => (path === '/' ? `${origin}/` : `${origin}${path}/`);
+
 /** Replaces the content of a meta/link tag matched by `attr="value"`. */
 function setTagContent(html, matchAttr, contentAttr, value) {
   const pattern = new RegExp(`(<(?:meta|link)[^>]*${matchAttr}[^>]*${contentAttr}=")[^"]*(")`, 'i');
@@ -60,7 +67,7 @@ function noscriptBlock(route) {
 let written = 0;
 
 for (const route of routes) {
-  const url = route.path === '/' ? `${origin}/` : `${origin}${route.path}`;
+  const url = canonicalUrl(route.path);
 
   let html = shell;
   html = html.replace(/<title>[^<]*<\/title>/i, `<title>${escapeHtml(route.title)}</title>`);
@@ -88,7 +95,7 @@ const sitemap =
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
   routes
     .map((route) => {
-      const url = route.path === '/' ? `${origin}/` : `${origin}${route.path}`;
+      const url = canonicalUrl(route.path);
       return (
         '\n  <url>\n' +
         `    <loc>${url}</loc>\n` +

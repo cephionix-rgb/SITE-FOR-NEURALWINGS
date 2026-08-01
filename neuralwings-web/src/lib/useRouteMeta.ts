@@ -19,7 +19,8 @@ export function useRouteMeta() {
 
     if (!route) return;
 
-    const url = route.path === '/' ? `${seo.origin}/` : `${seo.origin}${route.path}`;
+    // Trailing slash: each route is a directory on Pages, and /aire 301s to /aire/
+    const url = route.path === '/' ? `${seo.origin}/` : `${seo.origin}${route.path}/`;
 
     document.title = route.title;
     setMeta('name', 'description', route.description);
