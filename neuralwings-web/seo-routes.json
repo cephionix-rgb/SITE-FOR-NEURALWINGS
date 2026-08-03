@@ -59,9 +59,9 @@
     {
       "path": "/glossary",
       "title": "Aviation Training Glossary | DGCA, FTO and Flight School Terms",
-      "description": "Plain definitions of the terms used inside a flight training organisation \u2014 DGCA, FTO, CAR, SPL, CPL, Go/No-Go, METAR, NOTAM, SMS, FNPT II, stage checks and more.",
+      "description": "Plain definitions of the terms used inside a flight training organisation \u2014 ICAO, DGCA, EASA, FAA, ATO, FTO, CAR, Part-FCL, Part 141, SPL, CPL, Go/No-Go, METAR, NOTAM, SMS and more.",
       "h1": "Aviation training glossary",
-      "summary": "Definitions of the regulatory, operational and training terms used across Indian flight training organisations, from DGCA and CAR to Go/No-Go, NOTAM, SMS and FNPT II.",
+      "summary": "Definitions of the regulatory, operational and training terms used inside flight training organisations worldwide \u2014 DGCA, EASA, FAA, ICAO, CAR, SPL, Go/No-Go, NOTAM, SMS and FNPT II.",
       "priority": "0.7",
       "changefreq": "monthly",
       "schema": "glossary"

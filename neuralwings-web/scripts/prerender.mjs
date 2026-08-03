@@ -96,7 +96,7 @@ function structuredDataFor(route) {
       '@type': 'DefinedTermSet',
       '@id': `${origin}/glossary/#termset`,
       name: 'Aviation Training Glossary',
-      description: 'Definitions of the regulatory, operational and training terms used across Indian flight training organisations.',
+      description: 'Definitions of the regulatory, operational and training terms used across flight training organisations worldwide.',
       hasDefinedTerm: terms.flatMap((group) =>
         group.items.map((item) => ({
           '@type': 'DefinedTerm',

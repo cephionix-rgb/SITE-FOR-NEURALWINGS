@@ -11,7 +11,7 @@ export function Glossary() {
       eyebrow="Reference"
       title="Aviation training glossary"
       updated="1 August 2026"
-      intro="The regulatory, operational and training terms used inside a flight training organisation — written plainly, for the people who have to work with them."
+      intro="The regulatory, operational and training terms used inside flight training organisations worldwide — written plainly, for the people who have to work with them."
     >
       {/* Jump links */}
       <nav className="flex flex-wrap gap-2 -mt-2">
