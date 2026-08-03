@@ -36,7 +36,7 @@ function PageCTA() {
           </h2>
 
           <p className="font-sans text-[17px] text-zinc-500 leading-relaxed mb-10 max-w-[560px] mx-auto">
-            Neural Wings goes live in under 72 hours. No credit card. No spreadsheets. No chaos. One platform built for how Indian FTOs actually operate.
+            Neural Wings goes live in under 72 hours. No credit card. No spreadsheets. No chaos. One platform built for how flight academies actually operate.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

@@ -232,7 +232,7 @@ export function IncidentBoard() {
             transition={{ delay: 0.1 }}
             className="font-heading font-bold text-[30px] md:text-[52px] text-zinc-900 leading-tight mb-5"
           >
-            30 Problems Every Indian FTO{' '}
+            30 Problems Every Flight Academy{' '}
             <span className="text-gradient">Has Right Now.</span>
           </motion.h2>
 

@@ -29,7 +29,7 @@ export function Security() {
           >
             Bank-grade Security.{' '}
             <br className="hidden md:block" />
-            <span className="text-gradient">DGCA Compliant.</span>
+            <span className="text-gradient">Audit Ready.</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

@@ -14,7 +14,7 @@ const problems = [
     num: '02',
     icon: AlertTriangle,
     title: 'Compliance is One Missed Deadline Away From a Grounding',
-    desc: 'DGCA deadlines — medical renewals, instrument calibrations, licence revalidations — are tracked manually. One overlooked date can ground your entire fleet. No system warns you in advance.',
+    desc: 'Regulatory deadlines — medical renewals, instrument calibrations, licence revalidations — are tracked manually. One overlooked date can ground your entire fleet. No system warns you in advance.',
     risk: 'CRITICAL',
     riskColor: 'text-status-danger bg-red-50 border-red-200',
   },
@@ -62,7 +62,7 @@ export function Problem() {
             transition={{ delay: 0.1 }}
             className="font-heading font-bold text-[28px] md:text-[48px] text-zinc-900 leading-tight mb-6"
           >
-            Indian FTOs Are Still Flying on{' '}
+            Flight Academies Are Still Flying on{' '}
             <span className="text-gradient">Paperwork</span>
           </motion.h2>
           <motion.p
@@ -72,7 +72,7 @@ export function Problem() {
             transition={{ delay: 0.2 }}
             className="font-sans font-normal text-[18px] text-zinc-500 max-w-[720px] leading-relaxed"
           >
-            Every day, DGCA-approved flying schools across India lose hours to manual processes that put students, aircraft, and licences at risk.
+            Every day, approved flying schools around the world lose hours to manual processes that put students, aircraft, and licences at risk — under DGCA, EASA, the FAA and every other authority alike.
           </motion.p>
         </div>
 

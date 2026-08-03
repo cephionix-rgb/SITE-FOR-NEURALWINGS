@@ -41,7 +41,7 @@ export function WarRoomHero() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-200 bg-red-50 font-sans text-[12px] font-semibold text-red-600 tracking-wide">
             <AlertTriangle className="w-3.5 h-3.5" />
-            The State of Indian FTOs in 2024
+            The State of Flight Training in 2026
           </span>
         </motion.div>
 
@@ -67,7 +67,7 @@ export function WarRoomHero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-7 max-w-[640px] font-sans text-[17px] md:text-[19px] text-yellow-400 leading-relaxed"
         >
-          Every FTO in India is running on paper registers, WhatsApp groups, and morning panic.
+          Too many flight academies still run on paper registers, chat groups, and morning panic.
           Here is the full damage report — and exactly how we fix every single one.
         </motion.p>
 

@@ -77,8 +77,8 @@ export function CTA() {
           transition={{ delay: 0.15 }}
           className="text-zinc-400 text-[18px] md:text-[22px] max-w-[680px] leading-relaxed mb-14"
         >
-          Join the next generation of flying training organisations — in India and anywhere in the world —
-          operating intelligently, safely, and profitably, powered by Neural Wings.
+          Join the next generation of flying training organisations — on every continent, under every
+          authority — operating intelligently, safely, and profitably, powered by Neural Wings.
         </motion.p>
 
         {/* Stat pills */}
