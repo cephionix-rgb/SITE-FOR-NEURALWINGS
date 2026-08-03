@@ -5,7 +5,7 @@ import { DemoForm } from '../forms/DemoForm';
 
 const stats = [
   { icon: CalendarCheck, value: '< 72 hrs', label: 'Onboarding Time' },
-  { icon: ShieldCheck, value: 'DGCA', label: 'Compliant by Design' },
+  { icon: ShieldCheck, value: 'ICAO', label: 'Standards-Based Core' },
   { icon: Zap, value: '12+', label: 'Intelligent Modules' },
   { icon: Globe, value: 'Worldwide', label: 'Any Country, Any Academy' },
 ];

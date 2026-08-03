@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { geoOrthographic, geoPath, geoGraticule10 } from 'd3-geo';
+import { geoOrthographic, geoPath, geoGraticule10, geoInterpolate, geoDistance } from 'd3-geo';
 import { feature } from 'topojson-client';
 import type { FeatureCollection, Feature, Geometry } from 'geojson';
 import worldData from 'world-atlas/countries-110m.json';
@@ -27,6 +27,14 @@ export function JurisdictionGlobe({ selectedId, onSelect }: Props) {
   const [hovered, setHovered] = useState<string | null>(null);
   const dragState = useRef<{ x: number; y: number; r: [number, number] } | null>(null);
   const frame = useRef<number | undefined>(undefined);
+
+  // Flight animation: a plane tracks the great circle from the last selected
+  // jurisdiction to the new one while the globe turns to meet it.
+  const [flight, setFlight] = useState<{ from: [number, number]; to: [number, number]; colour: string } | null>(null);
+  const [progress, setProgress] = useState(1);
+  const prevFocus = useRef<[number, number] | null>(null);
+  const rotationRef = useRef<[number, number]>([-20, -15]);
+  rotationRef.current = rotation;
 
   const countries = useMemo(() => {
     // world-atlas ships TopoJSON; the cast is the documented shape.
@@ -60,13 +68,56 @@ export function JurisdictionGlobe({ selectedId, onSelect }: Props) {
     return () => { if (frame.current) cancelAnimationFrame(frame.current); };
   }, [spinning]);
 
-  // Turn the globe to face a jurisdiction when one is picked from the list.
+  // Turn the globe to face the picked jurisdiction, flying a plane there.
   useEffect(() => {
     const j = jurisdictions.find((x) => x.id === selectedId);
     if (!j) return;
     setSpinning(false);
+
     const [lat, lon] = j.focus as [number, number];
-    setRotation([-lon, -lat]);
+    const to: [number, number] = [lon, lat];
+    const from = prevFocus.current;
+    prevFocus.current = to;
+
+    const target: [number, number] = [-lon, -lat];
+    const start = rotationRef.current;
+
+    // First selection: no origin to fly from, so just settle there.
+    if (!from) {
+      setRotation(target);
+      setProgress(1);
+      return;
+    }
+
+    setFlight({ from, to, colour: j.colour });
+    setProgress(0);
+
+    // Rotate the short way round, or the globe spins most of the way home.
+    const shortest = (a: number, b: number) => a + ((((b - a + 180) % 360) + 360) % 360 - 180);
+    const endX = shortest(start[0], target[0]);
+    const ease = (t: number) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+
+    const DURATION = 1500;
+    const t0 = performance.now();
+    let raf = 0;
+
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - t0) / DURATION);
+      const e = ease(t);
+      setRotation([start[0] + (endX - start[0]) * e, start[1] + (target[1] - start[1]) * e]);
+      setProgress(e);
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setRotation(target);
+      setProgress(1);
+      setFlight(null);
+      return;
+    }
+
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
   }, [selectedId]);
 
   const projection = useMemo(
@@ -141,6 +192,35 @@ export function JurisdictionGlobe({ selectedId, onSelect }: Props) {
             </path>
           );
         })}
+
+        {flight && (() => {
+          const along = geoInterpolate(flight.from, flight.to);
+          const here = along(progress);
+          const ahead = along(Math.min(1, progress + 0.03));
+          const centre: [number, number] = [-rotation[0], -rotation[1]];
+          const p1 = projection(here);
+          const p2 = projection(ahead);
+          const onNearSide = geoDistance(here, centre) < Math.PI / 2;
+          const arc = path({ type: 'LineString', coordinates: [flight.from, flight.to] } as never);
+          const heading = p1 && p2 ? (Math.atan2(p2[1] - p1[1], p2[0] - p1[0]) * 180) / Math.PI : 0;
+
+          return (
+            <g pointerEvents="none">
+              {arc && (
+                <path d={arc} fill="none" stroke={flight.colour} strokeWidth={1.6}
+                  strokeDasharray="5 5" strokeLinecap="round" opacity={0.55} />
+              )}
+              {onNearSide && p1 && (
+                <g transform={`translate(${p1[0]}, ${p1[1]}) rotate(${heading})`}>
+                  <circle r={9} fill={flight.colour} opacity={0.18} />
+                  {/* nose points along +x, matching the heading rotation */}
+                  <path d="M 7 0 L -4 4 L -1.5 0 L -4 -4 Z" fill={flight.colour}
+                    stroke="#ffffff" strokeWidth={0.7} strokeLinejoin="round" />
+                </g>
+              )}
+            </g>
+          );
+        })()}
 
         <circle cx={SIZE / 2} cy={SIZE / 2} r={SIZE / 2 - 8} fill="url(#rim)" pointerEvents="none" />
         <circle cx={SIZE / 2} cy={SIZE / 2} r={SIZE / 2 - 8} fill="none" stroke="#C7DDF2" strokeWidth={1} pointerEvents="none" />

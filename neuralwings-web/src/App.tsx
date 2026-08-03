@@ -34,6 +34,7 @@ import { RevenueSection } from './components/sections/RevenueSection';
 import { TechStack } from './components/sections/TechStack';
 import { Security } from './components/sections/Security';
 import { CTA } from './components/sections/CTA';
+import { GlobalReach } from './components/sections/GlobalReach';
 
 // Secondary pages are code-split: a visitor landing on the home page should not
 // download the legal pages, the AIRE page and the war-room dashboards up front.
@@ -68,6 +69,7 @@ function LandingPage() {
           <Problem />
           <Solution />
           <SolarSystemExplorer />
+          <GlobalReach />
           <RoleCarousel />
           <InteractiveDemo />
           <RevenueSection />
