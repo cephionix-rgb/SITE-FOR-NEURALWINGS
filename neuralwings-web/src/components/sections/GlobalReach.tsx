@@ -36,7 +36,7 @@ export function GlobalReach() {
     <div ref={ref}>
       {visible ? (
         <Suspense fallback={<div className="h-[540px] bg-[#F8FBFF] border-y border-blue-100" />}>
-          <JurisdictionReport />
+          <JurisdictionReport flat />
         </Suspense>
       ) : (
         <div className="h-[540px] bg-[#F8FBFF] border-y border-blue-100" />

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { geoOrthographic, geoPath, geoGraticule10, geoInterpolate, geoDistance } from 'd3-geo';
+import { geoOrthographic, geoNaturalEarth1, geoPath, geoGraticule10, geoInterpolate, geoDistance } from 'd3-geo';
 import { feature } from 'topojson-client';
 import type { FeatureCollection, Feature, Geometry } from 'geojson';
 import worldData from 'world-atlas/countries-110m.json';
@@ -19,9 +19,12 @@ for (const j of jurisdictions) for (const c of j.countries) byCountry.set(c, j);
 interface Props {
   selectedId: string;
   onSelect: (id: string) => void;
+  /** Flat world map instead of the rotating globe — used where a globe already
+      appears higher up the same page. */
+  flat?: boolean;
 }
 
-export function JurisdictionGlobe({ selectedId, onSelect }: Props) {
+export function JurisdictionGlobe({ selectedId, onSelect, flat = false }: Props) {
   const [rotation, setRotation] = useState<[number, number]>([-20, -15]);
   const [spinning, setSpinning] = useState(true);
   const [hovered, setHovered] = useState<string | null>(null);
@@ -54,7 +57,7 @@ export function JurisdictionGlobe({ selectedId, onSelect }: Props) {
 
   // Idle auto-rotation, stopped by any interaction and by reduced-motion.
   useEffect(() => {
-    if (!spinning) return;
+    if (flat || !spinning) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     let last = performance.now();
@@ -75,6 +78,26 @@ export function JurisdictionGlobe({ selectedId, onSelect }: Props) {
     setSpinning(false);
 
     const [lat, lon] = j.focus as [number, number];
+    if (flat) {
+      // No rotation to animate on a flat map; still fly the route.
+      const from = prevFocus.current;
+      prevFocus.current = [lon, lat];
+      if (!from || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        setProgress(1);
+        return;
+      }
+      setFlight({ from, to: [lon, lat], colour: j.colour });
+      setProgress(0);
+      const t0 = performance.now();
+      let raf = 0;
+      const step = (now: number) => {
+        const t = Math.min(1, (now - t0) / 1500);
+        setProgress(t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+        if (t < 1) raf = requestAnimationFrame(step);
+      };
+      raf = requestAnimationFrame(step);
+      return () => cancelAnimationFrame(raf);
+    }
     const to: [number, number] = [lon, lat];
     const from = prevFocus.current;
     prevFocus.current = to;
@@ -120,9 +143,15 @@ export function JurisdictionGlobe({ selectedId, onSelect }: Props) {
     return () => cancelAnimationFrame(raf);
   }, [selectedId]);
 
+  const W = flat ? 900 : SIZE;
+  const H = flat ? 460 : SIZE;
+
   const projection = useMemo(
-    () => geoOrthographic().scale(SIZE / 2 - 8).translate([SIZE / 2, SIZE / 2]).rotate([rotation[0], rotation[1]]),
-    [rotation]
+    () =>
+      flat
+        ? geoNaturalEarth1().scale(W / 5.6).translate([W / 2, H / 2 + 10])
+        : geoOrthographic().scale(SIZE / 2 - 8).translate([SIZE / 2, SIZE / 2]).rotate([rotation[0], rotation[1]]),
+    [rotation, flat, W, H]
   );
   const path = useMemo(() => geoPath(projection), [projection]);
 
@@ -148,12 +177,12 @@ export function JurisdictionGlobe({ selectedId, onSelect }: Props) {
   return (
     <div className="flex flex-col items-center">
       <svg
-        viewBox={`0 0 ${SIZE} ${SIZE}`}
-        className="w-full max-w-[460px] touch-none select-none cursor-grab active:cursor-grabbing"
+        viewBox={`0 0 ${W} ${H}`}
+        className={`w-full select-none ${flat ? "max-w-[900px]" : "max-w-[460px] touch-none cursor-grab active:cursor-grabbing"}`}
         role="img"
         aria-label="Rotatable globe. Select a jurisdiction to read its report."
-        onPointerDown={(e) => { (e.target as Element).setPointerCapture?.(e.pointerId); startDrag(e.clientX, e.clientY); }}
-        onPointerMove={(e) => onDrag(e.clientX, e.clientY)}
+        onPointerDown={flat ? undefined : (e) => { (e.target as Element).setPointerCapture?.(e.pointerId); startDrag(e.clientX, e.clientY); }}
+        onPointerMove={flat ? undefined : (e) => onDrag(e.clientX, e.clientY)}
         onPointerUp={() => { dragState.current = null; }}
         onPointerLeave={() => { dragState.current = null; }}
       >
@@ -168,7 +197,11 @@ export function JurisdictionGlobe({ selectedId, onSelect }: Props) {
           </radialGradient>
         </defs>
 
-        <circle cx={SIZE / 2} cy={SIZE / 2} r={SIZE / 2 - 8} fill="url(#ocean)" />
+        {flat ? (
+          <rect x={0} y={0} width={W} height={H} fill="url(#ocean)" rx={18} />
+        ) : (
+          <circle cx={SIZE / 2} cy={SIZE / 2} r={SIZE / 2 - 8} fill="url(#ocean)" />
+        )}
         <path d={path(geoGraticule10()) ?? ''} fill="none" stroke="#BBD4EC" strokeWidth={0.4} />
 
         {countries.map((f: Feature<Geometry>, i) => {
@@ -200,7 +233,7 @@ export function JurisdictionGlobe({ selectedId, onSelect }: Props) {
           const centre: [number, number] = [-rotation[0], -rotation[1]];
           const p1 = projection(here);
           const p2 = projection(ahead);
-          const onNearSide = geoDistance(here, centre) < Math.PI / 2;
+          const onNearSide = flat || geoDistance(here, centre) < Math.PI / 2;
           const arc = path({ type: 'LineString', coordinates: [flight.from, flight.to] } as never);
           const heading = p1 && p2 ? (Math.atan2(p2[1] - p1[1], p2[0] - p1[0]) * 180) / Math.PI : 0;
 
@@ -222,12 +255,16 @@ export function JurisdictionGlobe({ selectedId, onSelect }: Props) {
           );
         })()}
 
-        <circle cx={SIZE / 2} cy={SIZE / 2} r={SIZE / 2 - 8} fill="url(#rim)" pointerEvents="none" />
-        <circle cx={SIZE / 2} cy={SIZE / 2} r={SIZE / 2 - 8} fill="none" stroke="#C7DDF2" strokeWidth={1} pointerEvents="none" />
+        {!flat && (
+          <>
+            <circle cx={SIZE / 2} cy={SIZE / 2} r={SIZE / 2 - 8} fill="url(#rim)" pointerEvents="none" />
+            <circle cx={SIZE / 2} cy={SIZE / 2} r={SIZE / 2 - 8} fill="none" stroke="#C7DDF2" strokeWidth={1} pointerEvents="none" />
+          </>
+        )}
       </svg>
 
       <p className="font-sans text-[12px] text-zinc-400 mt-3 text-center">
-        Drag to rotate · click a highlighted country, or choose below
+        {flat ? 'Click a highlighted country, or choose below' : 'Drag to rotate · click a highlighted country, or choose below'}
       </p>
       <p className="font-sans text-[11px] text-zinc-400/90 mt-1.5 text-center max-w-[380px] leading-relaxed">
         Boundaries: Natural Earth, India point-of-view edition.

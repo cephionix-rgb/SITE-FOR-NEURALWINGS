@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, MapPin, ExternalLink } from 'lucide-react';
 import { JurisdictionGlobe, jurisdictions } from './JurisdictionGlobe';
 
-export function JurisdictionReport() {
+export function JurisdictionReport({ flat = false }: { flat?: boolean } = {}) {
   const [selectedId, setSelectedId] = useState('dgca');
   const j = jurisdictions.find((x) => x.id === selectedId) ?? jurisdictions[0];
 
@@ -19,17 +19,17 @@ export function JurisdictionReport() {
           </h2>
           <p className="font-sans text-[16px] md:text-[17px] text-zinc-600 leading-relaxed">
             The pressure on flight training is worldwide, but it arrives differently depending on who approves
-            you. Spin the globe or pick an authority — the figures, the regulatory position and our conclusion
-            all change to match.
+            you. {flat ? 'Pick a region on the map' : 'Spin the globe or pick an authority'} — the figures, the
+            regulatory position and our conclusion all change to match.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[440px_1fr] gap-8 lg:gap-12 items-start">
+        <div className={flat ? "flex flex-col gap-8" : "grid grid-cols-1 lg:grid-cols-[440px_1fr] gap-8 lg:gap-12 items-start"}>
           {/* Globe + picker */}
           <div className="flex flex-col gap-5">
-            <JurisdictionGlobe selectedId={selectedId} onSelect={setSelectedId} />
+            <JurisdictionGlobe selectedId={selectedId} onSelect={setSelectedId} flat={flat} />
 
-            <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
+            <div className={`flex flex-wrap gap-2 ${flat ? "justify-center" : "justify-center lg:justify-start"}`}>
               {jurisdictions.map((item) => {
                 const active = item.id === selectedId;
                 return (
